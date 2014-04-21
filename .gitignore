@@ -14,3 +14,19 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#Ignore database file
+/config/database.yml
+
+#Ignore secrets
+/config/initializers/secret_token.rb
+
+#Ignore all initializers?
+/config/initializers/
+
+#Environment normalization
+/.bundle
+/vender/bundle
+
+#Ignore DSStore
+.DSStore

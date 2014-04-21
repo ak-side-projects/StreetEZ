@@ -8,7 +8,21 @@
 </head>
 <body>
 
+<% if signed_in? %>
+  <a href="#">My Account</a>
+  <%= button_to "Sign Out", session_url, method:"delete" %>
+  Signed in as: <%= current_user.email %>
+<% else %>
+  <a href="<%= new_session_url %>">Sign In</a>
+  <a href="<%= new_user_url %>">Sign up</a>
+<% end %>
+<p><div class="error">
+  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+</div></p>
+
+
 <%= yield %>
+
 
 </body>
 </html>
