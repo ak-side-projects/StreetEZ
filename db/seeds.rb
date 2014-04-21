@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+User.create(email: "user1@example.com", password: "123456")
+User.create(email: "user2@example.com", password: "123456")
+
+Rental.create(num_bedrooms: 1, num_bathrooms: 1, sq_footage: 500, monthly_rent: 1500, owner_id: 1)
+Rental.create(num_bedrooms: 1, num_bathrooms: 1, sq_footage: 800, monthly_rent: 2000, owner_id: 1)
+Rental.create(num_bedrooms: 2, num_bathrooms: 1, sq_footage: 900, monthly_rent: 3000, owner_id: 1)
+Rental.create(num_bedrooms: 2, num_bathrooms: 2, sq_footage: 1200, monthly_rent: 4200, owner_id: 1)
+Rental.create(num_bedrooms: 3, num_bathrooms: 1, sq_footage: 1500, monthly_rent: 5000, owner_id: 1)
+Rental.create(num_bedrooms: 3, num_bathrooms: 2, sq_footage: 2000, monthly_rent: 6000, owner_id: 1)
+
+Address.create(rental_id: 1, neighborhood: "West Village", street: "100 Jane St", unit: "1W", city: "New York", state: "NY", zipcode: 10014)
+Address.create(rental_id: 2, neighborhood: "West Village", street: "100 Jane St", unit: "2W", city: "New York", state: "NY", zipcode: 10014)
+Address.create(rental_id: 3, neighborhood: "East Village", street: "808 Broadway", unit: "3E", city: "New York", state: "NY", zipcode: 10003)
+Address.create(rental_id: 4, neighborhood: "East Village", street: "808 Broadway", unit: "4E", city: "New York", state: "NY", zipcode: 10003)
+Address.create(rental_id: 5, neighborhood: "Tribeca", street: "73 Worth St", unit: "5", city: "New York", state: "NY", zipcode: 10013)
+Address.create(rental_id: 6, neighborhood: "Tribeca", street: "73 Worth St", unit: "6", city: "New York", state: "NY", zipcode: 10013)

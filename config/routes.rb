@@ -2,8 +2,10 @@ StreetEZ::Application.routes.draw do
 
   root to: "rentals#home"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
+
   resource :session, only: [:new, :create, :destroy]
-  resources :rentals
+
+  resources :rentals, only: [:new, :create, :index, :show, :edit, :destroy]
 
 end

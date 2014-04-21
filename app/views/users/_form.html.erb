@@ -3,16 +3,16 @@
 
   <label for="user_email">Email</label>
   <input
-    type="text"
+    id="user_email"
+    type="email"
     name="user[email]"
-    value="<%= user.email %>"
-    id="user_email">
+    value="<%= user.email %>">
 
   <label for="user_password">Password</label>
   <input
+    id="user_password"
     type="password"
-    name="user[password]"
-    id="user_password">
+    name="user[password]">
 
   <input type="submit" value="Submit">
 </form>

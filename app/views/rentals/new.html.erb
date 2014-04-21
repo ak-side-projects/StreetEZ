@@ -1,0 +1,59 @@
+<form class="rental-search" action="<%=  %>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="rental[neighborhood][]" value="">
+
+  <select name="rental[neighborhood][]">
+  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
+    <option value="<%= neighborhood %>"><%= neighborhood %></option>
+  <% end %>
+  </select>
+
+  <label for="rental_street">Street</label>
+  <input id="rental_street" type="text" name="rental[street]">
+
+  <label for="rental_unit">Unit #</label>
+  <input id="rental_unit" type="text" name="rental[unit]">
+
+  <label for="rental_city">City</label>
+  <input id="rental_city" type="text" name="rental[city]">
+
+  <label for="rental_state">State</label>
+  <input id="rental_state" type="text" name="rental[state]">
+
+  <label for="rental_zipcode">Zipcode</label>
+  <input id="rental_zipcode" type="text" name="rental[zipcode]">
+  <br>
+
+  <select name="rental[num_bedrooms]">
+    <option value="">Select Number of Bedrooms</option>
+    <option value="Studio">Studio</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+
+  <select name="rental[num_bathrooms]">
+    <option value="">Select Number of Bathrooms</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+
+  <label for="rental_price">Monthly Rent</label>
+  <input id="rental_price" type="number" name="rental[monthly_rent]">
+  <br>
+
+  <label>
+    Description
+    <textarea class="rental-description"></textarea>
+  </label>
+
+  <div class"rental-photos">
+    <button class="upload photo">Upload Photo</button>
+    ***BROWSE & UPLOAD PHOTOS***
+  </div>
+
+  <input type="submit" value="Create Listing">
+</form>

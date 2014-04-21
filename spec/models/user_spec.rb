@@ -13,6 +13,7 @@ describe User do
   it { should ensure_length_of(:password).is_at_least(6) }
 
   it { should have_many(:owned_rentals) }
+  it { should have_many(:addresses) }
 
   it "creates a password digest when a password is given" do
     expect(user.password_digest).to_not be_nil

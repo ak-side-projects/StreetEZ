@@ -1,0 +1,39 @@
+<form class="rental-search" action="<%= new_rental_url %>" method="get">
+  <%= auth_token %>
+
+  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
+    <label for="rental_neighborhood">
+      <input
+        id="rental_neighborhood"
+        type="checkbox"
+        name="rental[neighborhoods][]"
+        value="<%= neighborhood %>">
+      <%= neighborhood %>
+    </label>
+  <% end %>
+
+  <br>
+  <label for="rental_price_min">Min Price</label>
+  <input id="rental_price_min" type="number" name="rental[price_min]">
+
+  <label for="rental_price_max">Max Price</label>
+  <input id="rental_price_max" type="number" name="rental[price_max]">
+
+  <select name="rental[num_bedrooms]">
+    <option value="">Select Number of Bedrooms</option>
+    <option value="Studio">Studio</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+
+  <select name="rental[num_bathrooms]">
+    <option value="">Select Number of Bathrooms</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+
+  <input type="submit" value="Search">
+</form>

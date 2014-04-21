@@ -10,8 +10,18 @@
 
 <h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
 
+<h3 class="rentals">
+  <a class="rentals" href="<%= rentals_url %>">Rentals</a>
+</h3>
+<h3 class="about">
+  <a class="about" href="#>">About</a>
+</h3>
+<h3 class="help">
+  <a class="help" href="#">Help</a>
+</h3>
+
 <% if signed_in? %>
-  <a href="#">My Account</a>
+  <a href="<%= user_url(current_user.id) %>">My Account</a>
   <%= button_to "Sign Out", session_url, method:"delete" %>
   Signed in as: <%= current_user.email %>
 <% else %>

@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
     inverse_of: :owner
   )
 
+  has_many :addresses, through: :owned_rentals, source: :address
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil
