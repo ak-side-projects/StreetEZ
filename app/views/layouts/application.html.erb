@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
+
 <% if signed_in? %>
   <a href="#">My Account</a>
   <%= button_to "Sign Out", session_url, method:"delete" %>

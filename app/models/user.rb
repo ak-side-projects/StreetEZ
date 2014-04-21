@@ -1,12 +1,19 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :name, presence: true
+  validates :email, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
   validates :session_token, presence: true
 
-  before_validation :ensure_sesion_token
+  before_validation :ensure_session_token
+
+  has_many(
+    :owned_rentals,
+    class_name: "Rental",
+    foreign_key: :owner_id,
+    inverse_of: :owner
+  )
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -36,7 +43,7 @@ class User < ActiveRecord::Base
 
   private
   def ensure_session_token
-    self.session_token ||= self.clas.generate_session_token
+    self.session_token ||= self.class.generate_session_token
   end
 
 end

@@ -36,6 +36,16 @@ group :development, :test do
   gem 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'guard-rspec'
+  gem 'faker'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 group :doc do
