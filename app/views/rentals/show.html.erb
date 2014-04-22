@@ -1,30 +1,26 @@
-<h3>Featured Listings</h3>
+<h3>Selected Listings</h3>
 
-<ul class="featured">
-  <li class="featured-1">
-    <a href="<%= rental_url(rental_ex1.id) %>">
-      <img src="" alt="rental_listing">
-    </a>
+<div class="search-show">
 
-    <p class="featured-1"><%= rental_ex1.num_bedrooms %> Beds</p>
-    <p class="featured-1"><%= rental_ex1.monthly_rent %> Beds</p>
-  </li>
+  <a href="<%= rental_url(@rental.id) %>">
+    <img class="rental-photo" src="" alt="apartment_rental_photo">
+  </a>
 
-  <li class="featured-2">
-    <a href="<%= rental_url(rental_ex2.id) %>">
-      <img src="" alt="rental_listing">
-    </a>
+  <div class="rental-thumbnail-header">
+  <p class="rental-address">
+    <%= @rental.address.street + ' ' + @rental.address.unit %>
+  </p>
 
-    <p class="featured-2"><%= rental_ex2.num_bedrooms %> Beds</p>
-    <p class="featured-1"><%= rental_ex2.monthly_rent %> Beds</p>
-  </li>
 
-  <li class="featured-3">
-    <a href="<%= rental_url(rental_ex3.id) %>">
-      <img src="" alt="rental_listing">
-    </a>
+  **************
+  BUTTON_TO_SAVE
+  **************
+  </div>
 
-    <p class="featured-3"><%= rental_ex3.num_bedrooms %> Beds</p>
-    <p class="featured-1"><%= rental_ex3.monthly_rent %> Beds</p>
-  </li>
-</ul>
+  <p class="rental-price"><%= @rental.monthly_rent %> per month</p>
+
+  <p class="rental-bedrooms"><%= @rental.num_bedrooms %> bed</p>
+  <p class="rental-bathrooms"><%= @rental.num_bathrooms %> bath</p>
+  <p class="rental-sq-footage"><%= @rental.sq_footage %> ft2</p>
+
+</div>

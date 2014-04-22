@@ -71,8 +71,7 @@ class RentalsController < ApplicationController
   end
 
   def show
-    fail
-    @rental = Rental.find_by(id: id)
+    @rental = Rental.find_by(id: params[:id])
 
     render :show
   end
