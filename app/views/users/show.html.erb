@@ -31,10 +31,7 @@ Open Houses
           <p class="rental-bathrooms"><%= owned_rental.num_bathrooms %> bath</p>
           <p class="rental-sq-footage"><%= owned_rental.sq_footage %> ft2</p>
         </div>
-        <form action="<%= edit_rental_url(owned_rental.id) %>" method="get">
-          <%= auth_token %>
-          <input type="submit" value="Edit">
-        </form>
+        <a href="<%= edit_rental_url(owned_rental.id) %>">Edit</a>
         <form action="<%= rental_url(owned_rental.id) %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <%= auth_token %>
