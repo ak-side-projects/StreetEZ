@@ -13,9 +13,9 @@ class Rental < ActiveRecord::Base
     "Soho",
     "Lower East Side"
   ]
-  
+
   NUM_BEDROOMS = ["Studio", 1, 2, 3, 4]
-  
+
   NUM_BATHROOMS = [1, 2, 3, 4]
 
   validates(:neighborhood, inclusion: {in: NEIGHBORHOODS})
@@ -39,5 +39,14 @@ class Rental < ActiveRecord::Base
   )
 
   has_one :address, inverse_of: :rental, dependent: :destroy
+
+  has_many(
+    :saves,
+    class_name: "SavedRental",
+    foreign_key: :rental_id,
+    inverse_of: :rental
+  )
+
+  has_many :users, through: :saves, source: :user
 
 end

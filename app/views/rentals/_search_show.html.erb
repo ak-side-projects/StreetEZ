@@ -5,18 +5,19 @@
   </a>
 
   <div class="rental-thumbnail-header">
-  <p class="rental-address">
-    <%= rental.address.street + ' ' + rental.address.unit %>
-  </p>
+    <p class="rental-address">
+      <%= rental.address.street + ' ' + rental.address.unit %>
+    </p>
 
+    <form class="create-saved-rental" action="<%= saved_rentals_url %>" method="post">
+      <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
+      <%= auth_token %>
+      <input type="submit" value="Save">
+    </form>
 
-  **************
-  BUTTON_TO_SAVE
-  **************
   </div>
 
   <p class="rental-price"><%= rental.monthly_rent %> per month</p>
-
   <p class="rental-bedrooms"><%= rental.num_bedrooms %> bed</p>
   <p class="rental-bathrooms"><%= rental.num_bathrooms %> bath</p>
   <p class="rental-sq-footage"><%= rental.sq_footage %> ft2</p>

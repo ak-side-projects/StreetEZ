@@ -1,0 +1,81 @@
+<% if action == "create" %>
+  <% action_url = rentals_url %>
+<% else %>
+  <% action_url = rental_url(rental.id) %>
+<% end %>
+
+
+<form class="rental-search" action="<%= action_url %>" method="post">
+  <% if action == "update" %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <%= auth_token %>
+
+
+  <select name="rental[neighborhood]">
+  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
+    <option
+			<%= rental.neighborhood == neighborhood ? "selected" : "" %>
+			value="<%= neighborhood %>"><%= neighborhood %></option>
+  <% end %>
+  </select>
+
+  <label for="rental_street">Street</label>
+  <input id="rental_street" type="text" name="address[street]" value="<%= rental.address.street %>">
+
+  <label for="rental_unit">Unit #</label>
+  <input id="rental_unit" type="text" name="address[unit]" value="<%= rental.address.unit %>">
+
+  <label for="rental_city">City</label>
+  <input id="rental_city" type="text" name="address[city]" value="<%= rental.address.city %>">
+
+  <label for="rental_state">State</label>
+  <input id="rental_state" type="text" name="address[state]" value="<%= rental.address.state %>">
+
+  <label for="rental_zipcode">Zipcode</label>
+  <input id="rental_zipcode" type="text" name="address[zipcode]" value="<%= rental.address.zipcode %>">
+  <br>
+
+	<label for="rental_num_bedrooms">Number of Bedrooms</label>
+  <select id="rental_num_bedrooms" name="rental[num_bedrooms]">
+    <option value="">Select Number of Bedrooms</option>
+		<% Rental::NUM_BEDROOMS.each do |num_bed| %>
+			<option
+				<%= rental.num_bedrooms == num_bed ? "selected" : "" %>
+				value="<%= num_bed %>">
+				<%= num_bed %>
+			</option>
+		<% end %>
+  </select>
+
+	<label for="rental_num_bathrooms">Number of Bathrooms</label>
+  <select id="rental_num_bathrooms" name="rental[num_bathrooms]">
+    <option value="">Select Number of Bathrooms</option>
+    <% Rental::NUM_BATHROOMS.each do |num_bath| %>
+			<option
+				<%= rental.num_bathrooms == num_bath ? "selected" : "" %>
+				value="<%= num_bath %>">
+				<%= num_bath %>
+			</option>
+		<% end %>
+  </select>
+
+  <label for="rental_sq_footage">Square Footage</label>
+  <input id="rental_sq_footage" type="number" name="rental[sq_footage]" value="<%= rental.sq_footage %>">
+
+  <label for="rental_price">Monthly Rent</label>
+  <input id="rental_price" type="number" name="rental[monthly_rent]" value="<%= rental.monthly_rent %>">
+  <br>
+
+  <label>
+    Description
+    <textarea class="rental-description" value="<%= rental.description %>"></textarea>
+  </label>
+
+  <div class"rental-photos">
+    <button class="upload photo">Upload Photo</button>
+    ***BROWSE & UPLOAD PHOTOS***
+  </div>
+
+  <input type="submit" value="<%= action.capitalize %> Listing">
+</form>
