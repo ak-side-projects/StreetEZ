@@ -13,6 +13,10 @@ class Rental < ActiveRecord::Base
     "Soho",
     "Lower East Side"
   ]
+  
+  NUM_BEDROOMS = ["Studio", 1, 2, 3, 4]
+  
+  NUM_BATHROOMS = [1, 2, 3, 4]
 
   validates(:neighborhood, inclusion: {in: NEIGHBORHOODS})
 

@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
 
   def home
     @rentals = Rental.all
-
+    
     @rental_ex1 = @rentals.sample
     until !@rental_ex2.nil? && @rental_ex2 != @rental_ex1 do
       @rental_ex2 = @rentals.sample
@@ -54,6 +54,7 @@ class RentalsController < ApplicationController
 
   def new
     @rental = Rental.new
+    @rental.build_address()
     render :new
   end
 
