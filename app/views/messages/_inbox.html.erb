@@ -2,11 +2,11 @@
 
 <ul class="received-message-list">
   <% received_messages.each do |message| %>
-    <li class="received-message">
-      <ul>
-        <li class="received-message-sender"><%= message.sender.email %></li>
-        <li class="received-message-body"><%= message.body %></li>
-      </ul>
-    </li>
+    <a class="received-message-link" href="<%= message_url(message.id) %>">
+      <li class="received-message">
+        <h4>From: <%= message.sender.name %></h4>
+        <p><%= message.body %></p>
+      </li>
+    </a>
   <% end %>
 </ul>

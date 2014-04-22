@@ -5,9 +5,11 @@ describe User do
   subject(:user) do
     FactoryGirl.build(:user,
       email: "user@example.com",
+      name: "john smith",
       password: 'good_password')
   end
 
+  it { should validate_presence_of(:email) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password_digest) }
   it { should ensure_length_of(:password).is_at_least(6) }

@@ -9,5 +9,10 @@ describe Rental do
   it { should validate_presence_of(:neighborhood) }
   it { should validate_presence_of(:owner) }
 
+  it { should ensure_inclusion_of(:neighborhood).in_array(Rental::NEIGHBORHOODS) }
+
   it { should belong_to(:owner) }
+  it { should have_one(:address) }
+  it { should have_many(:saves) }
+  it { should have_many(:users) }
 end

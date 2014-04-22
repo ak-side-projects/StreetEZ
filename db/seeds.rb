@@ -8,10 +8,10 @@
 
 
 
-User.create(email: "user1@example.com", password: "123456")
-User.create(email: "user2@example.com", password: "123456")
-User.create(email: "user3@example.com", password: "123456")
-User.create(email: "user4@example.com", password: "123456")
+User.create(email: "user1@example.com", name: "User1", password: "123456")
+User.create(email: "user2@example.com", name: "User2", password: "123456")
+User.create(email: "user3@example.com", name: "User3", password: "123456")
+User.create(email: "user4@example.com", name: "User4", password: "123456")
 
 Rental.create(num_bedrooms: 1, num_bathrooms: 1, sq_footage: 500, monthly_rent: 1500, neighborhood: "West Village", owner_id: 1)
 Rental.create(num_bedrooms: 1, num_bathrooms: 1, sq_footage: 800, monthly_rent: 2000, neighborhood: "West Village", owner_id: 1)

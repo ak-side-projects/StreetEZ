@@ -31,6 +31,15 @@ gem 'jbuilder', '~> 1.2'
 #keep user passwords secret
 gem 'bcrypt'
 
+#hide aws info
+gem 'figaro'
+
+#paperclip: upload files and images / pictures
+gem 'paperclip'
+
+#amazon web services
+gem 'aws-sdk'
+
 group :development, :test do
   #gems to help with debugging
   gem 'pry-rails'
