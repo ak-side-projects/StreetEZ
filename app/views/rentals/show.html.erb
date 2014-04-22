@@ -1,11 +1,14 @@
-<h3>Selected Listings</h3>
+<h3>Selected Listing</h3>
 
 <div class="search-show">
 
-
-  <img class="rental-photo" src="" alt="apartment_rental_photo">
-
-
+  <div class="rental-photos">
+    <% if @rental.photos %>
+      <% @rental.photos.each do |photo| %>
+        <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+      <% end %>
+    <% end %>
+  </div>
   <div class="rental-thumbnail-header">
     <p class="rental-address">
       <%= @rental.address.street + ' ' + @rental.address.unit %>

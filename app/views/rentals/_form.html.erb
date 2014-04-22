@@ -5,7 +5,7 @@
 <% end %>
 
 
-<form class="rental-search" action="<%= action_url %>" method="post">
+<form class="rental-search" enctype=multipart/form-data action="<%= action_url %>" method="post">
   <% if action == "update" %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
@@ -72,10 +72,19 @@
     <textarea class="rental-description" value="<%= rental.description %>"></textarea>
   </label>
 
-  <div class"rental-photos">
-    <button class="upload photo">Upload Photo</button>
-    ***BROWSE & UPLOAD PHOTOS***
-  </div>
+  <label for="rental-photos">Upload Photos</label>
+  <input id="rental-photos" type="file" multiple name="photos[]">
 
   <input type="submit" value="<%= action.capitalize %> Listing">
 </form>
+
+  <% if rental.photos %>
+    <% rental.photos.each do |photo| %>
+      <form action="<%= photo_url(photo.id) %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= auth_token %>
+        <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+        <input type="submit" value="Delete Photo">
+      </form>
+    <% end %>
+  <% end %>

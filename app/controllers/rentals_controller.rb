@@ -58,6 +58,10 @@ class RentalsController < ApplicationController
     @rental = current_user.owned_rentals.new(rental_params)
     @rental.build_address(address_params)
 
+    photo_params.each do |file_params|
+      @rental.photos.new(file: file_params)
+    end
+
     if @rental.save
       redirect_to user_url(current_user.id)
     else
@@ -77,10 +81,14 @@ class RentalsController < ApplicationController
   end
 
   def update
-    @rental = Rental.find_by(id: params[:id])
+    @rental = Rental.find(params[:id])
+
+    photo_params.each do |file_params|
+      @rental.photos.new(file: file_params)
+    end
 
     if @rental.update(rental_params) && @rental.address.update(address_params)
-      redirect_to user_url(current_user.id)
+      redirect_to rental_url(@rental.id)
     else
       flash.now[:errors] = @rental.errors.full_messages
       render :edit
@@ -88,7 +96,7 @@ class RentalsController < ApplicationController
   end
 
   def destroy
-    @rental = Rental.find_by(id: params[:id])
+    @rental = Rental.find(params[:id])
     @rental.destroy
     redirect_to user_url(current_user.id)
   end
@@ -104,5 +112,9 @@ class RentalsController < ApplicationController
 
   def address_params
     params.require(:address).permit(:street, :unit, :city, :state, :zipcode)
+  end
+
+  def photo_params
+    params.require(:photos)
   end
 end

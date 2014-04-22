@@ -12,4 +12,6 @@ StreetEZ::Application.routes.draw do
 
   resources :messages, only: [:create, :index, :show]
 
+  resources :photos, only: [:create, :destroy]
+
 end

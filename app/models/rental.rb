@@ -49,4 +49,6 @@ class Rental < ActiveRecord::Base
 
   has_many :users, through: :saves, source: :user
 
+  has_many :photos, inverse_of: :rental, dependent: :destroy
+
 end
