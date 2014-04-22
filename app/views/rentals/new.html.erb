@@ -4,7 +4,9 @@
 
   <select name="rental[neighborhood]">
   <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
-    <option value="<%= neighborhood %>"><%= neighborhood %></option>
+    <option 
+			<%= @rental.neighborhood == neighborhood ? "selected" : "" %>
+			value="<%= neighborhood %>"><%= neighborhood %></option>
   <% end %>
   </select>
 
@@ -23,8 +25,9 @@
   <label for="rental_zipcode">Zipcode</label>
   <input id="rental_zipcode" type="text" name="address[zipcode]" value="<%= @rental.address.zipcode %>">
   <br>
-
-  <select name="rental[num_bedrooms]">
+	
+	<label for="rental_num_bedrooms">Number of Bedrooms</label>
+  <select id="rental_num_bedrooms" name="rental[num_bedrooms]">
     <option value="">Select Number of Bedrooms</option>
 		<% Rental::NUM_BEDROOMS.each do |num_bed| %>
 			<option
@@ -35,7 +38,8 @@
 		<% end %>
   </select>
 
-  <select name="rental[num_bathrooms]">
+	<label for="rental_num_bathrooms">Number of Bathrooms</label>
+  <select id="rental_num_bathrooms" name="rental[num_bathrooms]">
     <option value="">Select Number of Bathrooms</option>
     <% Rental::NUM_BATHROOMS.each do |num_bath| %>
 			<option
