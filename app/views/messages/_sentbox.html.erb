@@ -1,0 +1,12 @@
+<h3>Sent</h3>
+
+<ul class="sent-message-list">
+  <% sent_messages.each do |message| %>
+    <li class="sent-message">
+      <ul>
+        <li class="sent-message-sender"><%= message.sender.email %></li>
+        <li class="sent-message-body"><%= message.body %></li>
+      </ul>
+    </li>
+  <% end %>
+</ul>

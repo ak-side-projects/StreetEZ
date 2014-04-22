@@ -26,6 +26,20 @@ class User < ActiveRecord::Base
 
   has_many :saved_rentals, through: :saves, source: :rental
 
+  has_many(
+    :sent_messages,
+    class_name: "Message",
+    foreign_key: :sender_id,
+    inverse_of: :sender
+  )
+
+  has_many(
+    :received_messages,
+    class_name: "Message",
+    foreign_key: :recipient_id,
+    inverse_of: :recipient
+  )
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil

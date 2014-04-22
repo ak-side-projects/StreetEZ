@@ -10,4 +10,6 @@ StreetEZ::Application.routes.draw do
 
   resources :saved_rentals, only: [:create, :destroy]
 
+  resources :messages, only: [:create, :index, :show]
+
 end
