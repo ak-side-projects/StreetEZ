@@ -21,6 +21,7 @@ class Rental < ActiveRecord::Base
     :num_bathrooms,
     :sq_footage,
     :monthly_rent,
+    :neighborhood,
     presence: true
   )
 
@@ -33,6 +34,6 @@ class Rental < ActiveRecord::Base
     inverse_of: :owned_rentals
   )
 
-  has_one :address, inverse_of: :rental
+  has_one :address, inverse_of: :rental, dependent: :destroy
 
 end

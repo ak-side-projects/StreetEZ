@@ -19,26 +19,61 @@ class RentalsController < ApplicationController
   end
 
   def index
-    # neighborhoods = neighborhood_params[1..-1]  #IS THIS RIGHT??!?!?!?
-    @rentals = Rental.where().where().where()
+    @rentals = Rental.all
+    if params[:rental]
+      if rental_search_params[:num_bedrooms] != ""
+        num_bedrooms = rental_search_params[:num_bedrooms].to_i
+        @rentals = @rentals.where(num_bedrooms: num_bedrooms)
+      end
+
+      if rental_search_params[:num_bathrooms] != ""
+        num_bathrooms = rental_search_params[:num_bathrooms].to_i
+        @rentals = @rentals.where(num_bathrooms: num_bathrooms)
+      end
+
+      if !rental_search_params[:neighborhoods].nil?
+        @rentals = @rentals.where(neighborhood: rental_search_params[:neighborhoods])
+      end
+
+      if rental_search_params[:price_min] != ""
+        price_min = rental_search_params[:price_min].to_i
+      else
+        price_min = 0
+      end
+
+      if rental_search_params[:price_max] != ""
+        price_max = rental_search_params[:price_max].to_i
+      else
+        price_max = Rental.all.order(monthly_rent: :desc).first.monthly_rent
+      end
+      @rentals = @rentals.where(monthly_rent: price_min..price_max)
+    end
+
     render :index
   end
 
   def new
-    fail
     @rental = Rental.new
     render :new
   end
 
   def create
-    @rental = Rental.new(rental_params)
-    fail
+    @rental = current_user.owned_rentals.new(rental_params)
+    @rental.build_address(address_params)
 
-    redirect_to user_url(current_user.id)
+    if @rental.save
+      redirect_to user_url(current_user.id)
+    else
+      flash.now[:errors] = @rental.errors.full_messages
+      render :new
+    end
   end
 
   def show
+    fail
+    @rental = Rental.find_by(id: id)
 
+    render :show
   end
 
   def destroy
@@ -50,8 +85,11 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:num_bedrooms, :num_bathrooms, :price_min, :price_max, neighborhoods: [])
   end
 
-  def neighborhood_params
-    # params.require(:rental).require(:neighborhoods)
+  def rental_params
+    params.require(:rental).permit(:neighborhood, :num_bedrooms, :num_bathrooms, :monthly_rent, :sq_footage)
   end
 
+  def address_params
+    params.require(:address).permit(:street, :unit, :city, :state, :zipcode)
+  end
 end

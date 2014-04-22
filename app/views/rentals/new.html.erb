@@ -1,28 +1,27 @@
-<form class="rental-search" action="<%=  %>" method="post">
+<form class="rental-search" action="<%= rentals_url %>" method="post">
   <%= auth_token %>
 
-  <input type="hidden" name="rental[neighborhood][]" value="">
 
-  <select name="rental[neighborhood][]">
+  <select name="rental[neighborhood]">
   <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
     <option value="<%= neighborhood %>"><%= neighborhood %></option>
   <% end %>
   </select>
 
   <label for="rental_street">Street</label>
-  <input id="rental_street" type="text" name="rental[street]">
+  <input id="rental_street" type="text" name="address[street]">
 
   <label for="rental_unit">Unit #</label>
-  <input id="rental_unit" type="text" name="rental[unit]">
+  <input id="rental_unit" type="text" name="address[unit]">
 
   <label for="rental_city">City</label>
-  <input id="rental_city" type="text" name="rental[city]">
+  <input id="rental_city" type="text" name="address[city]">
 
   <label for="rental_state">State</label>
-  <input id="rental_state" type="text" name="rental[state]">
+  <input id="rental_state" type="text" name="address[state]">
 
   <label for="rental_zipcode">Zipcode</label>
-  <input id="rental_zipcode" type="text" name="rental[zipcode]">
+  <input id="rental_zipcode" type="text" name="address[zipcode]">
   <br>
 
   <select name="rental[num_bedrooms]">
@@ -40,6 +39,9 @@
     <option value="2">2</option>
     <option value="3">3</option>
   </select>
+
+  <label for="rental_sq_footage">Square Footage</label>
+  <input id="rental_sq_footage" type="number" name="rental[sq_footage]">
 
   <label for="rental_price">Monthly Rent</label>
   <input id="rental_price" type="number" name="rental[monthly_rent]">

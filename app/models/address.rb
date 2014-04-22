@@ -1,7 +1,6 @@
 class Address < ActiveRecord::Base
 
   validates(
-    :neighborhood,
     :street,
     :unit,
     :city,
