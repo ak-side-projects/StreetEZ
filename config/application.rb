@@ -9,7 +9,7 @@ Bundler.require(:default, Rails.env)
 module StreetEZ
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false
-    
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
@@ -20,6 +20,15 @@ module StreetEZ
         request_specs: true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+        :bucket => ENV['S3_BUCKET'], #these values safely stored in application.yml thanks to figaro!
+        :access_key_id => ENV['S3_ACCESS_KEY'],
+        :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+      }
+    }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
