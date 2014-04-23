@@ -8,15 +8,22 @@
     <p class="rental-address">
       <%= @rental.address.street + ' #' + @rental.address.unit %>
     </p>
-
-		<%= render "saved_rental", rental: @rental %>
+		<% if signed_in? %>
+			<%= render "saved_rental", rental: @rental %>
+		<% end %>
   </div>
 
   <p class="rental-price">$<%= @rental.monthly_rent %> per month</p>
 
   <p class="rental-bedrooms"><%= @rental.num_bedrooms %> bed</p>
   <p class="rental-bathrooms"><%= @rental.num_bathrooms %> bath</p>
-  <p class="rental-sq-footage"><%= @rental.sq_footage %> ft2</p>
-
-  <%= render "message_owner", rental: @rental %>
+  <p class="rental-sq-footage"><%= @rental.sq_footage %> ft<sup>2</sup></p>
+	
+	<%= render "attend_open_house", rental: @rental %>
+	
+	<% if signed_in? %>
+		<%= render "message_owner", rental: @rental %>
+	<% else %>
+		<a href="<%= new_session_url %>">Sign in to send a message to the owner!</a>
+	<% end %>
 </div>

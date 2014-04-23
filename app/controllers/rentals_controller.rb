@@ -71,7 +71,7 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.includes(:photos).find(params[:id])
+    @rental = Rental.includes(:photos).includes(:open_houses).find(params[:id])
 
     if params[:photo_id].present?
       @featured_photo = Photo.find(params[:photo_id])

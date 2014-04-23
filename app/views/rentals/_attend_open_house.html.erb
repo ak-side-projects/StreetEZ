@@ -1,0 +1,26 @@
+<h4 class="open-houses">Open Houses</h4>
+<ul class="open-houses">
+	<% rental.open_houses.each do |open_house| %>
+		<li class="open-house">
+			<%= open_house.event_datetime %>
+			<% if signed_in? %>
+				<% if current_user.open_houses.include?(open_house) %>
+					<form class="unattend-open-house" action="<%= attend_open_house_url(open_house_id: open_house.id) %>" method="post">
+						<input type="hidden" name="_method" value="delete">
+						<%= auth_token %>
+
+						<input type="submit" value="Remove from calendar">
+					</form>
+				<% else %>
+					<form class="attend-open-house" action="<%= attend_open_houses_url %>" method="post">
+						<%= auth_token %>
+						<input type="hidden" name="open_house_id" value="<%= open_house.id %>">
+						<input type="submit" value="Add to calendar">
+					</form>
+				<% end %>
+			<% else %>
+				<p>Sign in to save the open house to your calendar!</p>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
