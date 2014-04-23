@@ -71,12 +71,12 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.find_by(id: params[:id])
+    @rental = Rental.find(params[:id])
     render :show
   end
 
   def edit
-    @rental = Rental.find_by(id: params[:id])
+    @rental = Rental.find(params[:id])
     render :edit
   end
 
@@ -96,8 +96,7 @@ class RentalsController < ApplicationController
   end
 
   def destroy
-    @rental = Rental.find(params[:id])
-    @rental.destroy
+    Rental.find(params[:id]).destroy
     redirect_to user_url(current_user.id)
   end
 

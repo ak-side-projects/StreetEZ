@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find_by(id: params[:id])
+    @message = Message.find(params[:id])
     recipient_id = @message.recipient_id
     sender_id = @message.sender_id
     message_parties = [sender_id, recipient_id]

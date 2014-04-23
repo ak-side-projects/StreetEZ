@@ -11,12 +11,6 @@
       <%= rental.address.street + ' #' + rental.address.unit %>
     </p>
 
-    <form class="create-saved-rental" action="<%= saved_rentals_url %>" method="post">
-      <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
-      <%= auth_token %>
-      <input type="submit" value="Save">
-    </form>
-
   </div>
 
   <p class="rental-price">$<%= rental.monthly_rent %> per month</p>
