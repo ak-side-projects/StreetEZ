@@ -1,28 +1,15 @@
 <h3>Selected Listing</h3>
 
 <div class="search-show">
-
-	<%= render "rental_show_photos", rental: @rental %>
+	
+	<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
 	
   <div class="rental-thumbnail-header">
     <p class="rental-address">
       <%= @rental.address.street + ' #' + @rental.address.unit %>
     </p>
 
-		<% if current_user.saved_rentals.include?(@rental) %>
-	    <form class="create-saved-rental" action="<%= saved_rental_url(current_user.saved_rentals.where(id: @rental.id)) %>" method="post">
-				<input type="hidden" name="_method" value="delete">
-	      <input type="hidden" name="saved_rental[rental_id]" value="<%= @rental.id %>">
-	      <%= auth_token %>
-	      <input type="submit" value="Remove from profile">
-	    </form>
-		<% else %>
-	    <form class="create-saved-rental" action="<%= saved_rentals_url %>" method="post">
-	      <input type="hidden" name="saved_rental[rental_id]" value="<%= @rental.id %>">
-	      <%= auth_token %>
-	      <input type="submit" value="Save to profile">
-	    </form>
-		<% end %>
+		<%= render "saved_rental", rental: @rental %>
   </div>
 
   <p class="rental-price">$<%= @rental.monthly_rent %> per month</p>

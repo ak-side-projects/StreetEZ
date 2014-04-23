@@ -16,6 +16,14 @@ describe User do
 
   it { should have_many(:owned_rentals) }
   it { should have_many(:addresses) }
+  it { should have_many(:saves) }
+  it { should have_many(:saved_rentals) }
+  it { should have_many(:sent_messages) }
+  it { should have_many(:received_messages) }
+  it { should have_many(:notifications) }
+  it { should have_many(:hosted_open_houses) }
+  it { should have_many(:attend_open_houses) }
+  it { should have_many(:open_houses) }
 
   it "creates a password digest when a password is given" do
     expect(user.password_digest).to_not be_nil

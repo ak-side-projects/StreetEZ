@@ -1,4 +1,6 @@
 class Notification < ActiveRecord::Base
+    
+  include Rails.application.routes.url_helpers  
   
   EVENTS = {
     1 => "received message",

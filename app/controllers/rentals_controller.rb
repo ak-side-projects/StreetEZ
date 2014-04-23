@@ -71,7 +71,14 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.find(params[:id])
+    @rental = Rental.includes(:photos).find(params[:id])
+
+    if params[:photo_id].present?
+      @featured_photo = Photo.find(params[:photo_id])
+    else
+      @featured_photo = @rental.photos.first
+    end
+    
     render :show
   end
 

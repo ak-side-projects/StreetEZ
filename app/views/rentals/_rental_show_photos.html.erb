@@ -1,7 +1,10 @@
 <div class="rental-photos">
   <% if rental.photos.first %>
+			<%= render "photo_show", file_url: featured_photo.file.url(:big) %>
     <% rental.photos.each do |photo| %>
-      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+			<a href="<%= rental_url(rental.id, photo_id: photo.id) %>">
+	      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+			</a>
     <% end %>
 	<% else %>
 		<img class="rental-photo" src="#">
