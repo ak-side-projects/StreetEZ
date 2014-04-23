@@ -1,5 +1,5 @@
 <% if current_user.saved_rentals.include?(rental) %>
-  <form class="create-saved-rental" action="<%= saved_rental_url(current_user.saved_rentals.where(id: @rental.id)) %>" method="post">
+  <form class="delete-saved-rental" action="<%= saved_rental_url(current_user.saved_rentals.where(id: @rental.id)) %>" method="post">
 		<input type="hidden" name="_method" value="delete">
     <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
     <%= auth_token %>

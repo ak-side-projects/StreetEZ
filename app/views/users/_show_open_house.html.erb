@@ -1,0 +1,21 @@
+<li>
+	<a class="open-house" href="<%= rental_url(open_house.rental.id) %>">
+		<%= open_house.rental.address.street + " #" + open_house.rental.address.unit %>
+		<%= open_house.event_datetime %>
+	</a>
+	<% if open_house.host == current_user %>
+	  <form class="delete-open-house" action="<%= open_house_url(open_house.id) %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+	    <%= auth_token %>
+
+	    <input type="submit" value="Cancel Open House">
+	  </form>
+	<% else %>
+		<form class="unattend-open-house" action="<%= attend_open_house_url(open_house_id: open_house.id) %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<%= auth_token %>
+
+			<input type="submit" value="Remove From Calendar">
+		</form>
+	<% end %>
+</li>

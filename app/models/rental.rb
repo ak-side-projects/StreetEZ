@@ -52,5 +52,7 @@ class Rental < ActiveRecord::Base
   has_many :photos, inverse_of: :rental, dependent: :destroy
   
   has_many :open_houses, inverse_of: :rental, dependent: :destroy
+  
+  has_many :notifications, as: :notifiable
 
 end

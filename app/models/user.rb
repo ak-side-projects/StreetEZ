@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   
   has_many :hosted_open_houses, through: :owned_rentals, source: :open_houses
   
-  has_many :attend_open_houses, inverse_of: :user
+  has_many :attend_open_houses, inverse_of: :user, dependent: :destroy
   
   has_many :open_houses, through: :attend_open_houses, source: :open_house
 

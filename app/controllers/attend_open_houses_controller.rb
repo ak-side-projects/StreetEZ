@@ -21,7 +21,7 @@ class AttendOpenHousesController < ApplicationController
     @attend_open_house = AttendOpenHouse.find_by(
       user_id: user_id, open_house_id: open_house_id
     ).destroy
-    
+
     back = request.env["HTTP_REFERER"]
     redirect_to back
   end

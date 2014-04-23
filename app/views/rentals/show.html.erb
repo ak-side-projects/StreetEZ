@@ -1,5 +1,15 @@
 <h3>Selected Listing</h3>
 
+<% if @rental.owner == current_user %>
+	<a class="edit" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
+
+  <form class="delete" action="<%= rental_url(@rental.id) %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <%= auth_token %>
+    <input class="delete" type="submit" value="Delete">
+  </form>
+<% end %>
+
 <div class="search-show">
 	
 	<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
@@ -19,7 +29,7 @@
   <p class="rental-bathrooms"><%= @rental.num_bathrooms %> bath</p>
   <p class="rental-sq-footage"><%= @rental.sq_footage %> ft<sup>2</sup></p>
 	
-	<%= render "attend_open_house", rental: @rental %>
+	<%= render "open_house", rental: @rental %>
 	
 	<% if signed_in? %>
 		<%= render "message_owner", rental: @rental %>

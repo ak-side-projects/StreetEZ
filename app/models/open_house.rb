@@ -6,8 +6,10 @@ class OpenHouse < ActiveRecord::Base
   
   has_one :host, through: :rental, source: :owner
   
-  has_many :attend_open_houses, inverse_of: :open_house
+  has_many :attend_open_houses, inverse_of: :open_house, dependent: :destroy
   
   has_many :attendees, through: :attend_open_houses, source: :user
+  
+  has_many :notifications, as: :notifiable
   
 end

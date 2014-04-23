@@ -17,7 +17,9 @@ class OpenHousesController < ApplicationController
   end
   
   def destroy
-    
+    OpenHouse.find(params[:id]).destroy
+    back = request.env["HTTP_REFERER"]
+    redirect_to back
   end
   
   private

@@ -17,7 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.includes(:hosted_open_houses)
+                .includes(:open_houses)
+                .includes(:owned_rentals)
+                .includes(:saved_rentals)
+                .find(current_user)
     render :show
   end
 
