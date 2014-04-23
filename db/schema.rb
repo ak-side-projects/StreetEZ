@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423045635) do
+ActiveRecord::Schema.define(version: 20140423142427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,11 +65,10 @@ ActiveRecord::Schema.define(version: 20140423045635) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "open_houses", force: true do |t|
-    t.integer  "rental_id",  null: false
-    t.date     "event_date", null: false
-    t.time     "event_time", null: false
+    t.integer  "rental_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "event_datetime", null: false
   end
 
   add_index "open_houses", ["rental_id"], name: "index_open_houses_on_rental_id", using: :btree

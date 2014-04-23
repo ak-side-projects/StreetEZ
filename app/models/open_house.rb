@@ -1,6 +1,6 @@
 class OpenHouse < ActiveRecord::Base
   
-  validates :rental_id, :event_date, :event_time, presence: true
+  validates :rental_id, :event_datetime, presence: true
   
   belongs_to :rental, inverse_of: :open_houses
   
