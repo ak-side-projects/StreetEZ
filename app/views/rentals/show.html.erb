@@ -2,13 +2,8 @@
 
 <div class="search-show">
 
-  <div class="rental-photos">
-    <% if @rental.photos %>
-      <% @rental.photos.each do |photo| %>
-        <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
-      <% end %>
-    <% end %>
-  </div>
+	<%= render "rental_show_photos", rental: @rental %>
+	
   <div class="rental-thumbnail-header">
     <p class="rental-address">
       <%= @rental.address.street + ' #' + @rental.address.unit %>
@@ -36,14 +31,5 @@
   <p class="rental-bathrooms"><%= @rental.num_bathrooms %> bath</p>
   <p class="rental-sq-footage"><%= @rental.sq_footage %> ft2</p>
 
-  <div class="owner-info">
-    <p class="owner-email">Listed by <%= @rental.owner.name %></p>
-    <form class="create-message" action="<%= messages_url %>" method="post">
-      <%= auth_token %>
-      <input type="hidden" name="message[recipient_id]" value="<%= @rental.owner.id %>">
-
-      <textarea name="message[body]">Send a message to the owner</textarea>
-      <input type="submit" value="Send Message">
-    </form>
-  </div>
+  <%= render "message_owner", rental: @rental %>
 </div>

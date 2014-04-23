@@ -1,0 +1,9 @@
+<div class="rental-photos">
+  <% if rental.photos.first %>
+    <% rental.photos.each do |photo| %>
+      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+    <% end %>
+	<% else %>
+		<img class="rental-photo" src="#">
+  <% end %>
+</div>

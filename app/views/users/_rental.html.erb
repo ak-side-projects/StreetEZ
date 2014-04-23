@@ -1,0 +1,32 @@
+<ul class="rentals-list">
+  <li class="rental">
+    <div class="rental-thumbnail-header">
+      <a href="<%= rental_url(rental.id) %>">
+				<% if rental.photos.first %>
+					<img class="rental-photo" src="<%= rental.photos.first.file.url(:thumb) %>" alt="apartment_rental_photo">
+				<% end %>
+      </a>
+      <p class="rental-address">
+        <%= rental.address.street + ' #' + rental.address.unit %>
+      </p>
+      <p class="rental-price"><%= rental.monthly_rent %> per month</p>
+      <p class="rental-bedrooms"><%= rental.num_bedrooms %> bed</p>
+      <p class="rental-bathrooms"><%= rental.num_bathrooms %> bath</p>
+      <p class="rental-sq-footage"><%= rental.sq_footage %> ft2</p>
+    </div>
+		<% if rental.owner_id == current_user.id %>
+	    <a href="<%= edit_rental_url(rental.id) %>">Edit</a>
+	    <form action="<%= rental_url(rental.id) %>" method="post">
+	      <input type="hidden" name="_method" value="delete">
+	      <%= auth_token %>
+	      <input type="submit" value="Delete">
+	    </form>
+		<% else %>
+	    <form action="<%= saved_rental_url(rental.id) %>" method="post">
+	      <input type="hidden" name="_method" value="delete">
+	      <%= auth_token %>
+	      <input type="submit" value="Remove">
+	    </form>
+		<% end %>
+  </li>
+</ul>

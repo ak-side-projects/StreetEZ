@@ -17,7 +17,7 @@
   <br>
   <h4 class="owned-rentals">Owned</h4>
 	<% current_user.owned_rentals.each do |owned_rental| %>
-  	<%= render "owned_rental", owned_rental: owned_rental %>
+  	<%= render "rental", rental: owned_rental %>
   <% end %>
 </div>
 <br>
@@ -25,6 +25,6 @@
 <div class="saved-rentals">
   <h4 class="saved-rentals">Saved</h4>
   <% current_user.saved_rentals.each do |saved_rental| %>
-		<%= render "saved_rental", saved_rental: saved_rental %>
+		<%= render "rental", rental: saved_rental %>
 	<% end %>
 </div>

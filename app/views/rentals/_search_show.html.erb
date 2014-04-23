@@ -3,6 +3,8 @@
   <a href="<%= rental_url(rental.id) %>">
 		<% if rental.photos.first %>
 	    <img class="rental-photo" src="<%= rental.photos.first.file.url(:thumb) %>" alt="apartment_rental_photo">
+		<% else %>
+			<img class="rental-photo" src="#" alt="apartment_rental_photo">
 		<% end %>
   </a>
 

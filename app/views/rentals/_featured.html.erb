@@ -5,6 +5,8 @@
     <a href="<%= rental_url(rental_ex1.id) %>">
 			<% if rental_ex1.photos.first %>
 	      <img src="<%= rental_ex1.photos.first.file.url(:med) %>" alt="rental_listing">
+			<% else %>
+				<img src="#" alt="rental_listing">
 			<% end %>
     </a>
 
@@ -16,6 +18,8 @@
     <a href="<%= rental_url(rental_ex2.id) %>">
 			<% if rental_ex2.photos.first %>
 	      <img src="<%= rental_ex2.photos.first.file.url(:med) %>" alt="rental_listing">
+			<% else %>
+				<img src="#" alt="rental_listing">
 			<% end %>
     </a>
 
@@ -27,6 +31,8 @@
     <a href="<%= rental_url(rental_ex3.id) %>">
 			<% if rental_ex3.photos.first %>
 	      <img src="<%= rental_ex3.photos.first.file.url(:med) %>" alt="rental_listing">
+			<% else %>
+				<img src="#" alt="rental_listing">
 			<% end %>
     </a>
 
