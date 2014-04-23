@@ -1,25 +1,33 @@
-<form action="<%= provided_url %>" method="post">
+<form class="sign-up" action="<%= provided_url %>" method="post">
   <%= auth_token %>
+	
+	<div class="sign-up-form">
+	  <label for="user_email">Email</label>
+	  <input
+	    id="user_email"
+	    type="email"
+	    name="user[email]"
+	    value="<%= user.email %>">
+	</div>
+	
+	<div class="sign-up-form">
+	  <label for="user_name">Name</label>
+	  <input
+	    id="user_name"
+	    type="name"
+	    name="user[name]"
+	    value="<%= user.name %>">
+	</div>
 
-  <label for="user_email">Email</label>
-  <input
-    id="user_email"
-    type="email"
-    name="user[email]"
-    value="<%= user.email %>">
-
-  <label for="user_name">Name</label>
-  <input
-    id="user_name"
-    type="name"
-    name="user[name]"
-    value="<%= user.name %>">
-
-  <label for="user_password">Password</label>
-  <input
-    id="user_password"
-    type="password"
-    name="user[password]">
-
-  <input type="submit" value="Submit">
+	<div class="sign-up-form">
+	  <label for="user_password">Password</label>
+	  <input
+	    id="user_password"
+	    type="password"
+	    name="user[password]">
+	</div>
+	
+	<div class="submit">
+	  <input type="submit" value="Submit">
+	</div>
 </form>

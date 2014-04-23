@@ -7,33 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+	<div class="user-bar">
+		<% if signed_in? %>
+		  <a href="<%= notifications_url %>">Notifications</a>
+		  <a href="<%= messages_url %>">Messages</a>
+		  <a href="<%= user_url(current_user.id) %>">My Account</a>
+		  <%= button_to "Sign Out", session_url, method:"delete" %>
+		  Signed in as: <%= current_user.email %>
+		<% else %>
+		  <a href="<%= new_session_url %>">Sign In</a>
+		  <a href="<%= new_user_url %>">Sign up</a>
+		<% end %>
+	</div>
+	
+	<div class="nav-bar">
+		<h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
 
-<h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
+		<h3 class="rentals">
+		  <a class="rentals" href="<%= rentals_url %>">Rentals</a>
+		</h3>
+		<h3 class="about">
+		  <a class="about" href="#>">About</a>
+		</h3>
+		<h3 class="help">
+		  <a class="help" href="#">Help</a>
+		</h3>
 
-<h3 class="rentals">
-  <a class="rentals" href="<%= rentals_url %>">Rentals</a>
-</h3>
-<h3 class="about">
-  <a class="about" href="#>">About</a>
-</h3>
-<h3 class="help">
-  <a class="help" href="#">Help</a>
-</h3>
-
-<% if signed_in? %>
-  <a href="<%= notifications_url %>">Notifications</a>
-  <a href="<%= messages_url %>">Messages</a>
-  <a href="<%= user_url(current_user.id) %>">My Account</a>
-  <%= button_to "Sign Out", session_url, method:"delete" %>
-  Signed in as: <%= current_user.email %>
-<% else %>
-  <a href="<%= new_session_url %>">Sign In</a>
-  <a href="<%= new_user_url %>">Sign up</a>
-<% end %>
-<p><div class="error">
-  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-</div></p>
-
+		<div class="error">
+		  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+		</div>
+	</div>
 
 <%= yield %>
 

@@ -12,8 +12,119 @@
  *= require_tree .
  */
 
+#1A72BC
+#257FC5
 
+html, body, h1, h2, h3, h4, ul, li, div, 
+span, a, img, p, select, option, form, label {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a {
+	text-decoration: none;
+}
 
 body {
+	padding: 10px;
 	font-family: sans-serif;
 }
+
+input[type="text"],
+input[type="name"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+div.sign-up, div.sign-in {
+	background: #fff;
+	padding: 40px;
+	margin: auto;
+	width: 300px;
+	border-radius: 10px;
+	border: 3px solid black;
+}
+
+form.sign-up, form.sign-in {
+  margin: 10px auto;
+	padding: 10px;
+/*	border: 3px solid blue;*/
+	border-radius: 5px;
+}
+
+h1.sign-up, h1.sign-in {
+	text-align: center;
+	font-size: 65px;
+	font-weight: bold;
+	line-height: 1.0;
+	margin: 5px;
+}
+
+.sign-up-form, .sign-in-form {
+	margin: 20px 0;
+}
+
+.sign-up-form, .sign-in-form > label {
+	display: block;
+	font-size: 18px;
+}
+
+.sign-up-form > input, .sign-in-form > input {
+  border: 3px solid #000;
+  padding: 5px;
+  width: 284px;
+  border-radius: 5px;
+}
+
+.sign-up-form > input:hover, .sign-in-form > input:hover {
+	border-color: #257FC5;
+}
+
+.sign-up-form > input:focus, .sign-in-form > input:focus {
+	border-color: #257FC5;
+}
+
+.submit > input {
+  position: relative;
+  display: inline-block;
+  background: #1466B2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.submit > input:hover {
+	background: #0F518B;
+}
+
+.submit > input:active {
+	background: #0C3C66;
+}
+
+#1466B2		#0F4D84
+#0C406C		#0F518B
+#0C3C66   #0C3C66
+
+#87B4DF

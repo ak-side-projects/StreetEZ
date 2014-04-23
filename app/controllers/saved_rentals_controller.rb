@@ -2,7 +2,9 @@ class SavedRentalsController < ApplicationController
 
   def create
     current_user.saves.create(saved_rental_params)
-    redirect_to user_url(current_user.id)
+    
+    back = request.env["HTTP_REFERER"]
+    redirect_to back
   end
 
   def destroy
@@ -13,7 +15,9 @@ class SavedRentalsController < ApplicationController
     end
     user_id = current_user.id
     SavedRental.find_by(user_id: user_id, rental_id: rental_id).destroy
-    redirect_to user_url(current_user.id)
+    
+    back = request.env["HTTP_REFERER"]
+    redirect_to back
   end
 
   def saved_rental_params

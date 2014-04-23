@@ -1,20 +1,28 @@
-<h1>Sign In</h1>
-
-<form action="<%= session_url %>" method="post">
-  <%= auth_token %>
-
-  <label for="user_email">Email</label>
-  <input
-    type="email"
-    name="user[email]"
-    value="<%= @user.email %>"
-    id="user_email">
-
-  <label for="user_password">Password</label>
-  <input
-    type="password"
-    name="user[password]"
-    id="user_password">
-
-  <input type="submit" value="Submit">
-</form>
+<div class="sign-in">
+	<h1 class="sign-in">Sign In</h1>
+	
+	<form class="sign-in" action="<%= session_url %>" method="post">
+	  <%= auth_token %>
+		
+		<div class="sign-in-form">
+		  <label for="user_email">Email</label>
+		  <input
+		    type="email"
+		    name="user[email]"
+		    value="<%= @user.email %>"
+		    id="user_email">
+		</div>
+		
+		<div class="sign-in-form">
+		  <label for="user_password">Password</label>
+		  <input
+		    type="password"
+		    name="user[password]"
+		    id="user_password">
+		</div>
+		
+		<div class="submit">
+		  <input type="submit" value="Submit">
+		</div>
+	</form>
+</div>
