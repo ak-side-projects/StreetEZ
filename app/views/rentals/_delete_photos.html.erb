@@ -1,0 +1,10 @@
+<% if rental.photos %>
+  <% rental.photos.each do |photo| %>
+    <form action="<%= photo_url(photo.id) %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <%= auth_token %>
+      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+      <input type="submit" value="Delete Photo">
+    </form>
+  <% end %>
+<% end %>

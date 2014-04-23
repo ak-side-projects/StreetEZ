@@ -16,56 +16,15 @@
   <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
   <br>
   <h4 class="owned-rentals">Owned</h4>
-  <ul class="owned-rentals-list">
-    <% current_user.owned_rentals.each do |owned_rental| %>
-      <li class="owned-rental">
-        <div class="rental-thumbnail-header">
-          <a href="<%= rental_url(owned_rental.id) %>">
-            <img class="rental-photo" src="" alt="apartment_rental_photo">
-          </a>
-          <p class="rental-address">
-            <%= owned_rental.address.street + ' | Unit:' + owned_rental.address.unit %>
-          </p>
-          <p class="rental-price"><%= owned_rental.monthly_rent %> per month</p>
-          <p class="rental-bedrooms"><%= owned_rental.num_bedrooms %> bed</p>
-          <p class="rental-bathrooms"><%= owned_rental.num_bathrooms %> bath</p>
-          <p class="rental-sq-footage"><%= owned_rental.sq_footage %> ft2</p>
-        </div>
-        <a href="<%= edit_rental_url(owned_rental.id) %>">Edit</a>
-        <form action="<%= rental_url(owned_rental.id) %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <%= auth_token %>
-          <input type="submit" value="Delete">
-        </form>
-      </li>
-    <% end %>
-  </ul>
+	<% current_user.owned_rentals.each do |owned_rental| %>
+  	<%= render "owned_rental", owned_rental: owned_rental %>
+  <% end %>
 </div>
 <br>
 
 <div class="saved-rentals">
   <h4 class="saved-rentals">Saved</h4>
-  <ul class="saved-rentals-list">
-    <% current_user.saved_rentals.each do |saved_rental| %>
-      <li class="saved-rental">
-        <div class="rental-thumbnail-header">
-          <a href="<%= rental_url(saved_rental.id) %>">
-            <img class="rental-photo" src="" alt="apartment_rental_photo">
-          </a>
-          <p class="rental-address">
-            <%= saved_rental.address.street + ' ' + saved_rental.address.unit %>
-          </p>
-          <p class="rental-price"><%= saved_rental.monthly_rent %> per month</p>
-          <p class="rental-bedrooms"><%= saved_rental.num_bedrooms %> bed</p>
-          <p class="rental-bathrooms"><%= saved_rental.num_bathrooms %> bath</p>
-          <p class="rental-sq-footage"><%= saved_rental.sq_footage %> ft2</p>
-        </div>
-        <form action="<%= saved_rental_url(saved_rental.id) %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <%= auth_token %>
-          <input type="submit" value="Remove">
-        </form>
-      </li>
-    <% end %>
-  </ul>
+  <% current_user.saved_rentals.each do |saved_rental| %>
+		<%= render "saved_rental", saved_rental: saved_rental %>
+	<% end %>
 </div>

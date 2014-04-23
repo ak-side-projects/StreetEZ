@@ -1,0 +1,35 @@
+<label for="rental_num_bedrooms">Number of Bedrooms</label>
+<select id="rental_num_bedrooms" name="rental[num_bedrooms]">
+  <option value="">Select Number of Bedrooms</option>
+	<% Rental::NUM_BEDROOMS.each do |num_bed| %>
+		<option
+			<%= rental.num_bedrooms == num_bed ? "selected" : "" %>
+			value="<%= num_bed %>">
+			<%= num_bed %>
+		</option>
+	<% end %>
+</select>
+
+<label for="rental_num_bathrooms">Number of Bathrooms</label>
+<select id="rental_num_bathrooms" name="rental[num_bathrooms]">
+  <option value="">Select Number of Bathrooms</option>
+  <% Rental::NUM_BATHROOMS.each do |num_bath| %>
+		<option
+			<%= rental.num_bathrooms == num_bath ? "selected" : "" %>
+			value="<%= num_bath %>">
+			<%= num_bath %>
+		</option>
+	<% end %>
+</select>
+
+<label for="rental_sq_footage">Square Footage</label>
+<input id="rental_sq_footage" type="number" name="rental[sq_footage]" value="<%= rental.sq_footage %>">
+
+<label for="rental_price">Monthly Rent</label>
+<input id="rental_price" type="number" name="rental[monthly_rent]" value="<%= rental.monthly_rent %>">
+<br>
+
+<label>
+  Description
+  <textarea class="rental-description" value="<%= rental.description %>"></textarea>
+</label>
