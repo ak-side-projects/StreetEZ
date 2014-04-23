@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423021939) do
+ActiveRecord::Schema.define(version: 20140423045635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20140423021939) do
   end
 
   add_index "addresses", ["rental_id"], name: "index_addresses_on_rental_id", using: :btree
+
+  create_table "attend_open_houses", force: true do |t|
+    t.integer  "open_house_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attend_open_houses", ["open_house_id"], name: "index_attend_open_houses_on_open_house_id", using: :btree
+  add_index "attend_open_houses", ["user_id"], name: "index_attend_open_houses_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "sender_id"
@@ -53,6 +63,16 @@ ActiveRecord::Schema.define(version: 20140423021939) do
   add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
   add_index "notifications", ["notifiable_type"], name: "index_notifications_on_notifiable_type", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
+  create_table "open_houses", force: true do |t|
+    t.integer  "rental_id",  null: false
+    t.date     "event_date", null: false
+    t.time     "event_time", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "open_houses", ["rental_id"], name: "index_open_houses_on_rental_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "file_file_name"
