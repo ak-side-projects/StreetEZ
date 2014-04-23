@@ -7,7 +7,7 @@
 				<% end %>
       </a>
       <p class="rental-address">
-        <%= owned_rental.address.street + ' | Unit:' + owned_rental.address.unit %>
+        <%= owned_rental.address.street + ' #' + owned_rental.address.unit %>
       </p>
       <p class="rental-price"><%= owned_rental.monthly_rent %> per month</p>
       <p class="rental-bedrooms"><%= owned_rental.num_bedrooms %> bed</p>

@@ -2,10 +2,12 @@
   <li class="saved-rental">
     <div class="rental-thumbnail-header">
       <a href="<%= rental_url(saved_rental.id) %>">
-        <img class="rental-photo" src="" alt="apartment_rental_photo">
+				<% if saved_rental.photos.first %>
+					<img class="rental-photo" src="<%= saved_rental.photos.first.file.url(:thumb) %>" alt="apartment_rental_photo">
+				<% end %>
       </a>
       <p class="rental-address">
-        <%= saved_rental.address.street + ' ' + saved_rental.address.unit %>
+        <%= saved_rental.address.street + ' #' + saved_rental.address.unit %>
       </p>
       <p class="rental-price"><%= saved_rental.monthly_rent %> per month</p>
       <p class="rental-bedrooms"><%= saved_rental.num_bedrooms %> bed</p>

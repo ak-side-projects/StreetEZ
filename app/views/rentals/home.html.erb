@@ -1,7 +1,7 @@
 <h1>StreetEZ Homepage</h1>
 
-<%= render "search", rental: @rental, provided_url: rentals_url %>
-
 <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
+
+<%= render "search", rental: @rental, provided_url: rentals_url %>
 
 <%= render "featured", rental_ex1: @rental_ex1, rental_ex2: @rental_ex2, rental_ex3: @rental_ex3 %>
