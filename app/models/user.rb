@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   
   has_many :open_houses, through: :attend_open_houses, source: :open_house
 
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil

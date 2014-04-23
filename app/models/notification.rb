@@ -10,7 +10,9 @@ class Notification < ActiveRecord::Base
     5 => "created open house",
     6 => "deleted open house",
     7 => "attend open house",
-    8 => "unattend open house"
+    8 => "attendee added",
+    9 => "unattend open house",
+    10 => "attendee dropped"
   }
   
   validates :notifiable_id, :notifiable_type, :user_id, :event_id, presence: true
@@ -32,8 +34,12 @@ class Notification < ActiveRecord::Base
       rental_path(self.notifiable)
     when "attend open house"
       rental_path(self.notifiable.rental.id)
+    when "attendee added"
+      rental_path(self.notifiable.rental.id)
     when "unattend open house"
       rental_path(self.notifiable.rental.id)
+    when "attendee dropped"
+      rental_path(self.notifiable.open_house.rental.id)
     end
   end
   
@@ -52,6 +58,8 @@ class Notification < ActiveRecord::Base
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
       return "You signed up to attend the open house for #{street} on #{datetime}."
+    when "attendee added"
+      
     when "unattend open house"
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
@@ -60,6 +68,8 @@ class Notification < ActiveRecord::Base
       else
         return "The open house at #{street} on #{datetime} that you were scheduled to attend has been cancelled."
       end
+    when "attendee dropped"
+      
     end
   end
   

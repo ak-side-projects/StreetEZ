@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423192652) do
+ActiveRecord::Schema.define(version: 20140423204312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140423192652) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",        default: true
   end
 
   add_index "attend_open_houses", ["open_house_id"], name: "index_attend_open_houses_on_open_house_id", using: :btree
@@ -106,10 +107,11 @@ ActiveRecord::Schema.define(version: 20140423192652) do
   add_index "rentals", ["owner_id"], name: "index_rentals_on_owner_id", using: :btree
 
   create_table "saved_rentals", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "rental_id",  null: false
+    t.integer  "user_id",                   null: false
+    t.integer  "rental_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     default: true
   end
 
   add_index "saved_rentals", ["rental_id"], name: "index_saved_rentals_on_rental_id", using: :btree
