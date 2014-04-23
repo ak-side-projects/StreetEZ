@@ -1,7 +1,7 @@
 class RentalsController < ApplicationController
 
   def home
-    @rentals = Rental.all
+    @rentals = Rental.all.active
 
     @rental_ex1 = @rentals.sample
     until !@rental_ex2.nil? && @rental_ex2 != @rental_ex1 do
@@ -15,7 +15,7 @@ class RentalsController < ApplicationController
   end
 
   def index
-    @rentals = Rental.all
+    @rentals = Rental.all.active
     if params[:rental]
       if rental_search_params[:num_bedrooms].present?
         num_bedrooms = rental_search_params[:num_bedrooms].to_i
@@ -71,7 +71,7 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.includes(:photos).includes(:open_houses).find(params[:id])
+    @rental = Rental.includes(:photos).includes(:open_houses).active.find(params[:id])
 
     if params[:photo_id].present?
       @featured_photo = Photo.find(params[:photo_id])
@@ -103,7 +103,8 @@ class RentalsController < ApplicationController
   end
 
   def destroy
-    Rental.find(params[:id]).destroy
+    Rental.find(params[:id]).update(active: false)
+    
     redirect_to user_url(current_user.id)
   end
 

@@ -17,6 +17,8 @@ class Rental < ActiveRecord::Base
   NUM_BEDROOMS = ["Studio", 1, 2, 3, 4]
 
   NUM_BATHROOMS = [1, 2, 3, 4]
+  
+  scope :active, -> { where(active: true) }
 
   validates(:neighborhood, inclusion: {in: NEIGHBORHOODS})
 

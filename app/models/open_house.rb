@@ -1,4 +1,6 @@
 class OpenHouse < ActiveRecord::Base
+    
+  scope :active, -> { where(active: true) }
   
   validates :rental_id, :event_datetime, presence: true
   

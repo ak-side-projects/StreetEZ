@@ -10,7 +10,7 @@
 <% end %>
 
 <ul class="open-houses">
-	<% rental.open_houses.order(event_datetime: :asc).each do |open_house| %>
+	<% rental.open_houses.active.order(event_datetime: :asc).each do |open_house| %>
 		<li class="open-house">
 			<%= open_house.event_datetime %>
 			<% if signed_in? %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423142427) do
+ActiveRecord::Schema.define(version: 20140423192652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,10 +65,11 @@ ActiveRecord::Schema.define(version: 20140423142427) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "open_houses", force: true do |t|
-    t.integer  "rental_id",      null: false
+    t.integer  "rental_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "event_datetime", null: false
+    t.datetime "event_datetime",                null: false
+    t.boolean  "active",         default: true
   end
 
   add_index "open_houses", ["rental_id"], name: "index_open_houses_on_rental_id", using: :btree
@@ -87,15 +88,16 @@ ActiveRecord::Schema.define(version: 20140423142427) do
 
   create_table "rentals", force: true do |t|
     t.string   "title"
-    t.integer  "num_bedrooms",  null: false
-    t.integer  "num_bathrooms", null: false
-    t.integer  "sq_footage",    null: false
-    t.integer  "monthly_rent",  null: false
+    t.integer  "num_bedrooms",                 null: false
+    t.integer  "num_bathrooms",                null: false
+    t.integer  "sq_footage",                   null: false
+    t.integer  "monthly_rent",                 null: false
     t.text     "description"
-    t.integer  "owner_id",      null: false
+    t.integer  "owner_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "neighborhood",  null: false
+    t.string   "neighborhood",                 null: false
+    t.boolean  "active",        default: true
   end
 
   add_index "rentals", ["monthly_rent"], name: "index_rentals_on_monthly_rent", using: :btree

@@ -1,6 +1,6 @@
 <div class="owned-open-houses">
   <h4>Hosting</h4>
-	<% current_user.hosted_open_houses.order(event_datetime: :asc).each do |open_house| %>
+	<% open_houses.each do |open_house| %>
 		<ul>
 			<%= render "show_open_house", open_house: open_house %>
 		</ul>
