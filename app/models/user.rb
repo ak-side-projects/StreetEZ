@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
     foreign_key: :recipient_id,
     inverse_of: :recipient
   )
+  
+  has_many :notifications, inverse_of: :user
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

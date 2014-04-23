@@ -15,5 +15,21 @@ class Message < ActiveRecord::Base
     foreign_key: :recipient_id,
     inverse_of: :received_messages
   )
+  
+  has_many :notifications, as: :notifiable
+  
+  after_commit :notify_users, on: :create
+  
+  def notify_users
+    recipient = self.recipient
+    sender = self.sender
+    
+    # notify recipient
+    Notification.create(user_id: recipient.id, event_id: 1, notifiable_id: self.id, notifiable_type: self.class.name)
+    
+    #notify sender
+    Notification.create(user_id: sender.id, event_id: 2, notifiable_id: self.id, notifiable_type: self.class.name)
+    fail
+  end
 
 end

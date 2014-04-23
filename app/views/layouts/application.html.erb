@@ -21,7 +21,7 @@
 </h3>
 
 <% if signed_in? %>
-  <a href="#">Notifications</a>
+  <a href="<%= notifications_url %>">Notifications</a>
   <a href="<%= messages_url %>">Messages</a>
   <a href="<%= user_url(current_user.id) %>">My Account</a>
   <%= button_to "Sign Out", session_url, method:"delete" %>

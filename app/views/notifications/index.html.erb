@@ -1,0 +1,10 @@
+<% @notifications.each do |notification| %>
+	<ul>
+		<li>
+			<a href="<%= notification.get_url %>">
+			<%= notification.updated_at.to_formatted_s(:short) %> | 
+			<%= notification.get_text %>
+			</a>
+		</li>
+	</ul>
+<% end %>
