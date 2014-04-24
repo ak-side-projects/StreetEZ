@@ -204,7 +204,9 @@ input[type="submit"] {
 		font-size: 30px;
 		padding: 2px;
 		font-weight: bold;
-		border: 1px solid #1466B2;
+/*		background-color: #1466B2;*/
+		color: #fff;
+/*		border: 1px solid #1466B2;*/
 		border-radius: 0;
 	}
 	
