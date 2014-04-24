@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-html, body, h1, h2, h3, h4, ul, li, div, 
+html, body, h1, h2, h3, h4, ul, ol, li, div, 
 span, a, img, p, select, option, form, label {
 	margin: 0;
 	padding: 0;
@@ -107,23 +107,27 @@ input[type="submit"] {
 		margin: 20px 0;
 	}
 
-	.sign-up-form, .sign-in-form > label {
+	.sign-up-form > label, 
+	.sign-in-form > label {
 		display: block;
 		font-size: 18px;
 	}
 
-	.sign-up-form > input, .sign-in-form > input {
+	.sign-up-form > input, 
+	.sign-in-form > input {
 	  border: 3px solid #000;
 	  padding: 5px;
 	  width: 284px;
 	  border-radius: 0;
 	}
 
-	.sign-up-form > input:hover, .sign-in-form > input:hover {
+	.sign-up-form > input:hover, 
+	.sign-in-form > input:hover {
 		border-color: #257FC5;
 	}
 
-	.sign-up-form > input:focus, .sign-in-form > input:focus {
+	.sign-up-form > input:focus, 
+	.sign-in-form > input:focus {
 		border-color: #257FC5;
 	}
 
@@ -242,11 +246,13 @@ input[type="submit"] {
 	
 	a.sign-in,
 	a.new-rental, 
-	form.saved-rental > input, 
+	form.saved-rental > input,
+	form.create-rental > input.submit,
 	a.edit-rental, 
 	form.delete-rental > input,
 	form.add-open-house > input[type="submit"],
-	form.create-message > input {
+	form.create-message > input,
+	form.delete-open-house > input[type="submit"] {
 	  display: inline-block;
 	  background: #1466B2;
 	  color: #fff;
@@ -259,20 +265,24 @@ input[type="submit"] {
 	a.sign-in:hover,
 	a.new-rental:hover, 
 	form.saved-rental > input:hover,
+	form.create-rental > input.submit:hover,
 	a.edit-rental:hover, 
 	form.delete-rental > input:hover,
 	form.add-open-house > input[type="submit"]:hover,
-	form.create-message > input:hover {
+	form.create-message > input:hover,
+	form.delete-open-house > input[type="submit"]:hover {
 		background: #0F518B;
 	}
 
 	a.sign-in:active,
 	a.new-rental:active, 
-	form.saved-rental > input:active, 
+	form.saved-rental > input:active,
+	form.create-rental > input.submit:active,
 	a.edit-rental:active, 
 	form.delete-rental > input:active,
 	form.add-open-house > input[type="submit"]:active,
-	form.create-message > input:active {
+	form.create-message > input:active,
+	form.delete-open-house > input[type="submit"]:active {
 		background: #0C3C66;
 	}
 	
@@ -297,11 +307,11 @@ input[type="submit"] {
 		margin-left: 0;
 	}
 	
-	.neighborhood label {
+/*	.neighborhood label {
 		width: 190px;
 		padding-left: 5px;
 		text-indent: -10px;
-	}
+	}*/
 	
 	.neighborhood input {
 		width: 15px;
@@ -354,6 +364,9 @@ input[type="submit"] {
 		padding: 5px;
 		margin-right: 0px;
 		border-radius: 0;
+	}
+	
+	select.search {
 		margin-bottom: 15px;
 	}
 	
@@ -371,7 +384,7 @@ input[type="submit"] {
 		background: #0F518B;
 	}
 
-	div.search-submitinput:active {
+	div.search-submit > input:active {
 		background: #0C3C66;
 	}
 	
@@ -546,9 +559,66 @@ input[type="submit"] {
 		padding: 15px 0;
 	}
 	
+	div.open-houses ol > li {
+		display: inline;
+		padding-bottom: 0;
+	}
+	
+	div.open-houses ol > li > form.delete-open-house {
+		display: inline;
+		padding-top: 0;
+		font-size: 14px;
+		margin-left: 34px;
+	}
+	
 /* MESSAGING */
 	
-form.create-message > textarea {
-	width: 350px;
-	height: 100px;
-}	
+	form.create-message > textarea {
+		width: 350px;
+		height: 100px;
+	}	
+
+/* CREATE NEW RENTAL */
+	
+	form.create-rental > .address-info,
+	form.create-rental > .rental-info {
+		display: block;
+		padding: 20px;
+	}
+	
+	form.create-rental > .address-info > div,
+	form.create-rental > .rental-info > div {
+		float: left;
+		padding: 10px;
+	}
+	
+	form.create-rental > .address-info label,
+	form.create-rental > .rental-info label {
+		display: block;
+		padding-top: 5px;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	form.create-rental > .address-info input,
+	form.create-rental > .rental-info input {
+		width: 261px;
+	  padding: 5px;
+		border: 1px solid #146AB9;
+	  border-radius: 0;
+	}
+	
+	form.create-rental > .address-info input:hover,
+	form.create-rental > .rental-info input:hover {
+		border: 2px solid #257FC5;
+		padding: 4px;
+	}
+	
+	form.create-rental > .address-info input:active,
+	form.create-rental > .rental-info input:active {
+		border: 2px solid #257FC5;
+		padding: 6px;
+		margin: 0;
+	}
+	

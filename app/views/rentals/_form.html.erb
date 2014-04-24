@@ -5,30 +5,20 @@
 <% end %>
 
 
-<form class="rental-search" enctype=multipart/form-data action="<%= action_url %>" method="post">
+<form class="create-rental" enctype=multipart/form-data action="<%= action_url %>" method="post">
   <% if action == "update" %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
   <%= auth_token %>
 
-
-  <select name="rental[neighborhood]">
-  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
-    <option
-			<%= rental.neighborhood == neighborhood ? "selected" : "" %>
-			value="<%= neighborhood %>"><%= neighborhood %></option>
-  <% end %>
-  </select>
-
   <%= render "address_info_form", rental: rental %>
-  <br>
 
 	<%= render "rental_info_form", rental: rental %>
 
   <label for="rental-photos">Upload Photos</label>
   <input id="rental-photos" type="file" multiple name="photos[]">
 
-  <input type="submit" value="<%= action.capitalize %> Listing">
+  <input class="submit" type="submit" value="<%= action.capitalize %> Listing">
 </form>
 
 <%= render "delete_photos", rental: rental %>

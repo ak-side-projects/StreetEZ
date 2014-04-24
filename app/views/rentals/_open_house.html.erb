@@ -10,10 +10,10 @@
 		</form>
 	<% end %>
 
-	<ul class="open-houses">
+	<ol class="open-houses">
 		<% rental.open_houses.active.order(event_datetime: :asc).each do |open_house| %>
-			<li class="open-house">
-				<%= open_house.event_datetime %>
+			<li class="open-house group">
+				<%= open_house.event_datetime.to_formatted_s(:long) %>
 				<% if signed_in? %>
 					<% if open_house.host == current_user %>
 					  <form class="delete-open-house" action="<%= open_house_url(open_house.id) %>" method="post">
@@ -43,5 +43,5 @@
 				<% end %>
 			</li>
 		<% end %>
-	</ul>
+	</ol>
 </div>
