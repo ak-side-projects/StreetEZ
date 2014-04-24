@@ -220,11 +220,28 @@ input[type="submit"] {
 	}
 	
 	a.post {
-		
+	  display: inline-block;
+	  background: #1466B2;
+	  color: #fff;
+	  padding: 10px 20px;
+		margin: 10px 0;
+	  border-radius: 0;
+	  font-weight: bold;
+	}
+	
+	a.post:hover {
+		background: #0F518B;
+	}
+
+	a.post:active {
+		background: #0C3C66;
 	}
 	
 	form.search {
 		width: 600px;
+		padding: 10px 10px;
+		border: 1px solid #E1E1E1;
+		margin-bottom: 20px;
 	}
 	
 	div.neighborhoods {
@@ -232,17 +249,17 @@ input[type="submit"] {
 	}
 	
 	.textbox {
-		padding: 0 5px 5px 5px;
+		padding-bottom: 5px;
 		float: left;
 	}
 	
 	.price-range > p {
 		float: left;
-		margin-top: 10px;
+		margin: 10px 20px 0 20px;
 	}
 	
 	form h4 {
-		padding: 5px 5px 0 5px;
+		padding-top: 5px;
 		font-size: 12px;
 		font-weight: bold;
 	}
@@ -264,12 +281,13 @@ input[type="submit"] {
 		background-color: white;
 /*		-webkit-appearance: none;*/
 		padding: 5px;
+		margin-right: 40px;
 		border-radius: 0;
-		margin-left: 5px;
 		margin-bottom: 10px;
 	}
 	
-	input[type="submit"] {
+	.search-submit > input {
+		float: right;
 	  display: inline-block;
 	  background: #1466B2;
 	  color: #fff;
@@ -278,14 +296,10 @@ input[type="submit"] {
 	  font-weight: bold;
 	}
 	
-	input[type="submit"]:hover {
+	div.search-submit > input:hover {
 		background: #0F518B;
 	}
 
-	input[type="submit"]:active {
+	div.search-submitinput:active {
 		background: #0C3C66;
-	}
-	
-	.search-submit > input {
-		float: right;
 	}
