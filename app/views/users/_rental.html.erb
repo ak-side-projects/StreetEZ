@@ -22,16 +22,16 @@
 				<input class="add-open-house" type="submit" value="Schedule Open House">
 			</form>
 			
-			<a class="edit" href="<%= edit_rental_url(rental.id) %>">Edit</a>
+			<a class="edit-rental" href="<%= edit_rental_url(rental.id) %>">Edit</a>
 
-	    <form class="delete" action="<%= rental_url(rental.id) %>" method="post">
+	    <form class="delete-rental" action="<%= rental_url(rental.id) %>" method="post">
 	      <input type="hidden" name="_method" value="delete">
 	      <%= auth_token %>
 	      <input class="delete" type="submit" value="Delete">
 	    </form>
 			
 		<% else %>
-	    <form class="remove" action="<%= saved_rental_url(rental.id) %>" method="post">
+	    <form class="saved-rental" action="<%= saved_rental_url(rental.id) %>" method="post">
 	      <input type="hidden" name="_method" value="delete">
 	      <%= auth_token %>
 	      <input class="remove" type="submit" value="Remove">

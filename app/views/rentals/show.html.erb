@@ -1,38 +1,54 @@
-<% if @rental.owner == current_user %>
-	<a class="edit" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
+<div class="rental-show">	
+	<section class="owner-actions group">
+		<div class="action-buttons group">
+			<% if @rental.owner == current_user %>
+				<ul>
+					<li>
+						<a class="edit-rental" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
+					</li>
+			
+					<li>
+					  <form class="delete-rental" action="<%= rental_url(@rental.id) %>" method="post">
+					    <input type="hidden" name="_method" value="delete">
+					    <%= auth_token %>
+					    <input class="delete" type="submit" value="Delete">
+					  </form>
+					</li>
+				</ul>
+			<% end %>
+		</div>
+	</section>
+	
+	<section class="rental-info-and-photos group">
+	  <div class="rental-info">
+			<% if signed_in? %>
+				<%= render "saved_rental", rental: @rental %>
+			<% end %>
+		
+	    <p class="address">
+	      <%= @rental.address.street + ' #' + @rental.address.unit %>
+	    </p>
+		
+			<p class="neighborhood"><%= @rental.neighborhood %></p>
 
-  <form class="delete" action="<%= rental_url(@rental.id) %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <%= auth_token %>
-    <input class="delete" type="submit" value="Delete">
-  </form>
-<% end %>
-
-<div class="rental-show">
+		  <p class="price"><%= number_to_currency(@rental.monthly_rent, precision: 0) %><p class="for-rent">FOR RENT</p></p>
+			<span class="detail-cells group">
+			  <p class="bed"><%= @rental.num_bedrooms %> bed</p>
+			  <p class="bath"><%= @rental.num_bathrooms %> bath</p>
+			  <p class="sq-ft"><%= number_with_delimiter(@rental.sq_footage) %> ft<sup>2</sup></p>
+			</span>
 	
-	<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
+			<%= render "open_house", rental: @rental %>
 	
-	<% if signed_in? %>
-		<%= render "saved_rental", rental: @rental %>
-	<% end %>
+			<p class="created-at">Listed on <%= @rental.created_at.strftime("%B %e, %Y") %> by <%= @rental.owner.name %></p>
+			
+			<% if signed_in? %>
+				<%= render "message_owner", rental: @rental %>
+			<% else %>
+				<a class="sign-in" href="<%= new_session_url %>">Sign in to send a message to the owner.</a>
+			<% end %>
+		</div>
 	
-  <div class="rental-thumbnail-header">
-    <p class="address">
-      <%= @rental.address.street + ' #' + @rental.address.unit %>
-    </p>
-  </div>
-
-  <p class="price"><%= number_to_currency(@rental.monthly_rent, precision: 0) %> per month</p>
-
-  <p class="bed"><%= @rental.num_bedrooms %> bed</p>
-  <p class="bath"><%= @rental.num_bathrooms %> bath</p>
-  <p class="sq-ft"><%= number_with_delimiter(@rental.sq_footage) %> ft<sup>2</sup></p>
-	
-	<%= render "open_house", rental: @rental %>
-	
-	<% if signed_in? %>
-		<%= render "message_owner", rental: @rental %>
-	<% else %>
-		<a href="<%= new_session_url %>">Sign in to send a message to the owner!</a>
-	<% end %>
+		<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
+	</section>
 </div>

@@ -21,6 +21,19 @@ span, a, img, p, select, option, form, label {
 	vertical-align: baseline;
 }
 
+sup, sub { 
+	vertical-align: 0;
+	position: relative;
+}
+
+sup { 
+	bottom: 1ex;
+}
+
+sub {
+	top: 0.8ex;
+}
+
 a {
 	text-decoration: none;
 }
@@ -227,7 +240,13 @@ input[type="submit"] {
 		line-height: 1.0;
 	}
 	
-	a.new-rental, form.saved-rental {
+	a.sign-in,
+	a.new-rental, 
+	form.saved-rental > input, 
+	a.edit-rental, 
+	form.delete-rental > input,
+	form.add-open-house > input[type="submit"],
+	form.create-message > input {
 	  display: inline-block;
 	  background: #1466B2;
 	  color: #fff;
@@ -237,11 +256,23 @@ input[type="submit"] {
 	  font-weight: bold;
 	}
 	
-	a.new-rental:hover, form.saved-rental:hover {
+	a.sign-in:hover,
+	a.new-rental:hover, 
+	form.saved-rental > input:hover,
+	a.edit-rental:hover, 
+	form.delete-rental > input:hover,
+	form.add-open-house > input[type="submit"]:hover,
+	form.create-message > input:hover {
 		background: #0F518B;
 	}
 
-	a.new-rental:active, , form.saved-rental:active {
+	a.sign-in:active,
+	a.new-rental:active, 
+	form.saved-rental > input:active, 
+	a.edit-rental:active, 
+	form.delete-rental > input:active,
+	form.add-open-house > input[type="submit"]:active,
+	form.create-message > input:active {
 		background: #0C3C66;
 	}
 	
@@ -389,6 +420,10 @@ input[type="submit"] {
 		color: #146AB9;
 	}
 	
+	p.neighborhood {
+		font-size: 18px;
+	}
+	
 	p.price {
 		font-size: 20px;
 		display: inline;
@@ -424,14 +459,37 @@ input[type="submit"] {
 	.listing-info > .bath,
 	.listing-info > .sq-ft,
 	.listing-info > .created-at {
-		padding: 5px 0;
+		padding: 3px 0;
 	}
 	
 /* RENTAL SHOW PAGE */
 	
-	.rental-show .rental-photos {
-		width: 625px;
+	div.rental-show {
+		width: 1000px;
+	}
+	
+	.owner-actions > .action-buttons {
+		float: right;
+		margin-right: 187px;
+	}
+	
+	.action-buttons li {
 		float: left;
+		padding: 0 10px;
+	}
+	
+	.owner-actions > ul > li {
+		float: left;
+		padding: 0, 15px;
+	}
+	
+	.rental-show .rental-photos {
+		float: left;
+		width: 575px;
+	}
+	
+	.rental-photos .selected-photo {
+		width: 550px;
 	}
 	
 	.rental-show .photo-thumbs-wrap {
@@ -442,4 +500,55 @@ input[type="submit"] {
 		width: 100px;
 	}
 	
+	.rental-info {
+		float: right;
+		width: 375px;
+		padding-left: 50px;
+		border-bottom: 2px solid black;
+	}
 	
+	.rental-info > p.address {
+		font-size: 25px;
+	}
+	
+	.detail-cells {
+		display: block;
+		padding: 5px 0;
+		border-top: 1px solid #E1E1E1;
+		border-bottom: 1px solid #E1E1E1;
+	}
+	
+	.detail-cells > .bed,
+	.detail-cells > .bath,
+	.detail-cells > .sq-ft {
+		float: left;
+		padding: 0 5px;
+	}
+	
+	.detail-cells > .bed,
+	.detail-cells > .bath {
+		border-right: 1px solid #E1E1E1;
+	}
+	
+	.rental-info > .bed,
+	.rental-info > .bath,
+	.rental-info > .sq-ft {
+		padding: 3px 0;
+	}
+	
+	.rental-show .created-at {
+		padding: 5px 0;
+	}
+	
+	/* RENTAL SHOW OPEN HOUSE AREA */
+	
+	div.open-houses {
+		padding: 15px 0;
+	}
+	
+/* MESSAGING */
+	
+form.create-message > textarea {
+	width: 350px;
+	height: 100px;
+}	
