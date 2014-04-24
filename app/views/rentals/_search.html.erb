@@ -1,39 +1,59 @@
-<form class="rental-search" action="<%= rentals_url %>" method="get">
+<form class="search group" action="<%= rentals_url %>" method="get">
   <%= auth_token %>
-
-  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
-    <label for="rental_neighborhood">
-      <input
-        id="rental_neighborhood"
-        type="checkbox"
-        name="rental[neighborhoods][]"
-        value="<%= neighborhood %>">
-      <%= neighborhood %>
-    </label>
-  <% end %>
-
-  <br>
-  <label for="rental_price_min">Min Price</label>
-  <input id="rental_price_min" type="number" name="rental[price_min]">
-
-  <label for="rental_price_max">Max Price</label>
-  <input id="rental_price_max" type="number" name="rental[price_max]">
-
-  <select name="rental[num_bedrooms]">
-    <option value="">Select Number of Bedrooms</option>
-    <option value="Studio">Studio</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-
-  <select name="rental[num_bathrooms]">
-    <option value="">Select Number of Bathrooms</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-  </select>
-
-  <input type="submit" value="Search">
+	
+	<div class="neighborhoods">
+	  <% Rental::NEIGHBORHOODS.each_with_index do |neighborhood, idx| %>
+	    <label for="rental_neighborhood">
+	      <input
+	        id="rental_neighborhood"
+	        type="checkbox"
+	        name="rental[neighborhoods][]"
+	        value="<%= neighborhood %>">
+	      <%= neighborhood %>
+	    </label>
+			<% if idx == 4  %>
+				<br>
+			<% end %>
+	  <% end %>
+	</div>
+	
+	<div class="price-range group">
+		<h4>PRICE</h4>
+		<div class="textbox">
+		  <input id="rental_price_min" type="number" name="rental[price_min]">
+		</div>
+		<p>to</p>
+		<div class="textbox">
+		  <input id="rental_price_max" type="number" name="rental[price_max]">
+		</div>
+	</div>
+	
+	<div class="bed-bath group">
+		
+		<div class="beds">
+			<h4>BEDS</h4>
+		  <select name="rental[num_bedrooms]">
+		    <option value="">Select Number of Bedrooms</option>
+		    <option value="Studio">Studio</option>
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+		  </select>
+		</div>
+		
+		<div class="beds">
+			<h4>BATHS</h4>
+		  <select name="rental[num_bathrooms]">
+		    <option value="">Select Number of Bathrooms</option>
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		  </select>
+		</div>
+	</div>
+	
+	<div class="search-submit">
+	  <input type="submit" value="Search">
+	</div>
 </form>

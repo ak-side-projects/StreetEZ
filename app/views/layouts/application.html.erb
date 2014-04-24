@@ -8,39 +8,66 @@
 </head>
 <body>
 	
-	<div class="user-bar">
-		<% if signed_in? %>
-		  <a href="<%= notifications_url %>">Notifications</a>
-		  <a href="<%= messages_url %>">Messages</a>
-		  <a href="<%= user_url(current_user.id) %>">My Account</a>
-		  <%= button_to "Sign Out", session_url, method:"delete" %>
-		  Signed in as: <%= current_user.email %>
-		<% else %>
-		  <a href="<%= new_session_url %>">Sign In</a>
-		  <a href="<%= new_user_url %>">Sign up</a>
-		<% end %>
+	<header class="header group">
+		<div class="userbar-wrap group">
+			<div class="userbar">
+				<ul class="group">
+					<% if signed_in? %>
+						<li><a href="<%= notifications_url %>"><strong class="badge"><%= current_user.notifications.count %></strong> Notifications</a></li>
+				  
+						<li><a href="<%= messages_url %>">Messages</a></li>
+				  
+						<li>
+							<a href="#">
+								<strong><%= current_user.email %></strong>
+							</a>
+							<ul class="userbar-dropdown">
+								<li>
+									<a href="<%= user_url(current_user.id) %>">My Account</a>
+								</li>
+								<li>
+									<form action="<%= session_url %>" method="post">
+										<input type="hidden" name="_method" value="delete">
+										<%= auth_token %>
+										<input type="submit" value="Sign Out">
+									</form>
+								</li>
+							</ul>
+						</li>
+					<% else %>
+					  <li><a href="<%= new_session_url %>">Sign In</a></li>
+					  <li><a href="<%= new_user_url %>">Sign Up</a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="navbar-wrap group">
+			<div class="navbar">
+				<h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
+
+				<h1 class="rentals">
+				  <a class="rentals" href="<%= rentals_url %>">RENTALS</a>
+				</h1>
+
+				<h1 class="about">
+				  <a class="about" href="#>">ABOUT</a>
+				</h1>
+
+				<h1 class="help">
+				  <a class="help" href="#">HELP</a>
+				</h1>
+			</div>
+		</div>
+	</header>
+	
+	<div class="error">
+	  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 	</div>
 	
-	<div class="nav-bar">
-		<h1 class="logo"><a class="logo-link" href="/">StreetEZ</a></h1>
-
-		<h3 class="rentals">
-		  <a class="rentals" href="<%= rentals_url %>">Rentals</a>
-		</h3>
-		<h3 class="about">
-		  <a class="about" href="#>">About</a>
-		</h3>
-		<h3 class="help">
-		  <a class="help" href="#">Help</a>
-		</h3>
-
-		<div class="error">
-		  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-		</div>
+	<div class="content group">
+		<%= yield %>
 	</div>
-
-<%= yield %>
-
 
 </body>
 </html>

@@ -12,9 +12,6 @@
  *= require_tree .
  */
 
-#1A72BC
-#257FC5
-
 html, body, h1, h2, h3, h4, ul, li, div, 
 span, a, img, p, select, option, form, label {
 	margin: 0;
@@ -28,16 +25,27 @@ a {
 	text-decoration: none;
 }
 
+ul {
+	list-style: none;
+}
+
 body {
-	padding: 10px;
+	padding: 5px 60px;
 	font-family: sans-serif;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 input[type="text"],
 input[type="name"],
 input[type="email"],
 input[type="password"],
-input[type="submit"] {
+input[type="submit"],
+input[type="number"] {
   -webkit-appearance: none;
   box-sizing: content-box;
   display: inline-block;
@@ -57,74 +65,227 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-div.sign-up, div.sign-in {
-	background: #fff;
-	padding: 40px;
-	margin: auto;
-	width: 300px;
-	border-radius: 10px;
-	border: 3px solid black;
-}
+/*SIGN UP & SIGN IN*/
 
-form.sign-up, form.sign-in {
-  margin: 10px auto;
-	padding: 10px;
-/*	border: 3px solid blue;*/
-	border-radius: 5px;
-}
+	div.sign-up, div.sign-in {
+		background: #fff;
+		padding: 40px;
+		margin: auto;
+		width: 300px;
+		border-radius: 10px;
+		border: 3px solid black;
+	}
 
-h1.sign-up, h1.sign-in {
-	text-align: center;
-	font-size: 65px;
-	font-weight: bold;
-	line-height: 1.0;
-	margin: 5px;
-}
+	form.sign-up, form.sign-in {
+	  margin: 10px auto;
+		padding: 10px;
+		border-radius: 0;
+	}
 
-.sign-up-form, .sign-in-form {
-	margin: 20px 0;
-}
+	h1.sign-up, h1.sign-in {
+		text-align: center;
+		font-size: 65px;
+		font-weight: bold;
+		line-height: 1.0;
+		margin: 5px;
+	}
 
-.sign-up-form, .sign-in-form > label {
-	display: block;
-	font-size: 18px;
-}
+	.sign-up-form, .sign-in-form {
+		margin: 20px 0;
+	}
 
-.sign-up-form > input, .sign-in-form > input {
-  border: 3px solid #000;
-  padding: 5px;
-  width: 284px;
-  border-radius: 5px;
-}
+	.sign-up-form, .sign-in-form > label {
+		display: block;
+		font-size: 18px;
+	}
 
-.sign-up-form > input:hover, .sign-in-form > input:hover {
-	border-color: #257FC5;
-}
+	.sign-up-form > input, .sign-in-form > input {
+	  border: 3px solid #000;
+	  padding: 5px;
+	  width: 284px;
+	  border-radius: 0;
+	}
 
-.sign-up-form > input:focus, .sign-in-form > input:focus {
-	border-color: #257FC5;
-}
+	.sign-up-form > input:hover, .sign-in-form > input:hover {
+		border-color: #257FC5;
+	}
 
-.submit > input {
-  position: relative;
-  display: inline-block;
-  background: #1466B2;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-}
+	.sign-up-form > input:focus, .sign-in-form > input:focus {
+		border-color: #257FC5;
+	}
 
-.submit > input:hover {
-	background: #0F518B;
-}
+	.submit > input {
+	  position: relative;
+	  display: inline-block;
+	  background: #1466B2;
+	  color: #fff;
+	  padding: 10px 20px;
+	  border-radius: 0;
+	  font-weight: bold;
+	}
+	
+	.submit > input:hover {
+		background: #0F518B;
+	}
 
-.submit > input:active {
-	background: #0C3C66;
-}
+	.submit > input:active {
+		background: #0C3C66;
+	}
 
-#1466B2		#0F4D84
-#0C406C		#0F518B
-#0C3C66   #0C3C66
+/* USERBAR & NAVBAR */
+	.header {
+		border-bottom: 4px solid black;
+	}
+	
+	.userbar-wrap {
+/*		width: 1000px;*/
+		margin: auto;
+		padding: 0 0 5px 0;
+		border-bottom: 1px solid #E1E1E1;
+	}
+	
+	.navbar-wrap {
+		margin: auto;
+	}
+	
+	.header a, .header input {
+		color: #146AB9;
+	}
+	
+	.header a:hover, .header input:hover {
+		color: #0B3960;
+	}
+	
+	.userbar {
+		float: right;
+		font-size: 14px;
+	}
+	
+	.userbar > ul > li {
+		position: relative;
+		float: left;
+		padding: 5px 10px;
+		font-weight: lighter
+	}
+	
+	ul.userbar-dropdown {
+		display: none;
+		position: absolute;
+	}
+	
+	.userbar > ul > li:hover > .userbar-dropdown {
+	  display: block;
+		background: white;
+		border: 1px solid #146AB9;
+		border-radius: 0;
+	}
+	
+	.userbar > ul > li:hover > ul {
+		width: 165px;;
+	}
+	
+	.userbar > ul > li:hover > ul > li {
+		padding: 5px;
+		font-size: 12px;
+	}
+	
+	.navbar-wrap {
+		padding: 15px 30px 7.5px 30px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	
+	.navbar > h1 {
+		float: left;
+		padding: 5px 40px;
+	}
+	
+	.navbar > h1.logo {
+		font-size: 30px;
+		padding: 2px;
+		font-weight: bold;
+		border: 1px solid #1466B2;
+		border-radius: 0;
+	}
+	
+/* CONTENT */
+	
+	.content {
+		padding: 20px 0;
+	}
+	
+	h1.search-header {
+		font-size: 25px;
+		font-weight: lighter;
+	}
+	
+	a.post {
+		
+	}
+	
+	form.search {
+		width: 600px;
+	}
+	
+	div.neighborhoods {
+		width: 600px;
+	}
+	
+	.textbox {
+		padding: 0 5px 5px 5px;
+		float: left;
+	}
+	
+	.price-range > p {
+		float: left;
+		margin-top: 10px;
+	}
+	
+	form h4 {
+		padding: 5px 5px 0 5px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	
+	.textbox > input {
+		float: left;
+	  padding: 5px;
+		border: 1px solid #146AB9;
+	  border-radius: 0;
+	}
+	
+	.beds, .baths {
+		float: left;
+	}
+	
+	select {
+		float: left;
+		border: 1px solid #146AB9;
+		background-color: white;
+/*		-webkit-appearance: none;*/
+		padding: 5px;
+		border-radius: 0;
+		margin-left: 5px;
+		margin-bottom: 10px;
+	}
+	
+	input[type="submit"] {
+	  display: inline-block;
+	  background: #1466B2;
+	  color: #fff;
+	  padding: 10px 20px;
+	  border-radius: 0;
+	  font-weight: bold;
+	}
+	
+	input[type="submit"]:hover {
+		background: #0F518B;
+	}
 
-#87B4DF
+	input[type="submit"]:active {
+		background: #0C3C66;
+	}
+	
+	.search-submit > input {
+		float: right;
+	}
