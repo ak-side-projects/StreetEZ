@@ -1,5 +1,3 @@
-<h1>My Account</h1>
-
 <h2 class="open-houses">Open Houses</h2>
 <%= render "hosting_open_houses", open_houses: @user.hosted_open_houses.active.order(event_datetime: :asc) %>
 

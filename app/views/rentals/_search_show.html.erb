@@ -1,23 +1,22 @@
-<div class="search-show">
+<div class="search-show group">
 
   <a href="<%= rental_url(rental.id) %>">
 		<% if rental.photos.first %>
-	    <img class="rental-photo" src="<%= rental.photos.first.file.url(:thumb) %>" alt="apartment_rental_photo">
+	    <img class="rental-photo" src="<%= rental.photos.first.file.url(:big) %>" alt="apartment_rental_photo">
 		<% else %>
 			<img class="rental-photo" src="#" alt="apartment_rental_photo">
 		<% end %>
-  </a>
 
-  <div class="rental-thumbnail-header">
-    <p class="rental-address">
-      <%= rental.address.street + ' #' + rental.address.unit %>
-    </p>
+	  <div class="listing-info">
+	    <p class="address">
+	      <%= rental.address.street + ' #' + rental.address.unit %>
+	    </p>
 
-  </div>
-
-  <p class="rental-price">$<%= rental.monthly_rent %> per month</p>
-  <p class="rental-bedrooms"><%= rental.num_bedrooms %> bed</p>
-  <p class="rental-bathrooms"><%= rental.num_bathrooms %> bath</p>
-  <p class="rental-sq-footage"><%= rental.sq_footage %> ft<sup>2</sup></p>
-
+		  <p class="price"><%= number_to_currency(rental.monthly_rent, precision: 0) %><p class="for-rent">FOR RENT</p></p>
+		  <p class="bed"><%= rental.num_bedrooms %> Bed</p>
+		  <p class="bath"><%= rental.num_bathrooms %> Bath</p>
+		  <p class="sq-ft"><%= number_with_delimiter(rental.sq_footage) %> ft<sup>2</sup></p>
+			<p class="created-at">Listed on <%= rental.created_at.strftime("%B %e, %Y") %></p>
+	  </div>
+	</a>
 </div>

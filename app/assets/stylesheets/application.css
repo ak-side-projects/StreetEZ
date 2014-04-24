@@ -138,7 +138,6 @@ input[type="submit"] {
 	}
 	
 	.userbar-wrap {
-/*		width: 1000px;*/
 		margin: auto;
 		padding: 0 0 5px 0;
 		border-bottom: 1px solid #E1E1E1;
@@ -189,6 +188,10 @@ input[type="submit"] {
 		font-size: 12px;
 	}
 	
+	.userbar-dropdown > li:hover {
+		text-decoration: underline;
+	}
+	
 	.navbar-wrap {
 		padding: 15px 30px 7.5px 30px;
 		font-size: 20px;
@@ -216,48 +219,77 @@ input[type="submit"] {
 		padding: 20px 0;
 	}
 	
+/* POST NEW RENTAL & SEARCH BOX */
+	
 	h1.search-header {
 		font-size: 25px;
 		font-weight: lighter;
+		line-height: 1.0;
 	}
 	
-	a.post {
+	a.new-rental, form.saved-rental {
 	  display: inline-block;
 	  background: #1466B2;
 	  color: #fff;
 	  padding: 10px 20px;
-		margin: 10px 0;
+		margin: 15px 0;
 	  border-radius: 0;
 	  font-weight: bold;
 	}
 	
-	a.post:hover {
+	a.new-rental:hover, form.saved-rental:hover {
 		background: #0F518B;
 	}
 
-	a.post:active {
+	a.new-rental:active, , form.saved-rental:active {
 		background: #0C3C66;
 	}
 	
 	form.search {
 		width: 600px;
-		padding: 10px 10px;
+		padding: 15px 20px;
 		border: 1px solid #E1E1E1;
-		margin-bottom: 20px;
 	}
 	
-	div.neighborhoods {
+	.neighborhoods {
 		width: 600px;
+		padding-bottom: 15px;
+	}
+	
+	.neighborhoods > ul > li {
+		display: block;
+		float: left;
+		width: 190px;
+	}
+	
+	.neighborhoods input {
+		margin-left: 0;
+	}
+	
+	.neighborhood label {
+		width: 190px;
+		padding-left: 5px;
+		text-indent: -10px;
+	}
+	
+	.neighborhood input {
+		width: 15px;
+		height: 10px;
+		padding: 0;
+		margin: 0;
+		vertical-align: middle;
+		position: relative;
+		top: -1px;
 	}
 	
 	.textbox {
-		padding-bottom: 5px;
+		padding-bottom: 15px;
 		float: left;
 	}
 	
 	.price-range > p {
 		float: left;
-		margin: 10px 20px 0 20px;
+		padding: 10px 20px 0 20px;
 	}
 	
 	form h4 {
@@ -268,6 +300,7 @@ input[type="submit"] {
 	
 	.textbox > input {
 		float: left;
+		width: 261px;
 	  padding: 5px;
 		border: 1px solid #146AB9;
 	  border-radius: 0;
@@ -277,15 +310,20 @@ input[type="submit"] {
 		float: left;
 	}
 	
+	.beds {
+		padding-right: 53px;
+	}
+	
 	select {
 		float: left;
 		border: 1px solid #146AB9;
 		background-color: white;
-/*		-webkit-appearance: none;*/
+		-webkit-appearance: none;
+		width: 273px;
 		padding: 5px;
-		margin-right: 40px;
+		margin-right: 0px;
 		border-radius: 0;
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 	}
 	
 	.search-submit > input {
@@ -305,3 +343,103 @@ input[type="submit"] {
 	div.search-submitinput:active {
 		background: #0C3C66;
 	}
+	
+	div.search {
+		padding-bottom: 15px;
+		border-bottom: 2px solid black;
+	}
+	
+/* FEATURED LISTINGS ON HOMEPAGE */
+	
+	div.featured {
+		padding-top: 15px;
+	}
+	
+	h2 {
+		font-size: 22px;
+		font-weight: lighter;
+	}
+	
+	.featured-list img {
+		width: 200px;
+		height: 125px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #E1E1E1;
+	}
+	
+	.featured-list > li {
+		float: left;
+		padding: 15px 80px 15px 0;
+	}
+	
+	.featured-item-info {
+		padding: 10px 0;
+	}
+	
+	/* USED IN LOtS OF PLACES */
+	p {
+		color: black;
+		padding-bottom: 3px;
+	}
+	
+	/* ALSO USED ON RENTAL INDEX PAGE*/
+	p.address {
+		font-size: 20px;
+		font-weight: lighter;
+		color: #146AB9;
+	}
+	
+	p.price {
+		font-size: 20px;
+		display: inline;
+		padding-right: 5px;
+	}
+	
+	p.for-rent {
+		font-size: 12px;
+		color: #5E5F65;
+		display: inline-block;
+	}
+	
+	/* INDEX & SEARCH LIST ITEMS */
+	
+	.search-show {
+		padding: 15px 0;
+		width: 625px;
+		border-bottom: 1px solid black;
+	}
+	
+	.search-show > a > img {
+		width: 300px;
+		height: 200px;
+		float: left;
+		padding-right: 15px;
+	}
+	
+	.search-show .address:hover {
+		text-decoration: underline;
+	}
+	
+	.listing-info > .bed,
+	.listing-info > .bath,
+	.listing-info > .sq-ft,
+	.listing-info > .created-at {
+		padding: 5px 0;
+	}
+	
+/* RENTAL SHOW PAGE */
+	
+	.rental-show .rental-photos {
+		width: 625px;
+		float: left;
+	}
+	
+	.rental-show .photo-thumbs-wrap {
+		padding: 15px;
+	}
+	
+	.rental-show .photo-thumbs {
+		width: 100px;
+	}
+	
+	

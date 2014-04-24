@@ -44,7 +44,7 @@ class RentalsController < ApplicationController
       end
       @rentals = @rentals.where(monthly_rent: price_min..price_max)
     end
-
+    @rentals = @rentals.order(created_at: :desc)
     render :index
   end
 

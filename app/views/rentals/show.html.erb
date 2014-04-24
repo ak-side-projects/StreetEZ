@@ -1,5 +1,3 @@
-<h3>Selected Listing</h3>
-
 <% if @rental.owner == current_user %>
 	<a class="edit" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
 
@@ -10,24 +8,25 @@
   </form>
 <% end %>
 
-<div class="search-show">
+<div class="rental-show">
 	
 	<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
 	
+	<% if signed_in? %>
+		<%= render "saved_rental", rental: @rental %>
+	<% end %>
+	
   <div class="rental-thumbnail-header">
-    <p class="rental-address">
+    <p class="address">
       <%= @rental.address.street + ' #' + @rental.address.unit %>
     </p>
-		<% if signed_in? %>
-			<%= render "saved_rental", rental: @rental %>
-		<% end %>
   </div>
 
-  <p class="rental-price">$<%= @rental.monthly_rent %> per month</p>
+  <p class="price"><%= number_to_currency(@rental.monthly_rent, precision: 0) %> per month</p>
 
-  <p class="rental-bedrooms"><%= @rental.num_bedrooms %> bed</p>
-  <p class="rental-bathrooms"><%= @rental.num_bathrooms %> bath</p>
-  <p class="rental-sq-footage"><%= @rental.sq_footage %> ft<sup>2</sup></p>
+  <p class="bed"><%= @rental.num_bedrooms %> bed</p>
+  <p class="bath"><%= @rental.num_bathrooms %> bath</p>
+  <p class="sq-ft"><%= number_with_delimiter(@rental.sq_footage) %> ft<sup>2</sup></p>
 	
 	<%= render "open_house", rental: @rental %>
 	
