@@ -591,6 +591,14 @@ input[type="submit"] {
 		margin-left: 34px;
 	}
 	
+	div.open-houses ol > li > a.sign-in {
+		width: 300px;
+	}
+	
+	div.open-houses ol > li > a.sign-in {
+		width: 300px;
+	}
+	
 /* MESSAGING */
 	
 	form.create-message > textarea {
