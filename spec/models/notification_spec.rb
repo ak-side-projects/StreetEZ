@@ -10,7 +10,7 @@ describe Notification do
   it { should belong_to(:notifiable) }
   it { should belong_to(:user) }
   
-  pending "test get_url"
-  pending "test get_text"
+  pending "test url method"
+  pending "test text method"
   
 end

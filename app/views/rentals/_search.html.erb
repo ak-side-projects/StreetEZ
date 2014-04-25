@@ -12,7 +12,10 @@
 				        id="rental_neighborhood"
 				        type="checkbox"
 				        name="rental[neighborhoods][]"
-				        value="<%= neighborhood %>">
+				        value="<%= neighborhood %>"
+								<% if params[:rental][:neighborhoods].include?(neighborhood) %>
+									checked="true"
+								<% end %>>
 				      <%= neighborhood %>
 				    </label>
 					</li>
@@ -23,25 +26,28 @@
 		<div class="price-range group">
 			<h4>Price</h4>
 			<div class="textbox">
-			  <input id="rental_price_min" type="number" name="rental[price_min]">
+			  <input id="rental_price_min" type="number" name="rental[price_min]" value="<%= params[:rental][:price_min] %>">
 			</div>
 			<p>to</p>
 			<div class="textbox">
-			  <input id="rental_price_max" type="number" name="rental[price_max]">
+			  <input id="rental_price_max" type="number" name="rental[price_max]" value="<%= params[:rental][:price_max] %>">
 			</div>
 		</div>
 	
-		<div class="bed-bath group">
-		
+		<div class="bed-bath group">	
 			<div class="beds">
 				<h4>Beds</h4>
 			  <select class="search" name="rental[num_bedrooms]">
 			    <option value="">Select Number of Bedrooms</option>
-			    <option value="Studio">Studio</option>
-			    <option value="1">1</option>
-			    <option value="2">2</option>
-			    <option value="3">3</option>
-			    <option value="4">4</option>
+					<% Rental::NUM_BEDROOMS.each do |bed| %>
+						<option 
+							value="<%= bed %>"
+							<% if params[:rental][:num_bedrooms] == bed.to_s %>
+								selected="selected"
+							<% end  %>>
+							<%= bed %>
+						</option>
+					<% end %>
 			  </select>
 			</div>
 
@@ -49,10 +55,15 @@
 				<h4>Baths</h4>
 			  <select class="search" name="rental[num_bathrooms]">
 			    <option value="">Select Number of Bathrooms</option>
-			    <option value="1">1</option>
-			    <option value="2">2</option>
-			    <option value="3">3</option>
-					<option value="3">4</option>
+					<% Rental::NUM_BATHROOMS.each do |bath| %>
+						<option 
+							value="<%= bath %>"
+							<% if params[:rental][:num_bathrooms] == bath.to_s %>
+								selected
+							<% end  %>>
+							<%= bath %>
+						</option>
+					<% end %>
 			  </select>
 			</div>
 		</div>
