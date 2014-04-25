@@ -595,8 +595,8 @@ input[type="submit"] {
 		width: 300px;
 	}
 	
-	div.open-houses ol > li > a.sign-in {
-		width: 300px;
+	div.open-houses > a.sign-in {
+		width: 297px;
 	}
 	
 /* MESSAGING */
