@@ -1,12 +1,21 @@
-<h3>Sent</h3>
-
-<ul class="sent-message-list">
-  <% sent_messages.each do |message| %>
-    <a class="sent-message-link" href="<%= message_url(message.id) %>">
-      <li class="sent-message">
-        <h4>To: <%= message.recipient.name %></h4>
-        <p><%= message.body %></p>
-      </li>
-    </a>
-  <% end %>
-</ul>
+<section class="sentbox">
+	<h2>Sentbox</h3>
+		
+	<ul>
+	    <li class="message-header group">
+	      <p class="user">From</p>
+	      <p class="body">Message</p>
+				<p class="datetime">Date & Time</p>
+	    </li class="message">
+	  <% sent_messages.each do |message| %>
+	    <a class="message-link group" href="<%= message_url(message.id) %>">
+	      <li class="message">
+	        <p class="user"><%= message.recipient.name %></p>
+	        <p class="body"><%= message.body %></p>
+					<p class="datetime"><%= message.created_at.to_formatted_s(:short) %></p>
+	      </li>
+	    </a>
+	  <% end %>
+	</ul>
+	
+</section>

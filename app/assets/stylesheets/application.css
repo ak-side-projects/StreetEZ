@@ -715,4 +715,66 @@ input[type="submit"] {
 	
 /* MESSAGES */
 	
+	.messages-index > .inbox,
+	.messages-index > .sentbox {
+		text-align: center;
+		width: 900px;
+		padding: 15px 0;
+	}
 	
+	.messages-index > .inbox > ul,
+	.messages-index > .sentbox > ul {
+		width: 900px;
+		margin-top: 5px;
+	}
+	
+	.messages-index > .inbox > ul p.user,
+	.messages-index > .inbox > ul p.body,
+	.messages-index > .sentbox > ul p.user,
+	.messages-index > .sentbox > ul p.body {
+		float: left;
+		text-align: left;
+	}
+	
+	.messages-index > .inbox > ul p.datetime,
+	.messages-index > .sentbox > ul p.datetime {
+		float: right;
+	}
+	
+	.inbox > ul,
+	.sentbox > ul {
+		border: 2px solid #146AB9;
+	}
+	
+	.inbox > ul > li.message-header,
+	.sentbox > ul > li.message-header {
+		font-weight: bold;
+		border-bottom: 2px solid #ccc;
+		padding: 5px;
+	}
+	
+	.inbox > ul > a > li.message,
+	.sentbox > ul > a > li.message {
+		padding: 5px;
+	}
+	
+	.inbox p.user,
+	.sentbox p.user {
+		width: 125px;
+	}
+	
+	.inbox p.body,
+	.sentbox p.body {
+		width: 600px;
+	}
+	
+	.inbox p.datetime,
+	.sentbox p.datetime {
+		width: 100px;
+	}
+	
+	.messages-index > .inbox li.message:hover > p,
+	.messages-index > .sentbox li.message:hover > p {
+		color: #146AB9;
+		cursor: pointer;
+	}
