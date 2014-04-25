@@ -11,37 +11,41 @@
 	<% end %>
 
 	<ol class="open-houses">
-		<% rental.open_houses.active.order(event_datetime: :asc).each do |open_house| %>
-			<li class="open-house group">
-				<%= open_house.event_datetime.to_formatted_s(:long) %>
-				<% if signed_in? %>
-					<% if open_house.host == current_user %>
-					  <form class="delete-open-house" action="<%= open_house_url(open_house.id) %>" method="post">
-							<input type="hidden" name="_method" value="delete">
-					    <%= auth_token %>
-
-					    <input type="submit" value="Cancel Open House">
-					  </form>
-					<% else %>
-						<% if current_user.open_houses.include?(open_house) %>
-							<form class="unattend-open-house" action="<%= attend_open_house_url(open_house_id: open_house.id) %>" method="post">
+		<% if rental.open_houses.empty? %>
+			<p class="no-open-house-text">No open houses currently scheduled. Please contact the owner to get more information.</p>
+		<% else %>
+			<% rental.open_houses.active.order(event_datetime: :asc).each do |open_house| %>
+				<li class="open-house group">
+					<%= open_house.event_datetime.to_formatted_s(:long) %>
+					<% if signed_in? %>
+						<% if open_house.host == current_user %>
+						  <form class="delete-open-house" action="<%= open_house_url(open_house.id) %>" method="post">
 								<input type="hidden" name="_method" value="delete">
-								<%= auth_token %>
+						    <%= auth_token %>
 
-								<input type="submit" value="Remove from calendar">
-							</form>
+						    <input type="submit" value="Cancel Open House">
+						  </form>
 						<% else %>
-							<form class="attend-open-house" action="<%= attend_open_houses_url %>" method="post">
-								<%= auth_token %>
-								<input type="hidden" name="open_house_id" value="<%= open_house.id %>">
-								<input type="submit" value="Add to calendar">
-							</form>
+							<% if current_user.open_houses.include?(open_house) %>
+								<form class="attend-open-house" action="<%= attend_open_house_url(open_house_id: open_house.id) %>" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<%= auth_token %>
+
+									<input type="submit" value="Remove from calendar">
+								</form>
+							<% else %>
+								<form class="attend-open-house" action="<%= attend_open_houses_url %>" method="post">
+									<%= auth_token %>
+									<input type="hidden" name="open_house_id" value="<%= open_house.id %>">
+									<input type="submit" value="Add to calendar">
+								</form>
+							<% end %>
 						<% end %>
+					<% else %>
+						<p>Sign in to save the open house to your calendar!</p>
 					<% end %>
-				<% else %>
-					<p>Sign in to save the open house to your calendar!</p>
-				<% end %>
-			</li>
+				</li>
+			<% end %>
 		<% end %>
 	</ol>
 </div>

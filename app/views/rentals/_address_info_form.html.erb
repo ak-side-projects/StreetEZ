@@ -3,7 +3,8 @@
 	<div class="neighborhood">
 		<label for="rental_neighborhood">Neighborhood</label>
 	  <select id="rental_neighborhood" name="rental[neighborhood]">
-	  <% Rental::NEIGHBORHOODS.each do |neighborhood| %>
+	  	<option value="">Select Neighborhood</option>
+		<% Rental::NEIGHBORHOODS.each do |neighborhood| %>
 	    <option
 				<%= rental.neighborhood == neighborhood ? "selected" : "" %>
 				value="<%= neighborhood %>"><%= neighborhood %></option>

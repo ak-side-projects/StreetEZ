@@ -14,10 +14,12 @@
   <%= render "address_info_form", rental: rental %>
 
 	<%= render "rental_info_form", rental: rental %>
-
-  <label for="rental-photos">Photos</label>
-  <input id="rental-photos" type="file" multiple name="photos[]">
-
+	
+	<div class="enter-photos">
+	  <label for="rental-photos">Photos</label>
+	  <input id="rental-photos" type="file" multiple name="photos[]">
+	</div>
+	
   <input class="submit" type="submit" value="<%= action.capitalize %> Listing">
 </form>
 

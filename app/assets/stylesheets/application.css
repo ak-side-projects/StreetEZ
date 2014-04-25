@@ -58,7 +58,8 @@ input[type="name"],
 input[type="email"],
 input[type="password"],
 input[type="submit"],
-input[type="number"] {
+input[type="number"],
+input[type="file"] {
   -webkit-appearance: none;
   box-sizing: content-box;
   display: inline-block;
@@ -251,6 +252,7 @@ input[type="submit"] {
 	a.edit-rental, 
 	form.delete-rental > input,
 	form.add-open-house > input[type="submit"],
+	form.attend-open-house > input[type="submit"],
 	form.create-message > input,
 	form.delete-open-house > input[type="submit"] {
 	  display: inline-block;
@@ -269,6 +271,7 @@ input[type="submit"] {
 	a.edit-rental:hover, 
 	form.delete-rental > input:hover,
 	form.add-open-house > input[type="submit"]:hover,
+	form.attend-open-house > input[type="submit"]:hover,
 	form.create-message > input:hover,
 	form.delete-open-house > input[type="submit"]:hover {
 		background: #0F518B;
@@ -281,6 +284,7 @@ input[type="submit"] {
 	a.edit-rental:active, 
 	form.delete-rental > input:active,
 	form.add-open-house > input[type="submit"]:active,
+	form.attend-open-house > input[type="submit"]:active,
 	form.create-message > input:active,
 	form.delete-open-house > input[type="submit"]:active {
 		background: #0C3C66;
@@ -563,10 +567,15 @@ input[type="submit"] {
 		padding: 5px 0;
 	}
 	
-	/* RENTAL SHOW OPEN HOUSE AREA */
+	/* OPEN HOUSE */
 	
 	div.open-houses {
 		padding: 15px 0;
+	}
+	
+	div.open-houses .no-open-house-text {
+		font-size: 15px;
+		padding: 5px 0;
 	}
 	
 	div.open-houses ol > li {
@@ -574,7 +583,8 @@ input[type="submit"] {
 		padding-bottom: 0;
 	}
 	
-	div.open-houses ol > li > form.delete-open-house {
+	div.open-houses ol > li > form.delete-open-house,
+	div.open-houses ol > li > form.attend-open-house {
 		display: inline;
 		padding-top: 0;
 		font-size: 14px;
@@ -600,13 +610,22 @@ input[type="submit"] {
 	}
 	
 	form.create-rental > .enter-address-info > div,
-	form.create-rental > .enter-rental-info > div {
+	form.create-rental > .enter-rental-info > div,
+	form.create-rental > div.enter-photos {
 		float: left;
 		padding: 10px 20px 10px 0;
 	}
 	
 	form.create-rental > .enter-address-info label,
 	form.create-rental > .enter-rental-info label {
+		display: block;
+		padding-top: 5px;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	form.create-rental > .enter-photos > label {
 		display: block;
 		padding-top: 5px;
 		font-size: 12px;
@@ -648,3 +667,47 @@ input[type="submit"] {
 		margin-right: 65px;
 	}
 	
+/* NOTIFICATIONS */
+	
+	.notifications {
+		width: 900px;
+		padding: 10px 0;
+	}
+	
+	.notifications > a > li {
+		position: relative;
+		overflow: hidden;
+		height: 20px;
+		padding: 5px;
+		margin-bottom: 15px	;
+		border: 1px solid #257FC5;
+	  border-radius: 0;
+	}
+	
+	.notifications > a > li:hover {
+		border: 2px solid #146AB9;
+		padding: 4px;
+	}
+	
+	.notifications > a > li > .new {
+		position: absolute;
+		left: -13px;
+		top: 3px;
+		font-size: 8px;
+		text-transform: uppercase;
+		-webkit-transform: rotate(-37deg);
+		padding: 1px 15px;
+		background: red;
+		color: #fff;
+	}
+	
+	.notifications > a > li > p {
+		padding: 0 25px;
+		float: left;
+	}
+	
+	.notifications > a > li > time {
+		font-size: 12px;
+		color: #AFAFAF;
+		float: right;
+	}

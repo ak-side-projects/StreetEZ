@@ -1,13 +1,20 @@
-<% @notifications.each do |notification| %>
-	<ul>
-		<li>
-			<a href="<%= notification_url(notification) %>">
-			<% unless notification.is_read %>
-				<strong>New</strong>
-			<% end %>
-			<%= notification.created_at.to_formatted_s(:short) %> | 
-			<%= notification.text %>
-			</a>
-		</li>
-	</ul>
-<% end %>
+<h2>Notifications</h2>
+<ul class="notifications">
+	<% @notifications.each do |notification| %>
+		<a href="<%= notification_url(notification) %>">
+			<li class="group">
+				<% unless notification.is_read %>
+					<div class="new">
+						<strong class="group">New</strong>
+					</div>
+				<% end %>			
+				
+				<p><%= notification.text %></p>
+				
+				<time class="datetime">
+					<%= time_ago_in_words(notification.created_at) + " ago" %>
+				</time>
+			</li>
+		</a>
+	<% end %>
+</ul>

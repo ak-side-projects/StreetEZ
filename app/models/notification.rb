@@ -63,16 +63,16 @@ class Notification < ActiveRecord::Base
     when :attend_open_house
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
-      return "You signed up to attend the open house for #{street} on #{datetime}."
+      return "You signed up to attend the open house for #{street} on #{datetime.to_formatted_s(:long)}."
     when :attendee_added
       
     when :unattend_open_house
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
       if self.notifiable.active
-        return "You are no longer scheduled to attend the open house for #{street} on #{datetime}."
+        return "You are no longer scheduled to attend the open house for #{street} on #{datetime.to_formatted_s(:long)}."
       else
-        return "The open house at #{street} on #{datetime} that you were scheduled to attend has been cancelled."
+        return "The open house at #{street} on #{datetime.to_formatted_s(:long)} that you were scheduled to attend has been cancelled."
       end
     when :attendee_dropped
       
