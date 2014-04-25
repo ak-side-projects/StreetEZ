@@ -13,7 +13,8 @@
  */
 
 html, body, h1, h2, h3, h4, ul, ol, li, div, 
-span, a, img, p, select, option, form, label {
+span, a, img, p, select, option, form, label,
+table, thead, tr, th, tbody, td {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -711,3 +712,7 @@ input[type="submit"] {
 		color: #AFAFAF;
 		float: right;
 	}
+	
+/* MESSAGES */
+	
+	

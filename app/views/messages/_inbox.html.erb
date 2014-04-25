@@ -1,6 +1,23 @@
 <h4>Inbox</h4>
 
-<ul class="received-message-list">
+<table>
+	<thead>
+		<th>From</th>
+		<th>Message</th>
+		<th>Date / Time</th>
+	</thead>
+	<tbody>
+		<% received_messages.each do |message| %>
+			<tr>
+				<td><%= message.sender.name %></td>
+				<td><%= message.body %></td>
+				<td><%= message.created_at.to_formatted_s(:short) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<!-- <ul class="received-message-list">
   <% received_messages.each do |message| %>
     <a class="received-message-link" href="<%= message_url(message.id) %>">
       <li class="received-message">
@@ -9,4 +26,4 @@
       </li>
     </a>
   <% end %>
-</ul>
+</ul> -->

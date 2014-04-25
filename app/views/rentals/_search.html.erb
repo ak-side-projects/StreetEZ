@@ -13,7 +13,8 @@
 				        type="checkbox"
 				        name="rental[neighborhoods][]"
 				        value="<%= neighborhood %>"
-								<% if params[:rental] && params[:rental][:neighborhoods] && params[:rental][:neighborhoods].include?(neighborhood) %>
+								<% if params[:rental].try(:[], :neighborhoods)
+																		 .try(:include?, neighborhood) %>
 									checked="true"
 								<% end %>>
 				      <%= neighborhood %>
@@ -26,11 +27,11 @@
 		<div class="price-range group">
 			<h4>Price</h4>
 			<div class="textbox">
-			  <input id="rental_price_min" type="number" name="rental[price_min]" value="<%= params[:rental][:price_min] if params[:rental] %>">
+			  <input id="rental_price_min" type="number" name="rental[price_min]" value="<%= params.try(:[], :rental).try(:[], :price_min) %>">
 			</div>
 			<p>to</p>
 			<div class="textbox">
-			  <input id="rental_price_max" type="number" name="rental[price_max]" value="<%= params[:rental][:price_max] if params[:rental] %>">
+			  <input id="rental_price_max" type="number" name="rental[price_max]" value="<%= params.try(:[], :rental).try(:[], :price_max) %>">
 			</div>
 		</div>
 	
@@ -42,7 +43,7 @@
 					<% Rental::NUM_BEDROOMS.each do |bed| %>
 						<option 
 							value="<%= bed %>"
-							<% if params[:rental] && params[:rental][:num_bedrooms] == bed.to_s %>
+							<% if params.try(:[], :rental).try(:[], :num_bedrooms) == bed.to_s %>
 								selected="selected"
 							<% end  %>>
 							<%= bed %>
@@ -58,7 +59,7 @@
 					<% Rental::NUM_BATHROOMS.each do |bath| %>
 						<option 
 							value="<%= bath %>"
-							<% if params[:rental] && params[:rental][:num_bathrooms] == bath.to_s %>
+							<% if params.try(:[], :rental).try(:[], :num_bathrooms) == bath.to_s %>
 								selected
 							<% end  %>>
 							<%= bath %>
