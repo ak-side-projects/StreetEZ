@@ -497,12 +497,21 @@ input[type="submit"] {
 		padding: 0, 15px;
 	}
 	
-	.rental-show .rental-photos {
+	.rental-show .rental-photos-and-description {
 		float: left;
 		width: 575px;
 	}
 	
-	.rental-photos .selected-photo {
+	.rental-show .rental-photos-and-description > .rental-photos {
+		border-bottom: 4px solid black;
+	}
+	
+	.rental-show .rental-photos-and-description > p.rental-description {
+		padding: 15px 0;
+		line-height: 1.3;
+	}
+	
+	.rental-photos-and-description .rental-photos .selected-photo {
 		width: 550px;
 	}
 	

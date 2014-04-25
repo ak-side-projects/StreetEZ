@@ -14,7 +14,7 @@ StreetEZ::Application.routes.draw do
 
   resources :messages, only: [:create, :index, :show]
   
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index, :show]
   
   resources :open_houses, only: [:create, :update, :destroy]
   

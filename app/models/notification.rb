@@ -15,13 +15,19 @@ class Notification < ActiveRecord::Base
     10 => :attendee_dropped
   }
   
+  EVENT_IDS = EVENTS.invert
+  
   validates :notifiable_id, :notifiable_type, :user_id, :event_id, presence: true
   
   belongs_to :notifiable, polymorphic: true
   
-  belongs_to :user, inverse_of: :notifications
+  belongs_to :user, inverse_of: :notifications, counter_cache: true
   
-  def get_url
+  scope :read, -> { where(is_read: true) }
+  scope :unread, -> { where(is_read: false) }
+  scope :event, ->(event_name) { where(event_id: EVENT_IDS[event_name]) }
+  
+  def url
     event = EVENTS[self.event_id]
     case event
     when :received_message
@@ -43,7 +49,7 @@ class Notification < ActiveRecord::Base
     end
   end
   
-  def get_text
+  def text
     event = EVENTS[self.event_id]
     case event
     when :received_message
@@ -71,6 +77,12 @@ class Notification < ActiveRecord::Base
     when :attendee_dropped
       
     end
+  end
+  
+  def default_url_options
+    options = {}
+    options[:host] = Rails.env.production? ? "streetez.herokuapp.com" : "localhost:3000"
+    options
   end
   
 end

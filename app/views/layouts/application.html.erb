@@ -13,7 +13,7 @@
 			<div class="userbar">
 				<ul class="group">
 					<% if signed_in? %>
-						<li><a href="<%= notifications_url %>"><strong class="badge"><%= current_user.notifications.count %></strong> Notifications</a></li>
+						<li><a href="<%= notifications_url %>"><strong class="badge"><%= current_user.notifications.unread.count %></strong> Notifications</a></li>
 				  
 						<li><a href="<%= messages_url %>">Messages</a></li>
 				  

@@ -49,6 +49,10 @@
 			<% end %>
 		</div>
 	
-		<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
+		<div class="rental-photos-and-description">
+			<%= render "rental_show_photos", rental: @rental, featured_photo: @featured_photo %>
+			
+			<p class="rental-description"><%= @rental.description %></p>
+		</div>
 	</section>
 </div>

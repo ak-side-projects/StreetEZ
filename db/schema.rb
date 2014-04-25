@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423204312) do
+ActiveRecord::Schema.define(version: 20140425003206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,15 +52,17 @@ ActiveRecord::Schema.define(version: 20140423204312) do
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "notifications", force: true do |t|
-    t.integer  "notifiable_id",   null: false
-    t.string   "notifiable_type", null: false
-    t.integer  "event_id",        null: false
-    t.integer  "user_id",         null: false
+    t.integer  "notifiable_id",                   null: false
+    t.string   "notifiable_type",                 null: false
+    t.integer  "event_id",                        null: false
+    t.integer  "user_id",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_read",         default: false
   end
 
   add_index "notifications", ["event_id"], name: "index_notifications_on_event_id", using: :btree
+  add_index "notifications", ["is_read"], name: "index_notifications_on_is_read", using: :btree
   add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
   add_index "notifications", ["notifiable_type"], name: "index_notifications_on_notifiable_type", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
@@ -118,12 +120,13 @@ ActiveRecord::Schema.define(version: 20140423204312) do
   add_index "saved_rentals", ["user_id"], name: "index_saved_rentals_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
+    t.string   "email",               null: false
+    t.string   "password_digest",     null: false
+    t.string   "session_token",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",            null: false
+    t.string   "name",                null: false
+    t.integer  "notifications_count"
   end
 
 end

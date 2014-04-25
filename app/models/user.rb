@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :email, :name, presence: true
+  validates :email, :name, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
-  validates :session_token, presence: true
+  validates :session_token, presence: true, uniqueness: true
 
   before_validation :ensure_session_token
 
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     inverse_of: :recipient
   )
   
-  has_many :notifications, inverse_of: :user
+  has_many :notifications, inverse_of: :user, dependent: :destroy
   
   has_many :hosted_open_houses, through: :owned_rentals, source: :open_houses
   
