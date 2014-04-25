@@ -337,6 +337,7 @@ input[type="submit"] {
 		padding-top: 5px;
 		font-size: 12px;
 		font-weight: bold;
+		text-transform: uppercase;
 	}
 	
 	.textbox > input {
@@ -580,20 +581,23 @@ input[type="submit"] {
 
 /* CREATE NEW RENTAL */
 	
-	form.create-rental > .address-info,
-	form.create-rental > .rental-info {
+	form.create-rental {
+		width: 925px;
+	}
+	
+	form.create-rental > .enter-address-info,
+	form.create-rental > .enter-rental-info {
 		display: block;
-		padding: 20px;
 	}
 	
-	form.create-rental > .address-info > div,
-	form.create-rental > .rental-info > div {
+	form.create-rental > .enter-address-info > div,
+	form.create-rental > .enter-rental-info > div {
 		float: left;
-		padding: 10px;
+		padding: 10px 20px 10px 0;
 	}
 	
-	form.create-rental > .address-info label,
-	form.create-rental > .rental-info label {
+	form.create-rental > .enter-address-info label,
+	form.create-rental > .enter-rental-info label {
 		display: block;
 		padding-top: 5px;
 		font-size: 12px;
@@ -601,24 +605,37 @@ input[type="submit"] {
 		text-transform: uppercase;
 	}
 	
-	form.create-rental > .address-info input,
-	form.create-rental > .rental-info input {
+	form.create-rental > .enter-address-info input,
+	form.create-rental > .enter-rental-info input,
+	textarea.enter-rental-description {
 		width: 261px;
 	  padding: 5px;
 		border: 1px solid #146AB9;
 	  border-radius: 0;
 	}
 	
-	form.create-rental > .address-info input:hover,
-	form.create-rental > .rental-info input:hover {
+	form.create-rental > .enter-address-info input:hover,
+	form.create-rental > .enter-rental-info input:hover,
+	textarea.enter-rental-description:hover {
 		border: 2px solid #257FC5;
 		padding: 4px;
 	}
 	
-	form.create-rental > .address-info input:active,
-	form.create-rental > .rental-info input:active {
+	form.create-rental > .enter-address-info input:active,
+	form.create-rental > .enter-rental-info input:active,
+	textarea.enter-rental-description:active {
 		border: 2px solid #257FC5;
 		padding: 6px;
 		margin: 0;
+	}
+	
+	textarea.enter-rental-description {
+		width: 554px;
+		height: 100px;
+	}
+	
+	form.create-rental > input.submit {
+		float: right;
+		margin-right: 65px;
 	}
 	

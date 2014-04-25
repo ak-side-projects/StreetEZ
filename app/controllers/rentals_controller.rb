@@ -89,11 +89,13 @@ class RentalsController < ApplicationController
 
   def update
     @rental = Rental.find(params[:id])
-
-    photo_params.each do |file_params|
-      @rental.photos.new(file: file_params)
+    
+    if params[:photos]
+      photo_params.each do |file_params|
+        @rental.photos.new(file: file_params)
+      end
     end
-
+    
     if @rental.update(rental_params) && @rental.address.update(address_params)
       redirect_to rental_url(@rental.id)
     else
@@ -114,7 +116,7 @@ class RentalsController < ApplicationController
   end
 
   def rental_params
-    params.require(:rental).permit(:neighborhood, :num_bedrooms, :num_bathrooms, :monthly_rent, :sq_footage)
+    params.require(:rental).permit(:neighborhood, :num_bedrooms, :num_bathrooms, :monthly_rent, :sq_footage, :description)
   end
 
   def address_params

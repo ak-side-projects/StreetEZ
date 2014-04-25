@@ -3,7 +3,7 @@
 	  <%= auth_token %>
 	
 		<div class="neighborhoods group">
-			<h4>LOCATION</h4>
+			<h4>Location</h4>
 			<ul class="group">
 			  <% Rental::NEIGHBORHOODS.sort.each_with_index do |neighborhood, idx| %>
 					<li>
@@ -21,7 +21,7 @@
 		</div>
 	
 		<div class="price-range group">
-			<h4>PRICE</h4>
+			<h4>Price</h4>
 			<div class="textbox">
 			  <input id="rental_price_min" type="number" name="rental[price_min]">
 			</div>
@@ -34,7 +34,7 @@
 		<div class="bed-bath group">
 		
 			<div class="beds">
-				<h4>BEDS</h4>
+				<h4>Beds</h4>
 			  <select class="search" name="rental[num_bedrooms]">
 			    <option value="">Select Number of Bedrooms</option>
 			    <option value="Studio">Studio</option>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="baths">
-				<h4>BATHS</h4>
+				<h4>Baths</h4>
 			  <select class="search" name="rental[num_bathrooms]">
 			    <option value="">Select Number of Bathrooms</option>
 			    <option value="1">1</option>

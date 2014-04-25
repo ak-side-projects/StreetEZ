@@ -1,4 +1,5 @@
-<div class="rental-info group">
+<div class="enter-rental-info group">
+	
 	<div class="bed">
 		<label for="rental_num_bedrooms">Bedrooms</label>
 		<select id="rental_num_bedrooms" name="rental[num_bedrooms]">
@@ -29,18 +30,17 @@
 	
 	<div class="sq-ft">
 		<label for="rental_sq_footage">Square Footage</label>
-		<input id="rental_sq_footage" type="number" name="rental[sq_footage]" value="<%= rental.sq_footage %>">ft<sup>2</sup>
+		<input id="rental_sq_footage" type="number" name="rental[sq_footage]" value="<%= rental.sq_footage %>"> ft<sup>2</sup>
 	</div>
 	
 	<div class="price">
 		<label for="rental_price">Monthly Rent</label>
-		<input id="rental_price" type="number" name="rental[monthly_rent]" value="<%= number_to_currency(rental.monthly_rent, precision: 0) %>">
+		<input id="rental_price" type="number" name="rental[monthly_rent]" value="<%= rental.monthly_rent %>">
 	</div>
 	
 	<div class="description">
-		<label>
-		  Description
-		  <textarea class="rental-description" value="<%= rental.description %>"></textarea>
-		</label>
+		<label for="rental_description">Description</label>
+		  <textarea class="enter-rental-description" id="rental_description" name="rental[description]"><%= rental.description %></textarea>
 	</div>
+	
 </div>

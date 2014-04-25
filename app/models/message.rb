@@ -25,11 +25,10 @@ class Message < ActiveRecord::Base
     sender = self.sender
     
     # notify recipient
-    Notification.create(user_id: recipient.id, event_id: 1, notifiable_id: self.id, notifiable_type: self.class.name)
+    self.notifications.create(user_id: recipient.id, event_id: 1)
     
     #notify sender
-    Notification.create(user_id: sender.id, event_id: 2, notifiable_id: self.id, notifiable_type: self.class.name)
-    fail
+    self.notifications.create(user_id: sender.id, event_id: 2)
   end
 
 end

@@ -3,16 +3,16 @@ class Notification < ActiveRecord::Base
   include Rails.application.routes.url_helpers  
   
   EVENTS = {
-    1 => "received message",
-    2 => "sent message",
-    3 => "saved rental",
-    4 => "unsaved rental",
-    5 => "created open house",
-    6 => "deleted open house",
-    7 => "attend open house",
-    8 => "attendee added",
-    9 => "unattend open house",
-    10 => "attendee dropped"
+    1 => :received_message,
+    2 => :sent_message,
+    3 => :saved_rental,
+    4 => :unsaved_rental,
+    5 => :created_open_house,
+    6 => :deleted_open_house,
+    7 => :attend_open_house,
+    8 => :attendee_added,
+    9 => :unattend_open_house,
+    10 => :attendee_dropped
   }
   
   validates :notifiable_id, :notifiable_type, :user_id, :event_id, presence: true
@@ -24,21 +24,21 @@ class Notification < ActiveRecord::Base
   def get_url
     event = EVENTS[self.event_id]
     case event
-    when "received message"
+    when :received_message
       message_path(self.notifiable)
-    when "sent message"
+    when :sent_message
       message_path(self.notifiable)
-    when "saved rental"
+    when :saved_rental
       rental_path(self.notifiable)
-    when "unsaved rental"
+    when :unsaved_rental
       rental_path(self.notifiable)
-    when "attend open house"
+    when :attend_open_house
       rental_path(self.notifiable.rental.id)
-    when "attendee added"
+    when :attendee_added
       rental_path(self.notifiable.rental.id)
-    when "unattend open house"
+    when :unattend_open_house
       rental_path(self.notifiable.rental.id)
-    when "attendee dropped"
+    when :attendee_dropped
       rental_path(self.notifiable.open_house.rental.id)
     end
   end
@@ -46,21 +46,21 @@ class Notification < ActiveRecord::Base
   def get_text
     event = EVENTS[self.event_id]
     case event
-    when "received message"
-      return "You received a message from " + self.notifiable.sender.name + "."
-    when "sent message"
-      return "You sent a message to " + self.notifiable.recipient.name + "."
-    when "saved rental"
-      return "You saved " + self.notifiable.address.street + " to your profile."
-    when "unsaved rental"
-      return "You removed " + self.notifiable.address.street + " from your profile."
-    when "attend open house"
+    when :received_message
+      return "You received a message from #{self.notifiable.sender.name}."
+    when :sent_message
+      return "You sent a message to #{self.notifiable.recipient.name}."
+    when :saved_rental
+      return "You saved #{self.notifiable.address.street} to your profile."
+    when :unsaved_rental
+      return "You removed #{self.notifiable.address.street} from your profile."
+    when :attend_open_house
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
       return "You signed up to attend the open house for #{street} on #{datetime}."
-    when "attendee added"
+    when :attendee_added
       
-    when "unattend open house"
+    when :unattend_open_house
       street = self.notifiable.rental.address.street
       datetime = self.notifiable.event_datetime
       if self.notifiable.active
@@ -68,7 +68,7 @@ class Notification < ActiveRecord::Base
       else
         return "The open house at #{street} on #{datetime} that you were scheduled to attend has been cancelled."
       end
-    when "attendee dropped"
+    when :attendee_dropped
       
     end
   end
