@@ -7,6 +7,9 @@ gem 'rails', '4.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# gem to help get stuff working on heroku properly (specifically CSS)
+gem 'rails_12factor'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
