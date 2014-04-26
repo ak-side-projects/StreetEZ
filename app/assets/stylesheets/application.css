@@ -806,3 +806,68 @@ input[type="submit"] {
 	.about a {
 		color: #146AB9;
 	}
+	
+/* USER SHOW MY ACCOUNT PAGE*/
+	
+	.my-account > .open-houses {
+		width: 975px;
+		border-bottom: 2px solid black;
+	}
+	
+	.hosting-open-houses {
+		float: left;
+		width: 425px;
+		padding: 15px 20px;
+		text-align: center;
+		border: 1px solid #E1E1E1;
+		margin: 15px 0;
+	}
+	
+	
+	.attending-open-houses {
+		float: right;
+		width: 425px;
+		padding: 15px 20px;
+		text-align: center;
+		border: 1px solid #E1E1E1;
+		margin: 15px 0;
+	}
+	
+	.hosting-open-houses > h4,
+	.attending-open-houses > h4 {
+		font-weight: bold;
+	}
+	
+	.hosting-open-houses > ul > li,
+	.attending-open-houses > ul > li {
+		display: block;
+		margin: 15px 0;
+	}
+	
+	.hosting-open-houses a {
+		display: block;
+		float: left;
+		vertical-align: middle;
+		margin: 0;
+	}
+	
+	.hosting-open-houses p,
+	.attending-open-houses p {
+		display: block;
+		width: 200px;
+	}
+	
+	.hosting-open-houses form,
+	.attending-open-houses form {
+		float: right;
+	}
+	
+	.hosting-open-houses form > input[type="submit"],
+	.attending-open-houses form > input[type="submit"] {
+		margin-top: 4px;
+		margin-bottom: 2px;
+	}
+	
+	.my-account > .rentals {
+		
+	}

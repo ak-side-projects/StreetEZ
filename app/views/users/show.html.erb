@@ -1,24 +1,28 @@
-<h2 class="open-houses">Open Houses</h2>
-<%= render "hosting_open_houses", open_houses: @user.hosted_open_houses.active.order(event_datetime: :asc) %>
+<div class="my-account">
+	<section class="open-houses group">
+		<h2>Open Houses</h2>
+		<%= render "hosting_open_houses", open_houses: @user.hosted_open_houses.active.order(event_datetime: :asc) %>
 
-<%= render "attending_open_houses", open_houses: @user.open_houses.active.order(event_datetime: :asc) %>
-<br>
+		<%= render "attending_open_houses", open_houses: @user.open_houses.active.order(event_datetime: :asc) %>
+	</section>
+	
+	<section class="rentals">
+		<h2>Rentals</h2>
+		<div class="owned-rentals group">
 
-<h2 class="rentals">Rentals</h2>
-<div class="owned-rentals">
+		  <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
+		  <br>
+		  <h4 class="owned-rentals">Owned</h4>
+			<% @user.owned_rentals.active.each do |owned_rental| %>
+		  	<%= render "rental", rental: owned_rental %>
+		  <% end %>
+		</div>
 
-  <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
-  <br>
-  <h4 class="owned-rentals">Owned</h4>
-	<% @user.owned_rentals.active.each do |owned_rental| %>
-  	<%= render "rental", rental: owned_rental %>
-  <% end %>
-</div>
-<br>
-
-<div class="saved-rentals">
-  <h4 class="saved-rentals">Saved</h4>
-  <% @user.saved_rentals.active.each do |saved_rental| %>
-		<%= render "rental", rental: saved_rental %>
-	<% end %>
+		<div class="saved-rentals">
+		  <h4 class="saved-rentals">Saved</h4>
+		  <% @user.saved_rentals.active.each do |saved_rental| %>
+				<%= render "rental", rental: saved_rental %>
+			<% end %>
+		</div>
+	</section>
 </div>
