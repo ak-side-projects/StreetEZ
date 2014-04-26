@@ -781,3 +781,28 @@ input[type="submit"] {
 		color: #146AB9;
 		cursor: pointer;
 	}
+	
+/* ABOUT */
+	
+	.about > article {
+		padding-top: 15px;
+	}
+	
+	.about > article > label {
+		display: block;
+		font-weight: bold;
+		padding-bottom: 5px;
+	}
+	
+	.about ul {
+		padding: 5px;
+	}
+	
+	.about ul > li {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+	
+	.about a {
+		color: #146AB9;
+	}

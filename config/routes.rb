@@ -1,6 +1,9 @@
 StreetEZ::Application.routes.draw do
 
   root to: "rentals#home"
+  
+  get "static_pages/about"
+  get "static_pages/help"
 
   resources :users, only: [:new, :create, :show]
 
