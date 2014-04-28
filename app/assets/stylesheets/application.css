@@ -485,9 +485,18 @@ input[type="submit"] {
 	
 	/* INDEX & SEARCH LIST ITEMS */
 	
+	.search-results {
+		position: relative;
+	}
+	
+	.search-results-list {
+		width: 525px;
+		float: left;
+	}
+	
 	.search-show {
 		padding: 15px 0;
-		width: 625px;
+		width: 525px;
 		border-bottom: 1px solid black;
 	}
 	
@@ -507,6 +516,26 @@ input[type="submit"] {
 	.listing-info > .sq-ft,
 	.listing-info > .created-at {
 		padding: 3px 0;
+	}
+	
+/*	.map-wrapper {
+		position: absolute;
+		top: 15px; 
+		bottom: 0;
+		right: 0;
+		width: 400px; 
+		height: 500px;
+	}*/
+	
+	.map { 
+		position: absolute;
+		top: 15px; 
+		bottom: 0;
+		right: 0;
+		left: 560px;
+		width: 400px; 
+		height: auto;
+		max-height: 1000px;
 	}
 	
 /* RENTAL SHOW PAGE */

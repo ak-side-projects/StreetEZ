@@ -1,6 +1,6 @@
 <div class="search-show group">
 
-  <a href="<%= rental_url(rental.id) %>">
+  <a href="<%= rental_url(rental.id) %>" id="search-result">
 		<% if rental.photos.first %>
 	    <img class="rental-photo" src="<%= rental.photos.first.file.url(:big) %>" alt="apartment_rental_photo">
 		<% else %>
@@ -8,11 +8,14 @@
 		<% end %>
 
 	  <div class="listing-info">
-	    <p class="address">
+	    <p class="address" id="address">
 	      <%= rental.address.street + ' #' + rental.address.unit %>
 	    </p>
 
-		  <p class="price"><%= number_to_currency(rental.monthly_rent, precision: 0) %><p class="for-rent">FOR RENT</p></p>
+		  <p class="price">
+				<%= number_to_currency(rental.monthly_rent, precision: 0) %>
+				<p class="for-rent">FOR RENT</p>
+			</p>
 		  <p class="bed"><%= rental.num_bedrooms %> Bed</p>
 		  <p class="bath"><%= rental.num_bathrooms %> Bath</p>
 		  <p class="sq-ft"><%= number_with_delimiter(rental.sq_footage) %> ft<sup>2</sup></p>

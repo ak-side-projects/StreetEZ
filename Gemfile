@@ -47,6 +47,9 @@ gem 'aws-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+#map features
+gem "geocoder"
+
 group :development, :test do
   #gems to help with debugging
   gem 'pry-rails'

@@ -1,18 +1,58 @@
-<h1 class="search-header">New York City Real Estate</h1>
+<section class="group">
+	<h1 class="search-header">New York City Real Estate</h1>
 
-<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
+	<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
 
 <%= render "search", provided_url: rentals_url %>
-<ul>
-<% @rentals.each do |rental| %>
-  <li>
-    <%= render "search_show", rental: rental %>
-  </li>
-<% end %>
-</ul>
+</section>
 
-<div class="search-map">
-  *****************
-  MAPBOX_GOES_HERE
-  *****************
-</div>
+<section class="search-results group">
+	<div class="search-results-list">
+		<ul>
+		<% @rentals.each do |rental| %>
+		  <li>
+		    <%= render "search_show", rental: rental %>
+		  </li>
+		<% end %>
+		</ul>
+	</div>
+	
+	<div class="map" id="map"></div>
+
+
+</section>
+	
+<script>
+$( document ).ready(function() {
+	// var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+// 	    .setView([40, -74.50], 9);
+	
+	$(window).scroll(function(){
+    if($(window).scrollTop() > 550){
+        $('#map').css('position', 'fixed');
+        $('#map').css('top', '15px');
+				$('#map').css('bottom', '15px');
+				$('#map').css('left', '620px');
+    } else {
+        $('#map').css('position', 'absolute');
+				$('#map').css('left', '560px');
+    }
+  });
+	
+	
+	
+	$('#search-result').hover(function(){
+		var geocoder = L.mapbox.geocoder('')
+	});
+	
+	var geocoder = L.mapbox.geocoder('examples.map-vyofok3q'),
+	    map = L.mapbox.map('map', 'examples.map-vyofok3q')
+
+	geocoder.query('Encino, CA', showMap);
+
+	function showMap(err, data) {
+	     map.fitBounds(data.lbounds);
+			 map.scrollWheelZoom.disable();
+	}
+});
+</script>
