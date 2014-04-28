@@ -43,6 +43,10 @@ gem 'paperclip'
 #amazon web services
 gem 'aws-sdk'
 
+#omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 group :development, :test do
   #gems to help with debugging
   gem 'pry-rails'

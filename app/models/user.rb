@@ -49,6 +49,17 @@ class User < ActiveRecord::Base
   has_many :open_houses, through: :attend_open_houses, source: :open_house
 
 
+  def self.find_or_create_by_auth_hash(auth_hash)
+    user = User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
+
+    return user if user
+
+    User.create!(provider: auth_hash[:provider],
+                 uid: auth_hash[:uid],
+                 email: auth_hash[:info][:email],
+                 name: auth_hash[:info][:name])
+  end
+  
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil

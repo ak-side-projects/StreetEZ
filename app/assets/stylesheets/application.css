@@ -145,6 +145,16 @@ input[type="submit"] {
 	.submit > input:active {
 		background: #0C3C66;
 	}
+	
+	a.facebook {
+	  display: inline-block;
+	  background: #1466B2;
+	  color: #fff;
+	  padding: 10px 20px;
+		margin: 15px 10px;
+	  border-radius: 0;
+	  font-weight: bold
+	}
 
 /* USERBAR & NAVBAR */
 	.header {
@@ -261,6 +271,7 @@ input[type="submit"] {
 	}
 	
 	a.sign-in:hover,
+	a.facebook:hover, 
 	a.new-rental:hover, 
 	form.saved-rental > input:hover,
 	form.create-rental > input.submit:hover,
@@ -274,6 +285,7 @@ input[type="submit"] {
 	}
 
 	a.sign-in:active,
+	a.facebook:active,
 	a.new-rental:active, 
 	form.saved-rental > input:active,
 	form.create-rental > input.submit:active,
@@ -809,6 +821,8 @@ input[type="submit"] {
 	
 /* USER SHOW MY ACCOUNT PAGE*/
 	
+	/* OPEN HOUSES */
+	
 	.my-account > .open-houses {
 		width: 975px;
 		border-bottom: 2px solid black;
@@ -816,7 +830,7 @@ input[type="submit"] {
 	
 	.hosting-open-houses {
 		float: left;
-		width: 425px;
+		width: 430px;
 		padding: 15px 20px;
 		text-align: center;
 		border: 1px solid #E1E1E1;
@@ -826,7 +840,7 @@ input[type="submit"] {
 	
 	.attending-open-houses {
 		float: right;
-		width: 425px;
+		width: 430px;
 		padding: 15px 20px;
 		text-align: center;
 		border: 1px solid #E1E1E1;
@@ -844,7 +858,8 @@ input[type="submit"] {
 		margin: 15px 0;
 	}
 	
-	.hosting-open-houses a {
+	.hosting-open-houses a,
+	.attending-open-houses a {
 		display: block;
 		float: left;
 		vertical-align: middle;
@@ -868,6 +883,55 @@ input[type="submit"] {
 		margin-bottom: 2px;
 	}
 	
+	/* RENTALS */
+	
 	.my-account > .rentals {
-		
+		width: 975px;
+		padding-top: 15px;
+	}
+	
+	.rentals > a {
+		display: block;
+		width: 150px;
+		text-align: center;
+		margin-left: 140px;
+		margin-bottom: 0;
+	}
+	
+	.owned-rentals {
+		float: left;
+		width: 430px;
+		padding: 15px 20px;
+		text-align: center;
+		border: 1px solid #E1E1E1;
+		margin: 15px 0;
+	}
+	
+	
+	.saved-rentals {
+		float: right;
+		width: 430px;
+		padding: 15px 20px;
+		text-align: center;
+		border: 1px solid #E1E1E1;
+		margin: 15px 0;
+	}
+	
+	.owned-rentals > h4,
+	.saved-rentals > h4 {
+		font-weight: bold;
+	}
+	
+	.owned-rentals > ul > li,
+	.saved-rentals > ul > li {
+		display: block;
+		margin: 15px 0;
+	}
+	
+	.owned-rentals .rental-thumbnail-header,
+	.saved-rentals .rental-thumbnail-header {
+		display: block;
+		float: left;
+		vertical-align: middle;
+		margin: 0;
 	}

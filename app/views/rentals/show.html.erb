@@ -21,7 +21,7 @@
 	
 	<section class="rental-info-and-photos group">
 	  <div class="rental-info">
-			<% if signed_in? %>
+			<% if signed_in? && @rental.owner != current_user %>
 				<%= render "saved_rental", rental: @rental %>
 			<% end %>
 		

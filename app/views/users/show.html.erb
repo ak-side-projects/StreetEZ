@@ -8,18 +8,18 @@
 	
 	<section class="rentals">
 		<h2>Rentals</h2>
+		
+		<a class="new-rental group" href="<%= new_rental_url %>">Post a new rental</a>
+		
 		<div class="owned-rentals group">
-
-		  <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
-		  <br>
-		  <h4 class="owned-rentals">Owned</h4>
+		  <h4>Owned</h4>
 			<% @user.owned_rentals.active.each do |owned_rental| %>
 		  	<%= render "rental", rental: owned_rental %>
 		  <% end %>
 		</div>
 
-		<div class="saved-rentals">
-		  <h4 class="saved-rentals">Saved</h4>
+		<div class="saved-rentals group">
+		  <h4>Saved</h4>
 		  <% @user.saved_rentals.active.each do |saved_rental| %>
 				<%= render "rental", rental: saved_rental %>
 			<% end %>
