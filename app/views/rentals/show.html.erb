@@ -1,26 +1,25 @@
 <div class="rental-show">	
-	<section class="owner-actions group">
-		<div class="action-buttons group">
-			<% if @rental.owner == current_user %>
-				<ul>
-					<li>
-						<a class="edit-rental" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
-					</li>
-			
-					<li>
-					  <form class="delete-rental" action="<%= rental_url(@rental.id) %>" method="post">
-					    <input type="hidden" name="_method" value="delete">
-					    <%= auth_token %>
-					    <input class="delete" type="submit" value="Delete">
-					  </form>
-					</li>
-				</ul>
-			<% end %>
-		</div>
-	</section>
-	
 	<section class="rental-info-and-photos group">
 	  <div class="rental-info">
+			
+			<div class="action-buttons group">
+				<% if @rental.owner == current_user %>
+					<ul>
+						<li>
+							<a class="edit-rental" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
+						</li>
+		
+						<li>
+						  <form class="delete-rental" action="<%= rental_url(@rental.id) %>" method="post">
+						    <input type="hidden" name="_method" value="delete">
+						    <%= auth_token %>
+						    <input class="delete" type="submit" value="Delete">
+						  </form>
+						</li>
+					</ul>
+				<% end %>
+			</div>
+			
 			<% if signed_in? && @rental.owner != current_user %>
 				<%= render "saved_rental", rental: @rental %>
 			<% end %>

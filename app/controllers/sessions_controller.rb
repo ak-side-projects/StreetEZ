@@ -1,14 +1,11 @@
 class SessionsController < ApplicationController
+
   def new
     @user = User.new
     render :new
    end
 
    def create
-     
-     
-     @user = User.find_or_create_by_auth_hash(request.env['omniauth.auth'])
-     fail
      @user = User.find_by_credentials(
        params[:user][:email],
        params[:user][:password]
@@ -29,7 +26,4 @@ class SessionsController < ApplicationController
      redirect_to new_session_url
    end
 
-   # def user_params
-   #   params.require(:user).permit(:email, :password)
-   # end
 end

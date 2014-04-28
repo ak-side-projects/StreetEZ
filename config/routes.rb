@@ -5,11 +5,13 @@ StreetEZ::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/help"
   
-  get 'auth/facebook/callback', to: 'sessions#create'
+  get 'auth/facebook/callback', to: 'omniauthcallbacks#create'
   
   resources :users, only: [:new, :create, :show]
 
   resource :session, only: [:new, :create, :destroy]
+  
+  resource :omniauthcallbacks, only: [:create]
 
   resources :rentals, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   

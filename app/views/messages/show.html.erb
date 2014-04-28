@@ -1,26 +1,30 @@
-<h1 class="messages">Messages</h1>
+<h2 class="messages">Message Conversation</h2>
 
-<h4>Your conversation with <%= @other_user.name %></h4>
-<form class="create-message group" action="<%= messages_url %>" method="post">
-  <%= auth_token %>
-  <input type="hidden" name="message[recipient_id]" value="<%= @other_user.id %>">
+<main class="message-conversation">
+	<h4><strong>Your conversation with <%= @other_user.name %></strong></h4>
+	<form class="create-message group" action="<%= messages_url %>" method="post">
+	  <%= auth_token %>
+	  <input type="hidden" name="message[recipient_id]" value="<%= @other_user.id %>">
 
-  <textarea class="group" name="message[body]" placeholder="Send another message."></textarea>
+	  <textarea class="create-message group" name="message[body]" placeholder="Send another message to <%= @other_user.name.html_safe %>."></textarea>
 	
-  <input type="submit" value="Send Message">
-</form>
+	  <input type="submit" value="Send Message">
+	</form>
 
-<ul>
-  <% @messages.each do |message| %>
-    <li>
-      <h4><%= message.updated_at.to_formatted_s(:long) %></h4>
-
-      <% if current_user == message.sender %>
-        <h4><%= "You:" %></h4>
-      <% else %>
-        <h4><%= message.sender.name + ":" %></h4>
-      <% end %>
-      <p><%= message.body %></p>
-</li>
-  <% end %>
-</ul>
+	<ul>
+	  <% @messages.each do |message| %>
+	    <li>
+				<header class="message-header group">
+	      <% if current_user == message.sender %>
+	        <p class="user"><%= "You:" %></p>
+	      <% else %>
+	        <p class="user"><%= message.sender.name + ":" %></p>
+	      <% end %>
+	      <p class="datetime"><%= message.updated_at.to_formatted_s(:long) %></p>
+				</header>
+	      
+	      <p class="message-body"><%= message.body %></p>
+	</li>
+	  <% end %>
+	</ul>
+</main>

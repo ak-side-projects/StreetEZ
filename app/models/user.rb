@@ -47,18 +47,24 @@ class User < ActiveRecord::Base
   has_many :attend_open_houses, inverse_of: :user, dependent: :destroy
   
   has_many :open_houses, through: :attend_open_houses, source: :open_house
-
-
-  def self.find_or_create_by_auth_hash(auth_hash)
-    user = User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
-
-    return user if user
-
-    User.create!(provider: auth_hash[:provider],
-                 uid: auth_hash[:uid],
-                 email: auth_hash[:info][:email],
-                 name: auth_hash[:info][:name])
+    
+    
+  def self.find_by_auth_hash(auth_hash)
+    User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
   end
+  
+  def self.create_by_auth_hash(auth_hash)
+    User.create(provider: auth_hash[:provider],
+                uid: auth_hash[:uid],
+                email: auth_hash[:info][:email],
+                name: auth_hash[:info][:name],
+                password_digest: SecureRandom.urlsafe_base64(16)
+               )
+  end
+  
+  def update_with_auth_hash(auth_hash)
+    self.update(provider: auth_hash[:provider], uid: auth_hash[:uid])
+  end  
   
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

@@ -26,6 +26,13 @@
 									<a href="<%= user_url(current_user.id) %>">My Account</a>
 								</li>
 								<li>
+								<% if !current_user.uid.present? %>
+										<a href="/auth/facebook">Link Facebook Account</a>
+								<% else %>
+										<p>Facebook Account Linked</p>
+								<% end %>
+								</li>
+								<li>
 									<form action="<%= session_url %>" method="post">
 										<input type="hidden" name="_method" value="delete">
 										<%= auth_token %>

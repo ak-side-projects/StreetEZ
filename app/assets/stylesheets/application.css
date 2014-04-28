@@ -46,6 +46,7 @@ ul {
 body {
 	padding: 5px 60px;
 	font-family: sans-serif;
+	width: 960px;
 }
 
 .group:after {
@@ -191,9 +192,29 @@ input[type="submit"] {
 		font-weight: lighter
 	}
 	
-	ul.userbar-dropdown {
+	.userbar-dropdown {
 		display: none;
 		position: absolute;
+		text-align: left;
+	}
+	
+	.userbar-dropdown > li > * {
+		font-size: 12px;
+		padding: 5px;
+	}
+	
+	.userbar-dropdown a {
+		display: block;
+		padding: 5px;
+		width: 150px;
+		text-align: left;
+	}
+	
+	.userbar-dropdown > li > form > input[type="submit"] {
+		display: block;
+		padding: 5px 0;
+		width: 150px;
+		text-align: left;
 	}
 	
 	.userbar > ul > li:hover > .userbar-dropdown {
@@ -207,12 +228,12 @@ input[type="submit"] {
 		width: 165px;;
 	}
 	
-	.userbar > ul > li:hover > ul > li {
-		padding: 5px;
-		font-size: 12px;
-	}
+/*	.userbar > ul > li:hover > ul > li {
+		
+	}*/
 	
-	.userbar-dropdown > li:hover {
+	.userbar-dropdown > li:hover > a,
+	.userbar-dropdown > li:hover > form {
 		text-decoration: underline;
 	}
 	
@@ -494,7 +515,7 @@ input[type="submit"] {
 		width: 1000px;
 	}
 	
-	.owner-actions > .action-buttons {
+	.action-buttons {
 		float: right;
 		margin-right: 187px;
 	}
@@ -608,6 +629,10 @@ input[type="submit"] {
 	}
 	
 /* MESSAGING */
+	
+	form.create-message {
+		width: 375px;
+	}
 	
 	form.create-message > textarea {
 		width: 350px;
@@ -761,10 +786,10 @@ input[type="submit"] {
 		border: 2px solid #146AB9;
 	}
 	
-	.inbox > ul > li.message-header,
-	.sentbox > ul > li.message-header {
+	.inbox > ul > li.messages-header,
+	.sentbox > ul > li.messages-header {
 		font-weight: bold;
-		border-bottom: 2px solid #ccc;
+		border-bottom: 1px solid #ccc;
 		padding: 5px;
 	}
 	
@@ -783,8 +808,7 @@ input[type="submit"] {
 		width: 600px;
 	}
 	
-	.inbox p.datetime,
-	.sentbox p.datetime {
+	.messages-header > p.datetime {
 		width: 100px;
 	}
 	
@@ -792,6 +816,53 @@ input[type="submit"] {
 	.messages-index > .sentbox li.message:hover > p {
 		color: #146AB9;
 		cursor: pointer;
+	}
+	
+	a.message-link > .message > .datetime {
+		color: #AFAFAF;
+		font-size: 14px;
+		padding-right: 5px;
+	}
+	
+	/* MESSAGE CONVERSATIONS */
+	
+	.message-conversation {
+/*		width: 900px;
+		margin: auto;*/
+		padding: 15px 0;
+	}
+	
+	.message-conversation > h4 {
+		padding-bottom: 5px;
+	}
+	
+	.message-conversation > ul {
+		padding: 5px 0;
+	}
+	
+	.message-conversation > ul > li {
+		padding: 5px;
+		border: 1px solid #ccc;
+		margin: 10px 0;
+	}
+	
+	.message-header {
+		
+	}
+	
+	.message-header > .user {
+		float: left;
+		font-weight: bold;
+	}
+	
+	.message-header > .datetime {
+		float: right;
+		color: #AFAFAF;
+		font-size: 14px;
+	}
+	
+	.message-body {
+		padding: 5px 10px;
 	}
 	
 /* ABOUT */
@@ -824,26 +895,23 @@ input[type="submit"] {
 	/* OPEN HOUSES */
 	
 	.my-account > .open-houses {
-		width: 975px;
 		border-bottom: 2px solid black;
 	}
 	
 	.hosting-open-houses {
 		float: left;
-		width: 430px;
-		padding: 15px 20px;
+		width: 450px;
+		padding: 15px 0px;
 		text-align: center;
-		border: 1px solid #E1E1E1;
 		margin: 15px 0;
 	}
 	
 	
 	.attending-open-houses {
 		float: right;
-		width: 430px;
-		padding: 15px 20px;
+		width: 450px;
+		padding: 15px 0px;
 		text-align: center;
-		border: 1px solid #E1E1E1;
 		margin: 15px 0;
 	}
 	
@@ -856,6 +924,9 @@ input[type="submit"] {
 	.attending-open-houses > ul > li {
 		display: block;
 		margin: 15px 0;
+		border: 1px solid #E1E1E1;
+		padding: 15px 10px;
+		margin: 15px auto;
 	}
 	
 	.hosting-open-houses a,
@@ -886,7 +957,6 @@ input[type="submit"] {
 	/* RENTALS */
 	
 	.my-account > .rentals {
-		width: 975px;
 		padding-top: 15px;
 	}
 	
@@ -900,20 +970,18 @@ input[type="submit"] {
 	
 	.owned-rentals {
 		float: left;
-		width: 430px;
-		padding: 15px 20px;
+		width: 450px;
+		padding: 15px 0;
 		text-align: center;
-		border: 1px solid #E1E1E1;
 		margin: 15px 0;
 	}
 	
 	
 	.saved-rentals {
 		float: right;
-		width: 430px;
-		padding: 15px 20px;
+		width: 450px;
+		padding: 15px 0;
 		text-align: center;
-		border: 1px solid #E1E1E1;
 		margin: 15px 0;
 	}
 	
@@ -926,12 +994,35 @@ input[type="submit"] {
 	.saved-rentals > ul > li {
 		display: block;
 		margin: 15px 0;
+		border: 1px solid #E1E1E1;
 	}
 	
 	.owned-rentals .rental-thumbnail-header,
 	.saved-rentals .rental-thumbnail-header {
 		display: block;
 		float: left;
-		vertical-align: middle;
-		margin: 0;
+		width: 150px;
+		padding: 15px;
+	}
+	
+	.owned-rentals .rental-thumbnail-header img,
+	.saved-rentals .rental-thumbnail-header img {
+		height: 65px;
+	}
+	
+	.owned-rentals .user-action-buttons,
+	.saved-rentals .user-action-buttons {
+		display: block;
+		float: right;
+		width: 250px;
+	}
+	
+	.user-action-buttons > .owner-action-buttons {
+		float: right;	
+	}
+	
+	.owner-action-buttons > .edit-rental,
+	.owner-action-buttons > .delete-rental {
+		float: left;
+		margin-right: 20px;
 	}

@@ -1,5 +1,5 @@
 <ul class="rentals-list">
-  <li class="rental">
+  <li class="rental group">
     <div class="rental-thumbnail-header">
       <a href="<%= rental_url(rental.id) %>">
 				<% if rental.photos.first %>
@@ -14,28 +14,36 @@
       <p class="rental-bathrooms"><%= rental.num_bathrooms %> bath</p>
       <p class="rental-sq-footage"><%= rental.sq_footage %> ft<sup>2</sup></p>
     </div>
-		<% if rental.owner_id == current_user.id %>
-			<form class="add-open-house" action="<%= open_houses_url %>" method="post">
-				<input type="hidden" name="open_house[rental_id]" value="<%= rental.id %>">
-				<%= auth_token %>
-				<input class="add-open-house" type="datetime-local" name="open_house[event_datetime]">
-				<input class="add-open-house" type="submit" value="Schedule Open House">
-			</form>
-			
-			<a class="edit-rental" href="<%= edit_rental_url(rental.id) %>">Edit</a>
+		
+		<div class="user-action-buttons">
+			<% if rental.owner_id == current_user.id %>
+				<div class="owner-action-buttons group">
+					<a class="edit-rental" href="<%= edit_rental_url(rental.id) %>">
+						Edit
+					</a>
 
-	    <form class="delete-rental" action="<%= rental_url(rental.id) %>" method="post">
-	      <input type="hidden" name="_method" value="delete">
-	      <%= auth_token %>
-	      <input class="delete" type="submit" value="Delete">
-	    </form>
-			
-		<% else %>
-	    <form class="saved-rental" action="<%= saved_rental_url(rental.id) %>" method="post">
-	      <input type="hidden" name="_method" value="delete">
-	      <%= auth_token %>
-	      <input class="remove" type="submit" value="Remove">
-	    </form>
-		<% end %>
+			    <form class="delete-rental" action="<%= rental_url(rental.id) %>" method="post">
+			      <input type="hidden" name="_method" value="delete">
+			      <%= auth_token %>
+			      <input class="delete" type="submit" value="Delete">
+			    </form>
+				</div>
+			<% else %>
+		    <form class="saved-rental" action="<%= saved_rental_url(rental.id) %>" method="post">
+		      <input type="hidden" name="_method" value="delete">
+		      <%= auth_token %>
+		      <input class="remove" type="submit" value="Remove">
+		    </form>
+			<% end %>
+		
+			<% if rental.owner_id == current_user.id %>
+				<form class="add-open-house" action="<%= open_houses_url %>" method="post">
+					<input type="hidden" name="open_house[rental_id]" value="<%= rental.id %>">
+					<%= auth_token %>
+					<input class="add-open-house" type="datetime-local" name="open_house[event_datetime]">
+					<input class="add-open-house" type="submit" value="Schedule Open House">
+				</form>
+			<% end %>
+		</div>
   </li>
 </ul>

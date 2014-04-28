@@ -2,7 +2,7 @@
 	<a class="open-house" href="<%= rental_url(open_house.rental.id) %>">
 		<p class="address group"><%= open_house.rental.address.street + " #" + open_house.rental.address.unit %></p>
 		
-		<p class="datetime"><%= open_house.event_datetime %></p>
+		<p class="datetime"><%= open_house.event_datetime.to_formatted_s(:long) %></p>
 	</a>
 	<% if open_house.host == current_user %>
 	  <form class="delete-open-house" action="<%= open_house_url(open_house.id) %>" method="post">
