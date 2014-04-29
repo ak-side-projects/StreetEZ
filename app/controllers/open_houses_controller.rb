@@ -1,4 +1,5 @@
 class OpenHousesController < ApplicationController
+  before_action :require_signed_in!, only: [:create, :destroy]
   
   def create
     @open_house = OpenHouse.new(open_house_params)
@@ -10,10 +11,6 @@ class OpenHousesController < ApplicationController
       back = request.env["HTTP_REFERER"]
       redirect_to back
     end
-  end
-  
-  def update
-    
   end
   
   def destroy

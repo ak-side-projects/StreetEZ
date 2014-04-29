@@ -3,16 +3,18 @@
 
 	<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
 
-<%= render "search", provided_url: rentals_url %>
+	<%= render "search", provided_url: rentals_url %>
 </section>
+
+<script type="application/json" id="bootstrapped-rentals">
+	<%= @rentals.to_json(include: :address).html_safe %>
+</script>
 
 <section class="search-results group">
 	<div class="search-results-list">
 		<ul>
 		<% @rentals.each do |rental| %>
-		  <li>
 		    <%= render "search_show", rental: rental %>
-		  </li>
 		<% end %>
 		</ul>
 	</div>
@@ -24,35 +26,46 @@
 	
 <script>
 $( document ).ready(function() {
-	// var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-// 	    .setView([40, -74.50], 9);
 	
 	$(window).scroll(function(){
-    if($(window).scrollTop() > 550){
-        $('#map').css('position', 'fixed');
-        $('#map').css('top', '15px');
-				$('#map').css('bottom', '15px');
-				$('#map').css('left', '620px');
+    if($(window).scrollTop() > 540){
+        $('#map').addClass("map-scroll");
     } else {
-        $('#map').css('position', 'absolute');
-				$('#map').css('left', '560px');
+        $('#map').removeClass("map-scroll");
     }
   });
 	
+	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
 	
-	
-	$('#search-result').hover(function(){
-		var geocoder = L.mapbox.geocoder('')
+	var coords = [];
+	$rentals.forEach(function(rental){
+		var lat = rental.address.latitude;
+		var long = rental.address.longitude;
+		coords.push([long, lat]);
+	});
+		
+	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf')
+										
+	$rentals.forEach(function(rental){
+		L.mapbox.markerLayer({
+		    type: 'Feature',
+		    geometry: {
+		        type: 'Point',
+		        coordinates: [rental.address.longitude, rental.address.latitude]
+		    },
+		    properties: {
+		        title: rental.address.street,
+		        'marker-size': 'large',
+		        'marker-color': '#146AB9'
+		    }
+		}).addTo(map);
 	});
 	
-	var geocoder = L.mapbox.geocoder('examples.map-vyofok3q'),
-	    map = L.mapbox.map('map', 'examples.map-vyofok3q')
+	console.log(map);
+	map.scrollWheelZoom.disable();	
+	map.fitBounds(L.mapbox.markerLayer.getBounds());
+	
 
-	geocoder.query('Encino, CA', showMap);
-
-	function showMap(err, data) {
-	     map.fitBounds(data.lbounds);
-			 map.scrollWheelZoom.disable();
-	}
+	
 });
 </script>

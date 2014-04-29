@@ -25,6 +25,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Backbone
+gem 'backbone-on-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -48,7 +51,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 #map features
-gem "geocoder"
+gem 'geocoder'
 
 group :development, :test do
   #gems to help with debugging

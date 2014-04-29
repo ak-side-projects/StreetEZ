@@ -23,7 +23,7 @@ StreetEZ::Application.routes.draw do
   
   resources :notifications, only: [:index, :show]
   
-  resources :open_houses, only: [:create, :update, :destroy]
+  resources :open_houses, only: [:create, :destroy]
   
   resources :attend_open_houses, only: [:create, :destroy]
   

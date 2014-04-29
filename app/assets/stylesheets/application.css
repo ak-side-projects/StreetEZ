@@ -518,24 +518,21 @@ input[type="submit"] {
 		padding: 3px 0;
 	}
 	
-/*	.map-wrapper {
-		position: absolute;
-		top: 15px; 
-		bottom: 0;
-		right: 0;
-		width: 400px; 
-		height: 500px;
-	}*/
-	
+
 	.map { 
 		position: absolute;
 		top: 15px; 
-		bottom: 0;
+		bottom: 15px;
 		right: 0;
 		left: 560px;
 		width: 400px; 
-		height: auto;
-		max-height: 1000px;
+	}
+	
+	.map-scroll {
+		position: fixed;
+		top: 15px;
+		bottom: 15px;
+		left: 620px;
 	}
 	
 /* RENTAL SHOW PAGE */

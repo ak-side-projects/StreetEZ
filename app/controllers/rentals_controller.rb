@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
-
+  before_action :require_signed_in!, only: [:new, :create, :edit, :update, :destroy]
+  
   def home
     @rentals = Rental.all.active
 

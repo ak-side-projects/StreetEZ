@@ -1,4 +1,4 @@
-<div class="search-show group">
+<li class="search-show group">
 
   <a href="<%= rental_url(rental.id) %>" id="search-result">
 		<% if rental.photos.first %>
@@ -11,7 +11,7 @@
 	    <p class="address" id="address">
 	      <%= rental.address.street + ' #' + rental.address.unit %>
 	    </p>
-
+			
 		  <p class="price">
 				<%= number_to_currency(rental.monthly_rent, precision: 0) %>
 				<p class="for-rent">FOR RENT</p>
@@ -22,4 +22,4 @@
 			<p class="created-at">Listed on <%= rental.created_at.strftime("%B %e, %Y") %></p>
 	  </div>
 	</a>
-</div>
+</li>
