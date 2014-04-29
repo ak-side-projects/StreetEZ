@@ -1,0 +1,14 @@
+<section class="search-results group">
+	<div class="search-results-list">
+		<ul id="search-results-ul">
+	    <%= render @rentals %>
+		</ul>
+	</div>
+	
+	<script>
+		window.geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>
+	</script>
+	
+	<div class="map" id="map"></div>
+
+</section>

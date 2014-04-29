@@ -49,7 +49,7 @@ class RentalsController < ApplicationController
     @rentals.includes(:address)
     
     if request.xhr?
-      render json: @rentals
+      render partial: "rentals/rentals_list"
     else
       render :index
     end

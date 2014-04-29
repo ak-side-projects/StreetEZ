@@ -1,0 +1,69 @@
+<section class="group" id="search-page">
+	<h1 class="search-header">New York City Real Estate</h1>
+
+	<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
+
+	<%= render "search", provided_url: rentals_url %>
+</section>
+
+<script type="application/json" id="bootstrapped-rentals">
+	<%= @rentals.to_json(include: :address).html_safe %>
+</script>
+
+<section class="search-results group">
+	<div class="search-results-list">
+		<ul id="search-results-ul">
+	    <%= render @rentals %>
+		</ul>
+	</div>
+	
+
+	<div class="map" id="map"></div>
+
+
+</section>
+	
+<script>
+$( document ).ready(function() {
+	var indexView = new StreetEZ.Views.RentalsIndex({
+		el: '#'
+	});
+	
+	// // re-render search results using UJS
+// 	var $searchCriteriaForm = $("#search-criteria-form");
+// 	var $searchResults = $("#search-results-ul");
+// 	var $searchPage = $("#search-page")
+// 	var $map = $("#map")
+// 	
+// 	// grab rentals to use in UJS
+// 	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
+// 	
+// 	$searchCriteriaForm.on("ajax:success", function(event, data){
+// 		console.log('data', data);
+// 		$searchResults.html(data);
+// 		console.log('map', $map)
+// 	});
+// 	
+// 	
+// 	// format map to scroll as window scrolls
+// 	$(window).scroll(function(){
+//     if($(window).scrollTop() > 580){
+//         $('#map').addClass("map-scroll");
+//     } else {
+//         $('#map').removeClass("map-scroll");
+//     }
+//   });
+// 	
+// 
+// 	
+// 	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
+// 	
+// 	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
+// 
+// 	var featureLayer = map.featureLayer.setGeoJSON(geoJSON);
+// 	map.fitBounds(featureLayer.getBounds());
+// 	map.scrollWheelZoom.disable();
+// 	map.invalidateSize();
+	
+});
+</script>

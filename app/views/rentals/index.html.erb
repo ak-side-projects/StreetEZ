@@ -6,25 +6,13 @@
 	<%= render "search", provided_url: rentals_url %>
 </section>
 
-<script type="application/json" id="bootstrapped-rentals">
-	<%= @rentals.to_json(include: :address).html_safe %>
-</script>
+<%= render "rentals_list" %>
 
-<section class="search-results group">
-	<div class="search-results-list">
-		<ul id="search-results-ul">
-	    <%= render @rentals %>
-		</ul>
-	</div>
-	
-
-	<div class="map" id="map"></div>
-
-
-</section>
-	
 <script>
 $( document ).ready(function() {
+	// var indexView = new StreetEZ.Views.RentalsIndex({
+	// 	el: '#'
+	// });
 	
 	// re-render search results using UJS
 	var $searchCriteriaForm = $("#search-criteria-form");
@@ -32,13 +20,16 @@ $( document ).ready(function() {
 	var $searchPage = $("#search-page")
 	var $map = $("#map")
 	
-	// grab rentals to use in UJS
-	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
 	
 	$searchCriteriaForm.on("ajax:success", function(event, data){
-		console.log('data', data);
 		$searchResults.html(data);
-		console.log('map', $map)
+		L.mapbox.map('map', 'andrewkv19.i3khopgf');
+		console.log(window.geoJSON);
+		var featureLayer = map.featureLayer.setGeoJSON(window.geoJSON);
+		map.fitBounds(featureLayer.getBounds());
+		map.scrollWheelZoom.disable();
+		map.invalidateSize();
+		$map.html
 	});
 	
 	

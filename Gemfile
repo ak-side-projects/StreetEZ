@@ -27,6 +27,7 @@ gem 'jquery-rails'
 
 # Backbone
 gem 'backbone-on-rails'
+gem 'ejs'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
