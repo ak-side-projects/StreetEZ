@@ -1,0 +1,13 @@
+<div id='map'></div>
+<script>
+
+var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
+
+// var center = geojson[0]["geometry"]["coordinates"]
+
+
+L.mapbox.map('map', 'andrewkv19.i3khopgf')
+  // .setView([center[1], center[0]], 12)
+  .featureLayer.setGeoJSON(geojson);
+  
+</script>

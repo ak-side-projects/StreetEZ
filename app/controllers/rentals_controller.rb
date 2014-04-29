@@ -49,10 +49,9 @@ class RentalsController < ApplicationController
     @rentals.includes(:address)
     
     if request.xhr?
-      render @rentals
+      render json: @rentals
     else
       render :index
-
     end
   end
 

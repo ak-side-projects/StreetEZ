@@ -30,11 +30,15 @@ $( document ).ready(function() {
 	var $searchCriteriaForm = $("#search-criteria-form");
 	var $searchResults = $("#search-results-ul");
 	var $searchPage = $("#search-page")
-
+	var $map = $("#map")
+	
+	// grab rentals to use in UJS
+	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
+	
 	$searchCriteriaForm.on("ajax:success", function(event, data){
 		console.log('data', data);
 		$searchResults.html(data);
-		
+		console.log('map', $map)
 	});
 	
 	
@@ -47,8 +51,7 @@ $( document ).ready(function() {
     }
   });
 	
-	// grab rentals to use in UJS
-	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
+
 	
 	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
 	
