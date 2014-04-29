@@ -1,4 +1,4 @@
-<section class="group">
+<section class="group" id="search-page">
 	<h1 class="search-header">New York City Real Estate</h1>
 
 	<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
@@ -12,13 +12,12 @@
 
 <section class="search-results group">
 	<div class="search-results-list">
-		<ul>
-		<% @rentals.each do |rental| %>
-		    <%= render "search_show", rental: rental %>
-		<% end %>
+		<ul id="search-results-ul">
+	    <%= render @rentals %>
 		</ul>
 	</div>
 	
+
 	<div class="map" id="map"></div>
 
 
@@ -27,45 +26,38 @@
 <script>
 $( document ).ready(function() {
 	
+	// re-render search results using UJS
+	var $searchCriteriaForm = $("#search-criteria-form");
+	var $searchResults = $("#search-results-ul");
+	var $searchPage = $("#search-page")
+
+	$searchCriteriaForm.on("ajax:success", function(event, data){
+		console.log('data', data);
+		$searchResults.html(data);
+		
+	});
+	
+	
+	// format map to scroll as window scrolls
 	$(window).scroll(function(){
-    if($(window).scrollTop() > 540){
+    if($(window).scrollTop() > 580){
         $('#map').addClass("map-scroll");
     } else {
         $('#map').removeClass("map-scroll");
     }
   });
 	
+	// grab rentals to use in UJS
 	var $rentals = JSON.parse($('#bootstrapped-rentals').html());
 	
-	var coords = [];
-	$rentals.forEach(function(rental){
-		var lat = rental.address.latitude;
-		var long = rental.address.longitude;
-		coords.push([long, lat]);
-	});
-		
-	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf')
-										
-	$rentals.forEach(function(rental){
-		L.mapbox.markerLayer({
-		    type: 'Feature',
-		    geometry: {
-		        type: 'Point',
-		        coordinates: [rental.address.longitude, rental.address.latitude]
-		    },
-		    properties: {
-		        title: rental.address.street,
-		        'marker-size': 'large',
-		        'marker-color': '#146AB9'
-		    }
-		}).addTo(map);
-	});
+	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
 	
-	console.log(map);
-	map.scrollWheelZoom.disable();	
-	map.fitBounds(L.mapbox.markerLayer.getBounds());
-	
+	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
 
+	var featureLayer = map.featureLayer.setGeoJSON(geoJSON);
+	map.fitBounds(featureLayer.getBounds());
+	map.scrollWheelZoom.disable();
+	map.invalidateSize();
 	
 });
 </script>

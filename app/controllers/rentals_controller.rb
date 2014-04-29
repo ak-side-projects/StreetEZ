@@ -46,7 +46,14 @@ class RentalsController < ApplicationController
       @rentals = @rentals.where(monthly_rent: price_min..price_max)
     end
     @rentals = @rentals.order(created_at: :desc)
-    render :index
+    @rentals.includes(:address)
+    
+    if request.xhr?
+      render @rentals
+    else
+      render :index
+
+    end
   end
 
   def new
@@ -58,11 +65,13 @@ class RentalsController < ApplicationController
   def create
     @rental = current_user.owned_rentals.new(rental_params)
     @rental.build_address(address_params)
-
-    photo_params.each do |file_params|
-      @rental.photos.new(file: file_params)
+    
+    if params[:photos]
+      photo_params.each do |file_params|
+        @rental.photos.new(file: file_params)
+      end
     end
-
+    
     if @rental.save
       redirect_to user_url(current_user.id)
     else

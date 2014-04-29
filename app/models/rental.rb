@@ -32,7 +32,7 @@ class Rental < ActiveRecord::Base
   )
 
   validates :owner, presence: true
-
+    
   belongs_to(
     :owner,
     class_name: "User",
@@ -56,5 +56,5 @@ class Rental < ActiveRecord::Base
   has_many :open_houses, inverse_of: :rental, dependent: :destroy
   
   has_many :notifications, as: :notifiable
-
+  
 end

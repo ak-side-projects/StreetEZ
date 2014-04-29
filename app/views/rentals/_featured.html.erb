@@ -4,11 +4,7 @@
 	<ul class="featured-list">
 	  <li class="featured-item">
 	    <a href="<%= rental_url(rental_ex1.id) %>">
-				<% if rental_ex1.photos.first %>
-		      <img class="group" src="<%= rental_ex1.photos.first.file.url(:med) %>" alt="rental_listing">
-				<% else %>
-					<img src="#" alt="rental_listing">
-				<% end %>
+				<%= featured_photo(rental_ex1) %>
 				
 				<div class="featured-item-info">
 					<p class="address"><%= rental_ex1.address.street %></p>
@@ -20,11 +16,7 @@
 
 	  <li class="featured-item">
 	    <a href="<%= rental_url(rental_ex2.id) %>">
-				<% if rental_ex2.photos.first %>
-		      <img class="group" src="<%= rental_ex2.photos.first.file.url(:med) %>" alt="rental_listing">
-				<% else %>
-					<img src="#" alt="rental_listing">
-				<% end %>
+				<%= featured_photo(rental_ex2) %>
 				
 				<div class="featured-item-info">
 					<p class="address"><%= rental_ex2.address.street %></p>
@@ -36,11 +28,7 @@
 
 	  <li class="featured-item">
 	    <a href="<%= rental_url(rental_ex3.id) %>">
-				<% if rental_ex3.photos.first %>
-		      <img class="group" src="<%= rental_ex3.photos.first.file.url(:med) %>" alt="rental_listing">
-				<% else %>
-					<img src="#" alt="rental_listing">
-				<% end %>
+				<%= featured_photo(rental_ex3) %>
 				
 				<div class="featured-item-info">
 					<p class="address"><%= rental_ex3.address.street %></p>

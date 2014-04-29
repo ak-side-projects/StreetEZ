@@ -525,13 +525,17 @@ input[type="submit"] {
 		bottom: 15px;
 		right: 0;
 		left: 560px;
-		width: 400px; 
+		height: 700px;
+		width: 400px;
 	}
 	
 	.map-scroll {
 		position: fixed;
 		top: 15px;
 		bottom: 15px;
+		right: 0;
+		height: 700px;
+		width: 400px;
 		left: 620px;
 	}
 	
@@ -998,7 +1002,7 @@ input[type="submit"] {
 		float: left;
 		width: 450px;
 		padding: 15px 0;
-		text-align: center;
+		text-align: left;
 		margin: 15px 0;
 	}
 	
@@ -1007,7 +1011,7 @@ input[type="submit"] {
 		float: right;
 		width: 450px;
 		padding: 15px 0;
-		text-align: center;
+		text-align: left;
 		margin: 15px 0;
 	}
 	
@@ -1033,7 +1037,7 @@ input[type="submit"] {
 	
 	.owned-rentals .rental-thumbnail-header img,
 	.saved-rentals .rental-thumbnail-header img {
-		height: 65px;
+		height: 100px;
 	}
 	
 	.owned-rentals .user-action-buttons,
