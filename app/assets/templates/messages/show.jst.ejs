@@ -1,15 +1,6 @@
 <h2 class="messages">Message Conversation</h2>
 
 <main class="message-conversation">
-	<h4><strong>Your conversation with <%= otherUser.get('name') %></strong></h4>
-	
-	<form class="create-message group" action="#/" method="post">
-	  <input type="hidden" name="message[recipient_id]" value="<%= otherUser.get('id') %>">
-
-	  <textarea class="create-message group" name="message[body]" placeholder="Send another message to <%= otherUser.get('name') %>"></textarea>
-
-	  <input class="send-message" type="submit" value="Send Message">
-	</form>
 	
 	<ul>
 	  <% messages.each(function(message) { %>

@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
     @message = current_user.sent_messages.new(message_params)
 
     if @message.save
-      redirect_to messages_url
+      redirect_to message_url(@message.id)
     else
       flash.now[:errors] = @message.errors.full_messages
       render :new

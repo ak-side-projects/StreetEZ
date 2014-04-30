@@ -33,4 +33,9 @@ class Api::MessagesController < ApplicationController
     end
   end
   
+  private
+  def message_params
+    params.require(:message).permit(:recipient_id, :body)
+  end
+  
 end

@@ -18,7 +18,7 @@ class Message < ActiveRecord::Base
   
   has_many :notifications, as: :notifiable
   
-  after_commit :notify_users, on: :create
+  after_commit :notify_users, on: [:create]
   
   def notify_users
     recipient = self.recipient
@@ -27,7 +27,7 @@ class Message < ActiveRecord::Base
     # notify recipient
     self.notifications.create(user_id: recipient.id, event_id: 1)
     
-    #notify sender
+    # notify sender
     self.notifications.create(user_id: sender.id, event_id: 2)
   end
 

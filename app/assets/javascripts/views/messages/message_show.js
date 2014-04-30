@@ -3,7 +3,6 @@ StreetEZ.Views.MessageShow = Backbone.View.extend({
   template: JST['messages/show'],
 	
 	events: {
-		'click .send-message': 'sendMessage'
 	},
 	
 	initialize: function (options) {
@@ -11,22 +10,31 @@ StreetEZ.Views.MessageShow = Backbone.View.extend({
 	},
 	
 	render: function () {
-		var testMsg = this.collection.first();
+		this.$el.html("");
+		var testMsg = this.collection.last();
 		var otherUser = {};
-		testMsg.get('sender_id') === StreetEZ.currentUser.get('id') ? otherUser = testMsg.recipient : otherUser = testMsg.sender
+		if (parseInt(testMsg.get('sender_id')) === parseInt(StreetEZ.currentUser.get('id'))) {
+			otherUser = testMsg.recipient;
+		} else {
+			otherUser = testMsg.sender;
+		}
+		
 		var renderedContent = this.template({
 			messages: this.collection,
 			otherUser: otherUser
 		});
-
 		this.$el.html(renderedContent);
+		
+		var $main = this.$el.find('main');
+		this.messageFormView = new StreetEZ.Views.MessageForm({
+			collection: this.collection,
+			otherUser: otherUser
+		});
+		
+		this.messageFormView.options.parent = this;
+		$main.prepend(this.messageFormView.render().$el);
+			
 		return this;
-	},
-	
-	sendMessage: function(event) {
-		event.preventDefault();
-		console.log('cT', event.currentTarget)
-		console.log('target', event.target)
 	}
 
 });
