@@ -1,0 +1,51 @@
+<div class="messages-index">
+<h2>Messages</h2>
+
+<section class="inbox">
+	<h2>Inbox</h4>
+
+	<ul>
+	    <li class="messages-header group">
+	      <p class="user">From</p>
+	      <p class="body">Message</p>
+				<p class="datetime">Date & Time</p>
+	    </li>
+			<% receivedMessages.forEach(function(message) { %>
+				<li class="message">
+					<a class="message-link group" href="#/">
+			      <p class="user"><%= message.sender.get('name') %></p>
+			      <p class="body"><%= message.get('body') %></p>
+						<p class="datetime">
+							<%= moment(message.get("created_at")).fromNow() %>
+						</p>
+			    </a>
+			  </li>
+			<% }); %>
+	</ul>
+</section>
+
+<section class="sentbox">
+	<h2>Sentbox</h3>
+		
+	<ul>
+	    <li class="messages-header group">
+	      <p class="user">From</p>
+	      <p class="body">Message</p>
+				<p class="datetime">Date & Time</p>
+	    </li>
+			<% sentMessages.forEach(function(message) { %>
+				<li class="message">
+					<a class="message-link group" href="#/">
+			      <p class="user"><%= message.recipient.get('name') %></p>
+			      <p class="body"><%= message.get('body') %></p>
+						<p class="datetime">
+							<%= console.log('message', message.get('created_at')) %>
+							<%= moment(message.get("created_at")).fromNow() %>
+						</p>
+			    </a>
+			  </li>
+			<% }); %>
+	</ul>
+</section>
+
+</div>

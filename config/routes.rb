@@ -28,7 +28,7 @@ StreetEZ::Application.routes.draw do
   resources :attend_open_houses, only: [:create, :destroy]
   
   namespace :api, defaults: { format: :json } do
-    resources :rentals, only: [:index]
+    resources :messages, only: [:index, :show, :create]
   end
   
 end

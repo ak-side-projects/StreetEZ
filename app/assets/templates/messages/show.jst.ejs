@@ -1,0 +1,30 @@
+<h2 class="messages">Message Conversation</h2>
+
+<main class="message-conversation">
+	<h4><strong>Your conversation with <%= other_user.escape(name) %></strong></h4>
+	<form class="create-message group" action="<%=  %>" method="post">
+	  <%= auth_token %>
+	  <input type="hidden" name="message[recipient_id]" value="<%= other_user.id %>">
+
+	  <textarea class="create-message group" name="message[body]" placeholder="Send another message to <%= other_user.escape(name) %>."></textarea>
+	
+	  <input type="submit" value="Send Message">
+	</form>
+
+	<ul>
+	  <% messages.each(function(message) { %>
+		    <li>
+					<header class="message-header group">
+		      <% if current_user === message.sender %>
+		        <p class="user"><%= "You:" %></p>
+		      <% else %>
+		        <p class="user"><%= message.sender.escape(name) + ":" %></p>
+		      <% end %>
+		      <p class="datetime"><%= message.updated_at %></p>
+					</header>
+	      
+		      <p class="message-body"><%= message.escape(body) %></p>
+			</li>
+		<% }) %>
+	</ul>
+</main>

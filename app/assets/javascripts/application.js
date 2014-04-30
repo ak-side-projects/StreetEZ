@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require moment-with-langs
 //= require turbolinks
 //= require underscore
 //= require backbone

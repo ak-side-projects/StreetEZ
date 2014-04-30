@@ -8,13 +8,13 @@
 				<p class="datetime">Date & Time</p>
 	    </li class="message">
 	  <% received_messages.each do |message| %>
-	    <a class="message-link group" href="<%= message_url(message.id) %>">
-	      <li class="message">
+      <li class="message">
+				<a class="message-link group" href="<%= message_url(message.id) %>">
 	        <p class="user"><%= message.sender.name %></p>
 	        <p class="body"><%= message.body %></p>
 					<p class="datetime"><%= message.created_at.to_formatted_s(:short) %></p>
-	      </li>
-	    </a>
+		    </a>
+      </li>
 	  <% end %>
 	</ul>
 	

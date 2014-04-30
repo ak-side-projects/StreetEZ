@@ -9,29 +9,11 @@
 <%= render "rentals_list" %>
 
 <script>
-$( document ).ready(function() {
-	// var indexView = new StreetEZ.Views.RentalsIndex({
-	// 	el: '#'
-	// });
-	
-	// re-render search results using UJS
+$(document).ready(function() {
 	var $searchCriteriaForm = $("#search-criteria-form");
 	var $searchResults = $("#search-results-ul");
 	var $searchPage = $("#search-page")
 	var $map = $("#map")
-	
-	
-	$searchCriteriaForm.on("ajax:success", function(event, data){
-		$searchResults.html(data);
-		L.mapbox.map('map', 'andrewkv19.i3khopgf');
-		console.log(window.geoJSON);
-		var featureLayer = map.featureLayer.setGeoJSON(window.geoJSON);
-		map.fitBounds(featureLayer.getBounds());
-		map.scrollWheelZoom.disable();
-		map.invalidateSize();
-		$map.html
-	});
-	
 	
 	// format map to scroll as window scrolls
 	$(window).scroll(function(){
@@ -42,16 +24,25 @@ $( document ).ready(function() {
     }
   });
 	
-
-	
 	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
 	
 	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
 
-	var featureLayer = map.featureLayer.setGeoJSON(geoJSON);
-	map.fitBounds(featureLayer.getBounds());
+	map.featureLayer.setGeoJSON(geoJSON);
+	map.fitBounds(map.featureLayer.getBounds());
 	map.scrollWheelZoom.disable();
 	map.invalidateSize();
 	
+	$searchCriteriaForm.on("ajax:success", function(event, data){
+		$searchResults.html(data);
+		createMap();
+	});
+	
+	var createMap = function() {
+		map.featureLayer.setGeoJSON(window.geoJSON);
+		map.fitBounds(map.featureLayer.getBounds());
+		map.scrollWheelZoom.disable();
+		map.invalidateSize();
+	}
 });
 </script>

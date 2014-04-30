@@ -823,9 +823,14 @@ input[type="submit"] {
 		padding: 5px;
 	}
 	
-	.inbox > ul > a > li.message,
-	.sentbox > ul > a > li.message {
-		padding: 5px;
+	.inbox > ul > li.message,
+	.sentbox > ul > li.message {
+		padding: 0 5px;
+	}
+	
+	.inbox > ul > li.message > a,
+	.sentbox > ul > li.message > a {
+		display: block;
 	}
 	
 	.inbox p.user,
@@ -842,13 +847,13 @@ input[type="submit"] {
 		width: 100px;
 	}
 	
-	.messages-index > .inbox li.message:hover > p,
-	.messages-index > .sentbox li.message:hover > p {
+	.inbox > ul > li.message:hover p,
+	.sentbox > ul > li.message:hover p {
 		color: #146AB9;
 		cursor: pointer;
 	}
 	
-	a.message-link > .message > .datetime {
+	.message .datetime {
 		color: #AFAFAF;
 		font-size: 14px;
 		padding-right: 5px;
@@ -1002,7 +1007,7 @@ input[type="submit"] {
 		float: left;
 		width: 450px;
 		padding: 15px 0;
-		text-align: left;
+		text-align: center;
 		margin: 15px 0;
 	}
 	
@@ -1011,7 +1016,7 @@ input[type="submit"] {
 		float: right;
 		width: 450px;
 		padding: 15px 0;
-		text-align: left;
+		text-align: center;
 		margin: 15px 0;
 	}
 	
@@ -1025,6 +1030,7 @@ input[type="submit"] {
 		display: block;
 		margin: 15px 0;
 		border: 1px solid #E1E1E1;
+		text-align: left;
 	}
 	
 	.owned-rentals .rental-thumbnail-header,
