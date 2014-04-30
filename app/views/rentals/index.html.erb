@@ -26,12 +26,22 @@ $(document).ready(function() {
 	
 	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
 	
-	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
+	map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
 
 	map.featureLayer.setGeoJSON(geoJSON);
 	map.fitBounds(map.featureLayer.getBounds());
 	map.scrollWheelZoom.disable();
 	map.invalidateSize();
+	
+	map.featureLayer.on('click', function(e) {
+	        map.panTo(e.layer.getLatLng());
+	    });
+			
+	map.featureLayer.on('mouseover', function(e) {
+	    e.layer.openPopup();
+	});
+	
+	if (map._zoom > 15) { map.setZoom(15) }
 	
 	$searchCriteriaForm.on("ajax:success", function(event, data){
 		$searchResults.html(data);
@@ -43,6 +53,8 @@ $(document).ready(function() {
 		map.fitBounds(map.featureLayer.getBounds());
 		map.scrollWheelZoom.disable();
 		map.invalidateSize();
+		
+		if (map._zoom > 15) { map.setZoom(15) }
 	}
 });
 </script>
