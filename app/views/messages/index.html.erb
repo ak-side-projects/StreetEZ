@@ -1,35 +1,37 @@
 <div class="messages-index" id="messages-index">
-<h2>Messages</h2>
+	<h2>Messages</h2>
 
-<%= render "inbox", received_messages: @received_messages %>
+	<%= render "inbox", received_messages: @received_messages %>
 
-<%= render "sentbox", sent_messages: @sent_messages %>
+	<%= render "sentbox", sent_messages: @sent_messages %>
 
-<script type="application/json" id="received-messages-json">
-	{ "received_messages" : <%= (render partial: "/messages/messages.json.jbuilder", locals: {messages: @received_messages}).html_safe %> }
-</script>
-
-<script type="application/json" id="sent-messages-json">
-	 { "sent_messages": <%= (render partial: "/messages/messages.json.jbuilder", locals: {messages: @sent_messages}).html_safe %> }
-</script>
+	<script type="application/json" id="messages-json">
+		<%= (render partial: "/messages/messages.json.jbuilder", locals: {messages: @received_messages + @sent_messages}).html_safe %>
+	</script>
 
 </div>
 
 <script>
 $(document).ready(function() {
 	
-	var receivedMessages = JSON.parse($("#received-messages-json").html()).received_messages;
-		StreetEZ.receivedMessages = new StreetEZ.Collections.Messages(receivedMessages, {parse: true});
-		
-	var sentMessages = JSON.parse($("#sent-messages-json").html()).sent_messages;
-	StreetEZ.sentMessages = new StreetEZ.Collections.Messages(sentMessages, {parse: true});
+	var messagesObj = JSON.parse($("#messages-json").html())
+	StreetEZ.messages = new StreetEZ.Collections.Messages(messagesObj, {parse: true})
+	
+	// console.log('rec', messageObj.received_messages)
+	// console.log('sent', messageObj.sent_messages)
+	// var allMessages = $.extend({}, messageObj.received_messages, messageObj.sent_messages)
+	// console.log('allmessages', allMessages)
+	
+	// var receivedMessages = JSON.parse($("#received-messages-json").html()).received_messages;
+// 		StreetEZ.receivedMessages = new StreetEZ.Collections.Messages(receivedMessages, {parse: true});
+// 		
+// 	var sentMessages = JSON.parse($("#sent-messages-json").html()).sent_messages;
+// 	StreetEZ.sentMessages = new StreetEZ.Collections.Messages(sentMessages, {parse: true});
 	
 	var currentUser = <%= current_user.to_json(only: [:id, :name]).html_safe %>
 	StreetEZ.currentUser = new StreetEZ.Models.User(currentUser);
 
-	new StreetEZ.Routers.Router({
-		$rootEl: $("#messages-index")
-	});
+	new StreetEZ.Routers.Messages();
 	
 	Backbone.history.start();
 	

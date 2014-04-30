@@ -13,16 +13,11 @@ StreetEZ.Views.MessagesIndex = Backbone.View.extend({
 	
 	render: function () {
 		var renderedContent = this.template({
-			receivedMessages: StreetEZ.receivedMessages,
-			sentMessages: StreetEZ.sentMessages
+			receivedMessages: StreetEZ.messages.where({recipient_id: StreetEZ.currentUser.id.toString()}),
+			sentMessages: StreetEZ.messages.where({sender_id: StreetEZ.currentUser.id.toString()})
 		});
 		this.$el.html(renderedContent);
 		return this;
 	}
-	
-	// showMessage: function (event) {
-	// 	// event.preventDefault();
-	// 	console.log('event', event);
-	// }
 
 });

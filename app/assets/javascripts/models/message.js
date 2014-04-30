@@ -3,6 +3,7 @@ StreetEZ.Models.Message = Backbone.Model.extend({
 	rootUrl: '/api/messages',
 	
   parse: function (response) {
+		console.log('parsing');
 		if (response["sender"]) {
       this.sender = new StreetEZ.Models.User(response["sender"]);
       delete response["sender"];

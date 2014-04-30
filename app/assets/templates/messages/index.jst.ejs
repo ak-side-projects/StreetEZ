@@ -12,7 +12,7 @@
 	    </li>
 			<% receivedMessages.forEach(function(message) { %>
 				<li class="message">
-					<a class="message-link group" href="#messages/<%= message.get('id') %>">
+					<a class="message-link group" href="#/<%= message.get('id') %>">
 			      <p class="user"><%= message.sender.get('name') %></p>
 			      <p class="body"><%= message.get('body') %></p>
 						<p class="datetime">
@@ -35,7 +35,7 @@
 	    </li>
 			<% sentMessages.forEach(function(message) { %>
 				<li class="message">
-					<a class="message-link group" href="#messages/<%= message.id %>">
+					<a class="message-link group" href="#/<%= message.get('id') %>">
 			      <p class="user"><%= message.recipient.get('name') %></p>
 			      <p class="body"><%= message.get('body') %></p>
 						<p class="datetime">
