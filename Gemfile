@@ -54,6 +54,11 @@ gem 'omniauth-facebook'
 #map features
 gem 'geocoder'
 
+#access other APIs
+gem 'nokogiri'
+gem 'addressable'
+
+
 group :development, :test do
   #gems to help with debugging
   gem 'pry-rails'

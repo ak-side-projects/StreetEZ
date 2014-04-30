@@ -264,6 +264,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   aws-sdk
   backbone-on-rails
   bcrypt
@@ -281,6 +282,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  nokogiri
   omniauth
   omniauth-facebook
   paperclip

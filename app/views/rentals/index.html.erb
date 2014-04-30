@@ -31,8 +31,7 @@ $(document).ready(function() {
 	map.featureLayer.setGeoJSON(geoJSON);
 	map.fitBounds(map.featureLayer.getBounds());
 	map.scrollWheelZoom.disable();
-	map.invalidateSize();
-	
+	map.invalidateSize();	
 	map.featureLayer.on('click', function(e) {
 	        map.panTo(e.layer.getLatLng());
 	    });	
@@ -40,14 +39,7 @@ $(document).ready(function() {
 	map.featureLayer.on('mouseover', function(e) {
 	    e.layer.openPopup();
 	});
-	
-	if (map._zoom > 15) { map.setZoom(15) }
-	
-	$searchCriteriaForm.on("ajax:success", function(event, data){
-		$searchResults.html(data);
-		createMap();
-	});
-	
+	if (map._zoom > 15) { map.setZoom(15) }	
   map.featureLayer.eachLayer(
     function(marker){
       var rentalID = marker.feature.properties["marker-id"];
@@ -58,13 +50,28 @@ $(document).ready(function() {
     }    
   )
 	
-	var createMap = function() {
+	$searchCriteriaForm.on("ajax:success", function(event, data){
+		$searchResults.html(data);
 		map.featureLayer.setGeoJSON(window.geoJSON);
+		createMap();
+	});
+	
+	var createMap = function() {
 		map.fitBounds(map.featureLayer.getBounds());
 		map.scrollWheelZoom.disable();
 		map.invalidateSize();
 		
 		if (map._zoom > 15) { map.setZoom(15) }
+		
+	  map.featureLayer.eachLayer(
+	    function(marker){
+	      var rentalID = marker.feature.properties["marker-id"];
+	      $("a[data-id=" + rentalID + "]").hover(function(){
+	        map.panTo(marker.getLatLng());
+	        marker.openPopup()
+	      })
+	    }    
+	  )
 	}
 });
 </script>

@@ -278,6 +278,7 @@ input[type="submit"] {
 	form.create-rental > input.submit,
 	a.edit-rental, 
 	form.delete-rental > input,
+	form.delete-photo > input,
 	form.add-open-house > input[type="submit"],
 	form.attend-open-house > input[type="submit"],
 	form.create-message > input,
@@ -298,6 +299,7 @@ input[type="submit"] {
 	form.create-rental > input.submit:hover,
 	a.edit-rental:hover, 
 	form.delete-rental > input:hover,
+	form.delete-photo > input:hover,
 	form.add-open-house > input[type="submit"]:hover,
 	form.attend-open-house > input[type="submit"]:hover,
 	form.create-message > input:hover,
@@ -312,6 +314,7 @@ input[type="submit"] {
 	form.create-rental > input.submit:active,
 	a.edit-rental:active, 
 	form.delete-rental > input:active,
+	form.delete-photo > input:active,
 	form.add-open-house > input[type="submit"]:active,
 	form.attend-open-house > input[type="submit"]:active,
 	form.create-message > input:active,
@@ -673,6 +676,7 @@ input[type="submit"] {
 	
 	form.create-rental {
 		width: 925px;
+		margin-bottom: 100px;
 	}
 	
 	form.create-rental > .enter-address-info,
@@ -736,6 +740,15 @@ input[type="submit"] {
 	form.create-rental > input.submit {
 		float: right;
 		margin-right: 65px;
+	}
+	
+	form.delete-photo {
+		width: 330px;
+		height: 120px;
+	}
+	
+	form.delete-photo > input {
+		float: right;
 	}
 	
 /* NOTIFICATIONS */
