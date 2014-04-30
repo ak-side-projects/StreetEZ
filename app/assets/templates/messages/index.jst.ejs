@@ -12,7 +12,7 @@
 	    </li>
 			<% receivedMessages.forEach(function(message) { %>
 				<li class="message">
-					<a class="message-link group" href="#/">
+					<a class="message-link group" href="#messages/<%= message.get('id') %>">
 			      <p class="user"><%= message.sender.get('name') %></p>
 			      <p class="body"><%= message.get('body') %></p>
 						<p class="datetime">
@@ -35,11 +35,10 @@
 	    </li>
 			<% sentMessages.forEach(function(message) { %>
 				<li class="message">
-					<a class="message-link group" href="#/">
+					<a class="message-link group" href="#messages/<%= message.id %>">
 			      <p class="user"><%= message.recipient.get('name') %></p>
 			      <p class="body"><%= message.get('body') %></p>
 						<p class="datetime">
-							<%= console.log('message', message.get('created_at')) %>
 							<%= moment(message.get("created_at")).fromNow() %>
 						</p>
 			    </a>

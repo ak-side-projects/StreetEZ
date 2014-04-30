@@ -11,15 +11,17 @@ StreetEZ.Routers.Router = Backbone.Router.extend({
 	},
 	
 	messagesIndex: function () {
+		this.$rootEl.html("");
 		var messagesIndexView = new StreetEZ.Views.MessagesIndex();
 		this._swapView(messagesIndexView);
 	},
 	
 	messageShow: function (id) {
+		console.log('switch view to show');
 		var that = this;
 		this._getMessage(id, function(message) {
 			var messageShowView = new StreetEZ.Views.MessageShow({
-				model: message
+				collection: messages
 			});
 			that._swapView(messageShowView);
 		});

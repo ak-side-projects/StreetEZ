@@ -821,6 +821,7 @@ input[type="submit"] {
 		font-weight: bold;
 		border-bottom: 1px solid #ccc;
 		padding: 5px;
+		margin-bottom: 5px;
 	}
 	
 	.inbox > ul > li.message,

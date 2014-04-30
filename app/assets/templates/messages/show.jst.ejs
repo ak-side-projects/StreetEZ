@@ -1,12 +1,12 @@
 <h2 class="messages">Message Conversation</h2>
 
 <main class="message-conversation">
-	<h4><strong>Your conversation with <%= other_user.escape(name) %></strong></h4>
+	<h4><strong>Your conversation with INSERT OTHER USER'S NAME</strong></h4>
 	<form class="create-message group" action="<%=  %>" method="post">
 	  <%= auth_token %>
 	  <input type="hidden" name="message[recipient_id]" value="<%= other_user.id %>">
 
-	  <textarea class="create-message group" name="message[body]" placeholder="Send another message to <%= other_user.escape(name) %>."></textarea>
+	  <textarea class="create-message group" name="message[body]" placeholder="Send another message to INSERT OTHER USER'S NAME."></textarea>
 	
 	  <input type="submit" value="Send Message">
 	</form>
@@ -15,15 +15,15 @@
 	  <% messages.each(function(message) { %>
 		    <li>
 					<header class="message-header group">
-		      <% if current_user === message.sender %>
+		      <% if StreetEZ.currentUser === message.get('sender') %>
 		        <p class="user"><%= "You:" %></p>
 		      <% else %>
-		        <p class="user"><%= message.sender.escape(name) + ":" %></p>
+		        <p class="user"><%= message.sender.get(name) + ":" %></p>
 		      <% end %>
-		      <p class="datetime"><%= message.updated_at %></p>
+		      <p class="datetime"><%= moment(message.get("created_at")).fromNow() %></p>
 					</header>
 	      
-		      <p class="message-body"><%= message.escape(body) %></p>
+		      <p class="message-body"><%= message.get('body') %></p>
 			</li>
 		<% }) %>
 	</ul>

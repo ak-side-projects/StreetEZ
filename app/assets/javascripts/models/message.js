@@ -9,7 +9,6 @@ StreetEZ.Models.Message = Backbone.Model.extend({
     }
 		
     if (response["recipient"]) {
-			console.log('parsing')
       this.recipient = new StreetEZ.Models.User(response["recipient"]);
       delete response["recipient"];
     }
