@@ -10,5 +10,9 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :rental, inverse_of: :photos
-
+  
+  def picture_from_url(url)
+    self.file = url
+  end
+  
 end

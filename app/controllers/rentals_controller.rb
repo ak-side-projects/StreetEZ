@@ -84,14 +84,18 @@ class RentalsController < ApplicationController
                     .includes(:open_houses)
                     .active
                     .find(params[:id])
-
+    
     if params[:photo_id].present?
       @featured_photo = Photo.find(params[:photo_id])
     else
       @featured_photo = @rental.photos.first
     end
     
-    render :show
+    if request.xhr?
+      render partial: "rentals/photo_show", locals: {file_url: @featured_photo.file.url(:big)}
+    else
+      render :show
+    end
   end
 
   def edit

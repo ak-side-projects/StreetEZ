@@ -32,7 +32,7 @@
 
 		  <p class="price"><%= number_to_currency(@rental.monthly_rent, precision: 0) %><p class="for-rent">FOR RENT</p></p>
 			<span class="detail-cells group">
-			  <p class="bed"><%= @rental.num_bedrooms %> bed</p>
+			  <p class="bed"><%= @rental.num_bedrooms.to_s %> bed</p>
 			  <p class="bath"><%= @rental.num_bathrooms %> bath</p>
 			  <p class="sq-ft"><%= number_with_delimiter(@rental.sq_footage) %> ft<sup>2</sup></p>
 			</span>
@@ -55,3 +55,21 @@
 		</div>
 	</section>
 </div>
+
+<script>
+	
+$(document).ready(function(){
+	
+	var $photoFeatured = $("#selected-photo")
+	var $photoList = $("#photo-list")
+	
+	$photoList.on("ajax:success", "a", function(event, data){
+		event.preventDefault();
+		console.log("data", data);
+		console.log('tag', $photoFeatured);
+		$photoFeatured.html(data);
+	});
+	
+});
+	
+</script>

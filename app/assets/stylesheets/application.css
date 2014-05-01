@@ -13,7 +13,7 @@
  */
 
 html, body, h1, h2, h3, h4, ul, ol, li, div, 
-span, a, img, p, select, option, form, label,
+span, a, figure, img, p, select, option, form, label,
 table, thead, tr, th, tbody, td {
 	margin: 0;
 	padding: 0;
@@ -579,14 +579,25 @@ input[type="submit"] {
 	
 	.rental-photos-and-description .rental-photos .selected-photo {
 		width: 550px;
+		height: 400px;
 	}
 	
-	.rental-show .photo-thumbs-wrap {
+	.photo-thumbs-wrap {
 		padding: 15px;
+	}
+	
+	.photo-thumbs-wrap > ul > li {
+		float: left;
+		padding: 5px;
+	}
+	
+	a.photo-thumb-link {
+		display: block;
 	}
 	
 	.rental-show .photo-thumbs {
 		width: 100px;
+		height: 75px;
 	}
 	
 	.rental-info {

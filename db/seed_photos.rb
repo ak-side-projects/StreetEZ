@@ -20,7 +20,7 @@ EXTERIOR = [
 LIVING_ROOMS = [
   'http://gunkelmans.com/wp-content/gallery/residential/living-room-overall-resized.jpg',
   
-  'http://nijihomedesign.com/wp-content/uploads/2012/11/Contemporary-Living-Room-Design-New-York-Apartment.jpg',
+  'http://cdn.zjsnbxg.com/images/juliewarburtondesign.com/main/wp-content/gallery/nyc/nyclivingroomsouth.jpg',
   
   'http://st.houzz.com/simgs/966191e70f3d6f9c_4-6680/contemporary-living-room.jpg',
   
@@ -111,11 +111,11 @@ BEDROOMS = [
 
   'http://www.homegue.com/wp-content/uploads/2011/05/modern_apartment_interior_by_stanic_harding_05.jpg',
 
-  'http://ausvegan.com/search/apartment-architecture-interior-living-room-furniture-best-idea-decoration-interior-licious-white-apartment-interior-sweden-bedroom-idea-how-to-best-design-ideas-for-efficiency-apartment-concept/',
-
   'http://www.asucssi.com/wp-content/uploads/2013/12/amazing-small-apartment-bedroom-tv-interior-design-.jpg',
 
   'http://bedroomkitchen.com/wp-content/uploads/2013/12/apartment-interior-design-14.jpg',
+  
+  'http://recommend.travel/files/2013/05/AKA-Outdoor-Bedroom-FINAL1-e1368113354211.jpg',
 
   'http://www.timticks.com/wp-content/uploads/apartment-bedroom-interior-design.jpg'
 ]

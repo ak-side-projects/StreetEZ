@@ -1,3 +1,7 @@
+require 'faker'
+require_relative 'seed_photos'
+include Timeout
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or create!d alongside the db with db:setup).
 #
@@ -6,11 +10,10 @@
 #   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
 
-num_bedrooms = ["Studio", 1, 2, 3, 4]
+NUM_BEDROOMS = [1, 2, 3, 4]
+NUM_BATHROOMS = [1, 2, 3, 4]
 
-num_bathrooms = [1, 2, 3, 4]
-
-neighborhoods = [
+NEIGHBORHOODS_LIST = [
   "Chelsea",
   "Flatiron",
   "Gramercy",
@@ -18,55 +21,77 @@ neighborhoods = [
   "Greenwich Village",
   "Union Square",
   "East Village",
-  "Noho",
-  "Tribeca",
-  "Soho",
+  "NoHo",
+  "TriBeCa",
+  "SoHo",
   "Lower East Side"
 ]
 
-yelp_session = YelpSession.new
-yelp_json = yelp_session.get_json_response
+YELP_SESSION = YelpSession.new
+YELP_JSON = YELP_SESSION.get_json_response
 
-def generate_user(num)
+def generate_user!(num)
+  puts "creating user: #{num}"
   user = User.new(
   email: "user#{num}@example.com", 
   name: Faker::Name.name, 
   password: "password")
   user.save!
   
-  10.times { generate_rental(user.id) }
+  5.times do |i|
+    puts "creating rental: #{i}"
+    generate_rental!(user)
+  end
 end
 
-def generate_rental(user_id)
+def generate_rental!(user)
   neighborhood = ""
   business = {}
-  until neighborhoods.include?(neighborhood)
-    business = yelp_json['busineses'].sample
+  
+  until NEIGHBORHOODS_LIST.include?(neighborhood)
+    business = YELP_JSON['businesses'].sample
     neighborhood = business['location']['neighborhoods'].first
   end
   
-  rental = Rental.create!(
-  num_bedrooms: num_bedrooms.sample,
-  num_bathrooms: num_bathrooms.sample,
-  sq_footage: rand(300..2000),
-  monthly_rent: rand(1000..10000),
-  owner_id: user_id,
+  puts "neighborhood: #{neighborhood}"
+  
+  rental = user.owned_rentals.create!(
+  num_bedrooms: NUM_BEDROOMS.sample,
+  num_bathrooms: NUM_BATHROOMS.sample,
+  sq_footage: rand(300..2500).round(-1),
+  monthly_rent: rand(1000..10000).round(-2),
   neighborhood: neighborhood
   )
   
-  address = rental.address.create!(
-  street: business['location']['display_address'].first
-  unit: rand(1..30)
-  city: business['location']['city']
-  state: business['location']['state_code']
-  zipcode: business['location']['postal_code'].to_i
+  Address.create!(
+  street: business['location']['display_address'].first,
+  unit: rand(1..30),
+  city: business['location']['city'],
+  state: business['location']['state_code'],
+  zipcode: business['location']['postal_code'].to_i,
+  rental_id: rental.id
   ) 
   
-  #living room photo
-  living_room_url = LIVING_ROOMS.sample
-  photo = rental.photos.new()
-  photo.picture_from_url(living_room_url)
-  photo.save!
+  #create photos
+  urls = []
+  urls << LIVING_ROOMS.sample
+  urls << LIVING_ROOMS.sample
+  urls << BEDROOMS.sample
+  urls << BATHROOMS.sample
+  
+  urls.each do |url|
+    begin
+      Timeout::timeout(25){
+        puts "working on this photo: #{url}"
+        photo = rental.photos.new()
+        photo.picture_from_url(url)
+        photo.save!  
+      }
+    rescue
+      puts "missed this photo: #{url}"
+      retry
+    end
+  end
   
   #second living room photo for every other rental
   if rental.id % 2 == 0
@@ -76,27 +101,6 @@ def generate_rental(user_id)
     photo.save!
   end
   
-  #kitchen photo
-  kitchen_url = LIVING_ROOMS.sample
-  photo = rental.photos.new()
-  photo.picture_from_url(kitchen_url)
-  photo.save!
-
-  
-  #bedroom photo
-  bedroom_url = BEDROOMS.sample
-  photo = rental.photos.new()
-  photo.picture_from_url(bedroom_url)
-  photo.save!
-
-  
-  #bathroom photo
-  bathroom_url = BATHROOMS.sample
-  photo = rental.photos.new()
-  photo.picture_from_url(bathroom_url)
-  photo.save!
-
-  
   # exterior for every other rental
   if rental.id % 2 == 0
     exterior_url = EXTERIOR.sample
@@ -104,20 +108,14 @@ def generate_rental(user_id)
     photo.picture_from_url(exterior_url)
     photo.save!
   end
+  
+  return rental
 end
 
-
-num_users = (Rails.env.production? ? 25 : 5)
-
+num_users = (Rails.env.production? ? 25 : 3)
 num_users.times do |i|
-  generate_user(i)
+  generate_user!(i)
 end
-
-
-
-
-
-
 
 
 # u1 = User.create!(email: "user1@example.com", name: "User1", password: "123456")
@@ -165,7 +163,7 @@ end
 # Photo.create!(file: File.open(Rails.root.join('public', 'seed_photos', '24.jpg')), rental_id: r6.id)
 # Photo.create!(file: File.open(Rails.root.join('public', 'seed_photos', '25.jpg')), rental_id: r6.id)
 
-Message.create!(sender_id: u1.id, recipient_id: u2.id, body: "message from user 1 to user 2")
-Message.create!(sender_id: u2.id, recipient_id: u1.id, body: "message from user 2 to user 1")
-Message.create!(sender_id: u1.id, recipient_id: u3.id, body: "message from user 1 to user 3")
-Message.create!(sender_id: u3.id, recipient_id: u1.id, body: "message from user 3 to user 1")
+# Message.create!(sender_id: u1.id, recipient_id: u2.id, body: "message from user 1 to user 2")
+# Message.create!(sender_id: u2.id, recipient_id: u1.id, body: "message from user 2 to user 1")
+# Message.create!(sender_id: u1.id, recipient_id: u3.id, body: "message from user 1 to user 3")
+# Message.create!(sender_id: u3.id, recipient_id: u1.id, body: "message from user 3 to user 1")

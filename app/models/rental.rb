@@ -8,13 +8,13 @@ class Rental < ActiveRecord::Base
     "Greenwich Village",
     "Union Square",
     "East Village",
-    "Noho",
-    "Tribeca",
-    "Soho",
+    "NoHo",
+    "TriBeCa",
+    "SoHo",
     "Lower East Side"
   ]
 
-  NUM_BEDROOMS = ["Studio", 1, 2, 3, 4]
+  NUM_BEDROOMS = [1, 2, 3, 4]
 
   NUM_BATHROOMS = [1, 2, 3, 4]
   
