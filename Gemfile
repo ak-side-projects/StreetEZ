@@ -55,8 +55,16 @@ gem 'omniauth-facebook'
 gem 'geocoder'
 
 #access other APIs
+gem 'oauth'
 gem 'nokogiri'
 gem 'addressable'
+gem 'launchy'
+
+#paginate
+gem 'kaminari'
+
+#create seeds
+gem 'faker'
 
 
 group :development, :test do
@@ -71,7 +79,6 @@ end
 
 group :test do
   gem 'guard-rspec'
-  gem 'faker'
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers'

@@ -10,59 +10,33 @@
 
 <script>
 $(document).ready(function() {
+	
+	//bind DOM elements
 	var $searchCriteriaForm = $("#search-criteria-form");
 	var $searchResults = $("#search-results-ul");
 	var $searchPage = $("#search-page")
-	var $map = $("#map")
+	var $map = $(".map")
+	var scrollMap = function() {
+		// format map to scroll as window scrolls
+		$(window).scroll(function(){
+	    if($(window).scrollTop() > 580){
+				console.log('map', $('.map'))
+	        $map.addClass("map-scroll");
+	    } else {
+	        $map.removeClass("map-scroll");
+	    }
+	  });
+	}
 	
-	// format map to scroll as window scrolls
-	$(window).scroll(function(){
-    if($(window).scrollTop() > 580){
-        $('#map').addClass("map-scroll");
-    } else {
-        $('#map').removeClass("map-scroll");
-    }
-  });
-	
+	// define initial geojson
 	var geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>;
 	
-	map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
-
-	map.featureLayer.setGeoJSON(geoJSON);
-	map.fitBounds(map.featureLayer.getBounds());
-	map.scrollWheelZoom.disable();
-	map.invalidateSize();	
-	map.featureLayer.on('click', function(e) {
-	        map.panTo(e.layer.getLatLng());
-	    });	
-	
-	map.featureLayer.on('mouseover', function(e) {
-	    e.layer.openPopup();
-	});
-	if (map._zoom > 15) { map.setZoom(15) }	
-  map.featureLayer.eachLayer(
-    function(marker){
-      var rentalID = marker.feature.properties["marker-id"];
-      $("a[data-id=" + rentalID + "]").hover(function(){
-        map.panTo(marker.getLatLng());
-        marker.openPopup()
-      })
-    }    
-  )
-	
-	$searchCriteriaForm.on("ajax:success", function(event, data){
-		$searchResults.html(data);
-		map.featureLayer.setGeoJSON(window.geoJSON);
-		createMap();
-	});
-	
-	var createMap = function() {
+	// function to format map
+	var formatMap = function() {
 		map.fitBounds(map.featureLayer.getBounds());
 		map.scrollWheelZoom.disable();
 		map.invalidateSize();
-		
 		if (map._zoom > 15) { map.setZoom(15) }
-		
 	  map.featureLayer.eachLayer(
 	    function(marker){
 	      var rentalID = marker.feature.properties["marker-id"];
@@ -73,5 +47,20 @@ $(document).ready(function() {
 	    }    
 	  )
 	}
+
+	scrollMap();
+	var map = L.mapbox.map('map', 'andrewkv19.i3khopgf');
+	map.featureLayer.setGeoJSON(geoJSON);
+	formatMap();
+	
+	$searchCriteriaForm.on("ajax:success", function(event, data){
+		event.preventDefault();
+		scrollMap();
+		$searchResults.html(data);
+		map.featureLayer.setGeoJSON(window.geoJSON);
+		formatMap();
+	});
+	
+	
 });
 </script>
