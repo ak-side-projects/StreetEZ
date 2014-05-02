@@ -5,15 +5,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      confirmation_code = rand(10 ** 6).to_s
-      @user.update(text_confirmation_code: confirmation_code)
-      send_text(@user.mobile_number, "Please enter the following code on the page: #{confirmation_code}.")
-      render :confirm_code
+    mobile_number = user_params[:mobile_number].gsub(/\D/,"")
+    if mobile_number.length == 10
+      @user = User.new(user_params)
+      if @user.save
+        confirmation_code = rand(10 ** 6).to_s
+        @user.update(text_confirmation_code: confirmation_code)
+        send_text(@user.mobile_number, "Please enter the following code on the page: #{confirmation_code}.")
+        render :confirm_code
+      else
+        flash.now[:errors] = @user.errors.full_messages
+        render :new
+      end
     else
-      flash.now[:errors] = @user.errors.full_messages
+      @user = User.new
+      flash.now[:errors] = ["Please enter a valid 10 digit number."]
       render :new
     end
   end
