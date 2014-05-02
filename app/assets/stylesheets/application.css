@@ -61,7 +61,8 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="number"],
-input[type="file"] {
+input[type="file"],
+input[type="tel"] {
   -webkit-appearance: none;
   box-sizing: content-box;
   display: inline-block;

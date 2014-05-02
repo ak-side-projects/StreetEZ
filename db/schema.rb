@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428195215) do
+ActiveRecord::Schema.define(version: 20140502141939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,15 +122,18 @@ ActiveRecord::Schema.define(version: 20140428195215) do
   add_index "saved_rentals", ["user_id"], name: "index_saved_rentals_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",               null: false
-    t.string   "password_digest",     null: false
-    t.string   "session_token",       null: false
+    t.string   "email",                                  null: false
+    t.string   "password_digest",                        null: false
+    t.string   "session_token",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                null: false
+    t.string   "name",                                   null: false
     t.integer  "notifications_count"
     t.string   "provider"
     t.string   "uid"
+    t.string   "mobile_number"
+    t.string   "text_confirmation_code"
+    t.boolean  "is_confirmed",           default: false
   end
 
 end

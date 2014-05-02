@@ -42,9 +42,11 @@ LIVING_ROOMS = [
 
   'http://www.elikarealestate.com/images/luxury-new-york-city-condo-apartments.jpg',
 
-  'http://plushinteriordesign.com/wp-content/uploads/2013/07/Flat-Apartment-Interior-Design-by-West-Chin-Architect.jpg',
-
-  'http://plushinteriordesign.com/wp-content/uploads/2013/07/apartment-interior-design-by-duophoni.jpg',
+  'http://www.newyorkmarkt.com/images/2011/08/Luxury-Apartment-Living-Room-Furniture-Design-RiverEast-Upper-East-Side-Manhattan-NYC.jpg',
+  
+  'http://www.tophomedecoration.com/wp-content/uploads/2014/03/apartments-startling-white-and-brown-art-deco-apartment-design-inspiration-nyc-apartment-decorating-ideas.jpg',
+  
+  'http://cdn.zjsnbxg.com/images/frachelli.com/wp-content/uploads/2013/02/nyc-central-park-west-apartment-living-room.jpeg',
 
   'http://www.idesignarch.com/wp-content/uploads/Alvhem-Apartment-Interior-Design_4.jpg',
 

@@ -91,7 +91,11 @@ class User < ActiveRecord::Base
       self.password_digest = BCrypt::Password.create(password)
     end
   end
-
+  
+  def is_confirmed?
+    self.is_confirmed
+  end
+  
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token

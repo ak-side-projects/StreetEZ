@@ -2,10 +2,13 @@ StreetEZ::Application.routes.draw do
 
   root to: "rentals#home"
   
-  get "static_pages/about"
-  get "static_pages/help"
+  get   "static_pages/about"
+  get   "static_pages/help"
   
-  get 'auth/facebook/callback', to: 'omniauthcallbacks#create'
+  get   "auth/facebook/callback", to: "omniauthcallbacks#create"
+  
+  post   "twilio/outbound" => "twilio#outbound"
+  post   "twilio/new" => "twilio#new"
   
   resources :users, only: [:new, :create, :show]
 

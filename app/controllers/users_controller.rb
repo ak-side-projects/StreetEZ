@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      sign_in!(@user)
-      redirect_to root_url
+      confirmation_code = rand(10 ** 6).to_s
+      @user.update(text_confirmation_code: confirmation_code)
+      send_text(@user.mobile_number, "Please enter the following code on the page: #{confirmation_code}.")
+      render :confirm_code
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -24,6 +26,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :name, :password)
+    params.require(:user).permit(:email, :name, :mobile_number, :password)
   end
 end

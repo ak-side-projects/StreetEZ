@@ -66,6 +66,9 @@ gem 'kaminari'
 #create seeds
 gem 'faker'
 
+#twilio text messaging
+gem 'twilio-ruby'
+
 
 group :development, :test do
   #gems to help with debugging

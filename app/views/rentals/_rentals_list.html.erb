@@ -9,6 +9,8 @@
 		window.geoJSON = <%= (render partial: "/rentals/geolistings.json.jbuilder", locals: {rentals: @rentals}).html_safe %>
 	</script>
 	
-	<div class="map" id="map"></div>
+	<div class="map-wrap" id="map-wrap">
+		<div class="map" id="map"></div>
+	</div>
 
 </section>

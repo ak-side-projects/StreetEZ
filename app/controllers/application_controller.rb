@@ -26,4 +26,14 @@ class ApplicationController < ActionController::Base
   def require_signed_in!
     redirect_to new_session_url unless signed_in?
   end
+  
+  def send_text(receiver, body)
+    client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"]
+
+    client.account.messages.create(
+      :from => ENV["TWILIO_NUMBER"],
+      :to => receiver,
+      :body => body
+    )
+  end
 end
