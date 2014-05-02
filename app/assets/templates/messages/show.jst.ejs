@@ -12,12 +12,12 @@
 		        <p class="user"><%= message.sender.get('name') + ":" %></p>
 		      <% } %>
 		      <p class="datetime">
-						<%= moment(message.get('created_at')).fromNow(); %>
+						<%= moment(message.get('created_at')).fromNow() %>
 					</p>
 					</header>
 	      
 		      <p class="message-body"><%= message.get('body') %></p>
 			</li>
-		<% }); %>
+		<% }) %>
 	</ul>
 </main>
