@@ -38,7 +38,7 @@ def generate_user!(num)
   password: "password")
   user.save!
   
-  5.times do |i|
+  10.times do |i|
     puts "creating rental: #{i}"
     generate_rental!(user)
   end
@@ -112,7 +112,7 @@ def generate_rental!(user)
   return rental
 end
 
-num_users = (Rails.env.production? ? 25 : 3)
+num_users = (Rails.env.production? ? 15 : 3)
 num_users.times do |i|
   generate_user!(i)
 end
