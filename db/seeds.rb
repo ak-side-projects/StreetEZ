@@ -1,5 +1,6 @@
 require 'faker'
 require_relative 'seed_photos'
+require 'yelp_api'
 include Timeout
 
 # This file should contain all the record creation needed to seed the database with its default values.
