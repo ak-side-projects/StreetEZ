@@ -6,6 +6,7 @@ class TwilioController < ApplicationController
     if @user.text_confirmation_code == user_params[:text_confirmation_code]
       @user.is_confirmed = true
       sign_in!(@user)
+      send_text(@user.mobile_number, "Thanks for signing up with StreetEZ! We are very excited to help you with your apartment search.")
       redirect_to :root
     else
       confirmation_code = rand(10 ** 6).to_s

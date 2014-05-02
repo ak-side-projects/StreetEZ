@@ -6,7 +6,7 @@
 	  <% messages.each(function(message) { %>
 		    <li>
 					<header class="message-header group">
-		      <% if (StreetEZ.currentUser === message.get('sender')) { %>
+		      <% if (parseInt(StreetEZ.currentUser.get('id')) === parseInt(message.sender.get('id'))) { %>
 		        <p class="user"><%= "You:" %></p>
 		      <% } else { %>
 		        <p class="user"><%= message.sender.get('name') + ":" %></p>
