@@ -293,7 +293,6 @@ DEPENDENCIES
   launchy
   nokogiri
   oauth
-  omniauth
   omniauth-facebook
   paperclip
   pg
