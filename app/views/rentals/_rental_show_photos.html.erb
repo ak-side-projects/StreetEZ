@@ -2,12 +2,12 @@
 	  <% if rental.photos.first %>
 			<%= render "photo_show", file_url: featured_photo.file.url(:big) %>
 		
-			<div class="photo-thumbs-wrap group">
+			<div class="photo-thumbs-wrap grou">
 	    	<ul class="group" id="photo-list">
 					<% rental.photos.each do |photo| %>
 						<li>
 							<a class="photo-thumb-link" href="<%= rental_url(rental.id, photo_id: photo.id) %>" data-remote="true">
-					      <img class="photo-thumbs" src="<%= photo.file.url(:big) %>" alt="apartment rental photo">
+					      <img class="photo-thumbs" data-url="<%= photo.file.url(:big) %>" src="<%= photo.file.url(:big) %>" alt="apartment rental photo">
 							</a>
 						</li>
 			    <% end %>

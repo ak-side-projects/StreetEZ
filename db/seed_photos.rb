@@ -44,8 +44,6 @@ LIVING_ROOMS = [
 
   'http://plushinteriordesign.com/wp-content/uploads/2013/07/Flat-Apartment-Interior-Design-by-West-Chin-Architect.jpg',
 
-  'http://plushinteriordesign.com/wp-content/uploads/2013/07/apartment-interior-designs-living-room.jpg',
-
   'http://plushinteriordesign.com/wp-content/uploads/2013/07/apartment-interior-design-by-duophoni.jpg',
 
   'http://www.idesignarch.com/wp-content/uploads/Alvhem-Apartment-Interior-Design_4.jpg',

@@ -1,10 +1,14 @@
 class SavedRentalsController < ApplicationController
 
   def create
-    current_user.saves.create(saved_rental_params)
+    @saved_rental = current_user.saves.create(saved_rental_params)
     
-    back = request.env["HTTP_REFERER"]
-    redirect_to back
+    if request.xhr?
+      render json: @saved_rental
+    else
+      back = request.env["HTTP_REFERER"]
+      redirect_to back
+    end
   end
 
   def destroy
@@ -14,10 +18,16 @@ class SavedRentalsController < ApplicationController
       rental_id = params[:id]
     end
     user_id = current_user.id
-    SavedRental.find_by(user_id: user_id, rental_id: rental_id).destroy
+    @saved_rental = SavedRental.find_by(user_id: user_id, rental_id: rental_id)
+    @saved_rental.active = false
+    @saved_rental.destroy
     
-    back = request.env["HTTP_REFERER"]
-    redirect_to back
+    if request.xhr?
+      render json: @saved_rental
+    else
+      back = request.env["HTTP_REFERER"]
+      redirect_to back
+    end
   end
 
   def saved_rental_params

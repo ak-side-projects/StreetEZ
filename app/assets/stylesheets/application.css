@@ -81,6 +81,13 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+/* ERRORS */
+
+	div.error {
+		color: #FF7373;
+		padding-top: 10px;
+	}
+
 /*SIGN UP & SIGN IN*/
 
 	div.sign-up, div.sign-in {
@@ -149,12 +156,21 @@ input[type="submit"] {
 	
 	a.facebook {
 	  display: inline-block;
-	  background: #1466B2;
-	  color: #fff;
-	  padding: 10px 20px;
-		margin: 15px 10px;
+/*	  background: #1466B2;*/
+/*	  color: #fff;*/
+/*	  padding: 10px 20px;*/
+/*		margin: 15px 10px;*/
 	  border-radius: 0;
-	  font-weight: bold
+/*	  font-weight: bold*/
+	}
+	
+	.facebook-login {
+		position: relative;
+		left: -7px;
+		top: -10px;
+		padding: 0;
+		width: 200px;
+		height: auto;
 	}
 
 /* USERBAR & NAVBAR */
@@ -208,6 +224,10 @@ input[type="submit"] {
 		padding: 5px;
 		width: 150px;
 		text-align: left;
+	}
+	
+	.fa-caret {
+		width: 8px;
 	}
 	
 	.userbar-dropdown > li > form > input[type="submit"] {
@@ -273,7 +293,7 @@ input[type="submit"] {
 	}
 	
 	a.sign-in,
-	a.new-rental, 
+	a.new-rental,
 	form.saved-rental > input,
 	form.create-rental > input.submit,
 	a.edit-rental, 
@@ -293,8 +313,9 @@ input[type="submit"] {
 	}
 	
 	a.sign-in:hover,
-	a.facebook:hover, 
 	a.new-rental:hover, 
+	form.save-rental-form > input:hover,
+	form.unsave-rental-form > input:hover,
 	form.saved-rental > input:hover,
 	form.create-rental > input.submit:hover,
 	a.edit-rental:hover, 
@@ -308,8 +329,9 @@ input[type="submit"] {
 	}
 
 	a.sign-in:active,
-	a.facebook:active,
-	a.new-rental:active, 
+	a.new-rental:active,
+	form.save-rental-form > input:active,
+	form.unsave-rental-form > input:active,
 	form.saved-rental > input:active,
 	form.create-rental > input.submit:active,
 	a.edit-rental:active, 
@@ -457,7 +479,7 @@ input[type="submit"] {
 		padding: 10px 0;
 	}
 	
-	/* USED IN LOtS OF PLACES */
+	/* USED IN LOTS OF PLACES */
 	p {
 		color: black;
 		padding-bottom: 3px;
@@ -638,6 +660,27 @@ input[type="submit"] {
 	
 	.rental-show .created-at {
 		padding: 5px 0;
+	}
+	
+	form.save-rental-form > input,
+	form.unsave-rental-form > input {
+	  background: #1466B2;
+	  color: #fff;
+	  padding: 10px 20px;
+		margin: 15px 0;
+	  border-radius: 0;
+	  font-weight: bold;
+	}
+	
+	.save-rental-form,
+	.is-saved .unsave-rental-form {
+		display: block;
+		
+	}
+	
+	.unsave-rental-form,
+	.is-saved .save-rental-form {
+		display: none;
 	}
 	
 	/* OPEN HOUSE */
@@ -980,6 +1023,12 @@ input[type="submit"] {
 		font-weight: bold;
 	}
 	
+	.hosting-open-houses .no-open-houses,
+	.attending-open-houses .no-open-houses {
+		width: 450px;
+		text-align: center;
+	}
+	
 	.hosting-open-houses > ul > li,
 	.attending-open-houses > ul > li {
 		display: block;
@@ -1048,6 +1097,13 @@ input[type="submit"] {
 	.owned-rentals > h4,
 	.saved-rentals > h4 {
 		font-weight: bold;
+	}
+	
+	.owned-rentals .no-rentals,
+	.saved-rentals .no-rentals {
+		width: 450px;
+		padding: 15px 10px;
+		text-align: center;
 	}
 	
 	.owned-rentals > ul > li,

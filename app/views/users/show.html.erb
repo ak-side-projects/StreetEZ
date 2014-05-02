@@ -13,16 +13,30 @@
 		
 		<div class="owned-rentals group">
 		  <h4>Owned</h4>
-			<% @user.owned_rentals.active.each do |owned_rental| %>
-		  	<%= render "rental", rental: owned_rental %>
-		  <% end %>
+			<ul class="rentals-list">
+				<% if @user.owned_rentals.empty? %>
+					<li class="no-rentals">
+						No Rentals Listed
+					</li>
+				<% end %>
+				<% @user.owned_rentals.active.each do |owned_rental| %>
+			  	<%= render "rental", rental: owned_rental %>
+			  <% end %>
+			</ul>
 		</div>
 
 		<div class="saved-rentals group">
 		  <h4>Saved</h4>
-		  <% @user.saved_rentals.active.each do |saved_rental| %>
-				<%= render "rental", rental: saved_rental %>
-			<% end %>
+			<ul class="rentals-list">
+				<% if @user.saved_rentals.empty? %>
+					<li class="no-rentals">
+						No Saved Rentals
+					</li>
+				<% end %>
+			  <% @user.saved_rentals.active.each do |saved_rental| %>
+					<%= render "rental", rental: saved_rental %>
+				<% end %>
+			</ul>
 		</div>
 	</section>
 </div>

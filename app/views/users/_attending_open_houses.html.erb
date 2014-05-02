@@ -1,8 +1,13 @@
 <div class="attending-open-houses">
   <h4>Attending</h4>
-	<% open_houses.each do |open_house| %>
-		<ul>
+	<ul>
+		<% if open_houses.empty? %>
+			<li class="no-open-houses">
+				No Open Houses Scheduled
+			</li>
+		<% end %>
+		<% open_houses.each do |open_house| %>
 			<%= render "show_open_house", open_house: open_house %>
-		</ul>
-	<% end %>
+		<% end %>
+	</ul>
 </div>

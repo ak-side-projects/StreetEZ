@@ -1,14 +1,16 @@
-<% if current_user.saved_rentals.include?(rental) %>
-  <form class="saved-rental" action="<%= saved_rental_url(current_user.saved_rentals.where(id: @rental.id)) %>" method="post">
-		<input type="hidden" name="_method" value="delete">
-    <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
-    <%= auth_token %>
-    <input type="submit" value="Remove from profile">
-  </form>
-<% else %>
-  <form class="saved-rental" action="<%= saved_rentals_url %>" method="post">
-    <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
-    <%= auth_token %>
-    <input type="submit" value="Save to profile">
-  </form>
-<% end %>
+<div class="<%= "is-saved" if current_user.saved_rentals.include?(rental) %>" id="saved-rental-wrap">
+	  
+		<form class="unsave-rental-form" action="<%= saved_rental_url(current_user.saved_rentals.where(id: @rental.id)) %>" method="post" data-remote="true">
+			<input type="hidden" name="_method" value="delete">
+	    <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
+	    <%= auth_token %>
+	    <input type="submit" value="Remove from profile">
+	  </form>
+	
+	  <form class="save-rental-form" action="<%= saved_rentals_url %>" method="post" data-remote="true">
+	    <input type="hidden" name="saved_rental[rental_id]" value="<%= rental.id %>">
+	    <%= auth_token %>
+	    <input type="submit" value="Save to profile">
+	  </form>
+		
+</div>

@@ -1,6 +1,6 @@
 <div class="rental-show">	
 	<section class="rental-info-and-photos group">
-	  <div class="rental-info">
+	  <div class="rental-info" id="rental-info">
 			
 			<div class="action-buttons group">
 				<% if @rental.owner == current_user %>
@@ -60,15 +60,24 @@
 	
 $(document).ready(function(){
 	
-	var $photoFeatured = $("#selected-photo")
+	var $featuredImage = $("#featured-image")
 	var $photoList = $("#photo-list")
+	var $savedRentalWrap = $("#saved-rental-wrap")
+	var $rentalInfo = $("#rental-info")
 	
-	$photoList.on("ajax:success", "a", function(event, data){
+	$photoList.on("click", "img", function(event){
 		event.preventDefault();
-		console.log("data", data);
-		console.log('tag', $photoFeatured);
-		$photoFeatured.html(data);
+		var src = $(event.target).data("url")
+		$featuredImage.attr("src", src)
 	});
+	
+	$savedRentalWrap.on("ajax:success", function(event, data){
+		if (data.active) {
+			$savedRentalWrap.addClass("is-saved")
+		} else {
+			$savedRentalWrap.removeClass("is-saved")
+		}
+	})
 	
 });
 	

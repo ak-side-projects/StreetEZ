@@ -37,18 +37,21 @@
 		<div class="bed-bath group">	
 			<div class="beds">
 				<h4>Beds</h4>
-			  <select class="search" name="rental[num_bedrooms]">
-			    <option value="">Select Number of Bedrooms</option>
-					<% Rental::NUM_BEDROOMS.each do |bed| %>
-						<option 
-							value="<%= bed %>"
-							<% if params.try(:[], :rental).try(:[], :num_bedrooms) == bed.to_s %>
-								selected="selected"
-							<% end  %>>
-							<%= bed %>
-						</option>
-					<% end %>
-			  </select>
+				<div>
+				  <select class="search" name="rental[num_bedrooms]">
+				    <option value="">Select Number of Bedrooms</option>
+						<% Rental::NUM_BEDROOMS.each do |bed| %>
+							<option 
+								value="<%= bed %>"
+								<% if params.try(:[], :rental).try(:[], :num_bedrooms) == bed.to_s %>
+									selected="selected"
+								<% end  %>>
+								<%= bed %>
+							</option>
+						<% end %>
+				  </select>
+					<i class="fa fa-caret-down"></i>
+				</div>
 			</div>
 
 			<div class="baths">

@@ -10,6 +10,9 @@
 	      <p class="body">Message</p>
 				<p class="datetime">Date & Time</p>
 	    </li>
+			<% if (receivedMessages.length === 0) { %>
+				<li>No Messages</li>
+			<% } %>
 			<% receivedMessages.forEach(function(message) { %>
 				<li class="message">
 					<a class="message-link group" href="#/<%= message.get('id') %>">
@@ -33,6 +36,9 @@
 	      <p class="body">Message</p>
 				<p class="datetime">Date & Time</p>
 	    </li>
+			<% if (sentMessages.length === 0) { %>
+				<li>No Messages</li>
+			<% } %>
 			<% sentMessages.forEach(function(message) { %>
 				<li class="message">
 					<a class="message-link group" href="#/<%= message.get('id') %>">

@@ -2,7 +2,8 @@ class OpenHouse < ActiveRecord::Base
     
   scope :active, -> { where(active: true) }
   
-  validates :rental_id, :event_datetime, presence: true
+  validates :rental_id, presence: true
+  validates :event_datetime, presence: { message: "Please fill out the date and time in the appropriate fields."}
   
   belongs_to :rental, inverse_of: :open_houses
   

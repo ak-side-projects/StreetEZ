@@ -6,6 +6,7 @@
 	
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
@@ -23,14 +24,16 @@
 				  
 						<li><a href="<%= messages_url %>">Messages</a></li>
 				  
-						<li>
+						<li id="user-email">
 							<a href="<%= user_url(current_user.id) %>">
 								<strong><%= current_user.email %></strong>
+								<i class="fa fa-caret fa-caret-left" id="caret"></i>
 							</a>
 							<ul class="userbar-dropdown">
 								<li>
 									<a href="<%= user_url(current_user.id) %>">My Account</a>
 								</li>
+								
 								<li>
 								<% if !current_user.uid.present? %>
 										<a href="/auth/facebook">Link Facebook Account</a>
@@ -38,6 +41,7 @@
 										<p>Facebook Account Linked</p>
 								<% end %>
 								</li>
+								
 								<li>
 									<form action="<%= session_url %>" method="post">
 										<input type="hidden" name="_method" value="delete">
@@ -84,3 +88,23 @@
 
 </body>
 </html>
+
+
+<script>
+	
+$(document).ready(function() {
+	
+	$userEmail = $("#user-email")
+	$caret = $("#caret")
+	
+	$userEmail.hover(function(){
+		$caret.removeClass("fa-caret-left")
+		$caret.addClass("fa-caret-down")
+	}, function(){
+		$caret.removeClass("fa-caret-down")
+		$caret.addClass("fa-caret-left")
+	});
+	
+});
+	
+</script>

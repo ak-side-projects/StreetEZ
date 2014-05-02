@@ -12,7 +12,9 @@
 				<a class="message-link group" href="<%= message_url(message.id) %>">
 	        <p class="user"><%= message.sender.name %></p>
 	        <p class="body"><%= message.body %></p>
-					<p class="datetime"><%= message.created_at.to_formatted_s(:short) %></p>
+					<p class="datetime">
+						<%= message.created_at.to_formatted_s(:short) %>
+					</p>
 		    </a>
       </li>
 	  <% end %>
