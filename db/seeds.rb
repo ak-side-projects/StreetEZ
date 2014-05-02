@@ -36,7 +36,8 @@ def generate_user!(num)
   user = User.new(
   email: "user#{num}@example.com", 
   name: Faker::Name.name, 
-  password: "password")
+  password: "password",
+  is_confirmed: true)
   user.save!
   
   10.times do |i|
