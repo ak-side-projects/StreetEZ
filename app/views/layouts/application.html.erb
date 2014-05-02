@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <title>StreetEZ</title>
-	
+
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -14,7 +14,6 @@
 	
 </head>
 <body>
-	
 	<header class="header group">
 		<div class="userbar-wrap group">
 			<div class="userbar">
@@ -27,7 +26,7 @@
 						<li id="user-email">
 							<a href="<%= user_url(current_user.id) %>">
 								<strong><%= current_user.email %></strong>
-								<i class="fa fa-caret fa-caret-left" id="caret"></i>
+								<i class="fa fa-caret fa-caret-down" id="caret"></i>
 							</a>
 							<ul class="userbar-dropdown">
 								<li>
@@ -97,13 +96,13 @@ $(document).ready(function() {
 	$userEmail = $("#user-email")
 	$caret = $("#caret")
 	
-	$userEmail.hover(function(){
-		$caret.removeClass("fa-caret-left")
-		$caret.addClass("fa-caret-down")
-	}, function(){
-		$caret.removeClass("fa-caret-down")
-		$caret.addClass("fa-caret-left")
-	});
+	// $userEmail.hover(function(){
+// 		$caret.removeClass("fa-caret-left")
+// 		$caret.addClass("fa-caret-down")
+// 	}, function(){
+// 		$caret.removeClass("fa-caret-down")
+// 		$caret.addClass("fa-caret-left")
+// 	});
 	
 });
 	
