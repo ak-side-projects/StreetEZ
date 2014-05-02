@@ -1126,6 +1126,7 @@ input[type="submit"] {
 	.owned-rentals .rental-thumbnail-header img,
 	.saved-rentals .rental-thumbnail-header img {
 		height: 100px;
+		width: 150px;
 	}
 	
 	.owned-rentals .user-action-buttons,
