@@ -48,7 +48,6 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 #omniauth
-gem 'omniauth'
 gem 'omniauth-facebook'
 
 #map features
