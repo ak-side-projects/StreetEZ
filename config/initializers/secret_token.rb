@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-StreetEZ::Application.config.secret_key_base = '8a2948dd8622bdfa8c984c2a7b718a1cbcbf56ed1adad9b93b8018c65a110221a4fe6290ebb5b856ecc959514d85db9ce54a101aa3333d47331ab3a7fa0a69d2'
+StreetEZ::Application.config.secret_key_base = ENV["MY_SECRET_KEY"]
