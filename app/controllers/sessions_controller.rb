@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
          confirmation_code = rand(10 ** 6).to_s
          @user.update(text_confirmation_code: confirmation_code)
          send_text(@user.mobile_number, "Please enter the following code on the page: #{confirmation_code}.")
-         render :confirm_code
+         render "twilio/confirm_code"
        end
      else
        flash.now[:errors] = ["Invalid email or password."]
