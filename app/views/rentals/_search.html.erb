@@ -1,5 +1,6 @@
 <div class="search" id="search-form-wrap">
-	<form class="search group" id="search-criteria-form" data-remote="true" action="<%= rentals_url %>" method="get">
+	<form 
+		class="search group" id="search-criteria-form" action="<%= rentals_url %>" method="get" <%= 'data-remote=true' if is_request_xhr %>>
 	
 		<div class="neighborhoods group">
 			<h4>Location</h4>

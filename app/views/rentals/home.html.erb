@@ -2,6 +2,6 @@
 
 <a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
 
-<%= render "search", rental: @rental, provided_url: rentals_url %>
+<%= render "search", provided_url: rentals_url, is_request_xhr: false %>
 
 <%= render "featured", rental_ex1: @rental_ex1, rental_ex2: @rental_ex2, rental_ex3: @rental_ex3 %>

@@ -3,7 +3,7 @@
 
 	<a class="new-rental" href="<%= new_rental_url %>">Post a new rental</a>
 
-	<%= render "search", provided_url: rentals_url %>
+	<%= render "search", provided_url: rentals_url, is_request_xhr: true %>
 </section>
 
 <%= render "rentals_list" %>
