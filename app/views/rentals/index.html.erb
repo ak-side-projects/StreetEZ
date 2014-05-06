@@ -37,8 +37,6 @@ $(document).ready(function() {
 	
 	// function to format map
 	var formatMap = function(callback) {
-		console.log('map', map);
-		console.log('$map', map);
 		map.scrollWheelZoom.disable();
 		map.invalidateSize();
 		map.fitBounds(map.featureLayer.getBounds());

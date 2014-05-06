@@ -24,10 +24,8 @@ class Message < ActiveRecord::Base
     recipient = self.recipient
     sender = self.sender
     
-    # notify recipient
     self.notifications.create(user_id: recipient.id, event_id: 1)
     
-    # notify sender
     self.notifications.create(user_id: sender.id, event_id: 2)
   end
 

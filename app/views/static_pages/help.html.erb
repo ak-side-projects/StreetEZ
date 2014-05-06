@@ -1,6 +1,47 @@
 <div class="help">
 	<h2>Help</h2>
 	
+	<article class="help group">
+		<label>We are here to help</label>
+		<p>
+			If you have any questions or just need more information, don't hesitate to reach out to us!
+		</p>
+	</article>
 	
+<form class="help-form" action="#" method="#">
+  <%= auth_token %>
+	
+	<div class="help-form">
+	  <label for="user_name">Name</label>
+	  <input
+	    id="user_name"
+	    type="name"
+	    name="help[name]">
+	</div>
+	
+	<div class="help-form">
+	  <label for="user_email">Email</label>
+	  <input
+	    id="user_email"
+	    type="email"
+	    name="help[email]">
+	</div>
+	
+	<div class="help-form">
+	  <label for="user_topic">Password</label>
+	  <input
+	    id="user_topic"
+	    type="text"
+	    name="help[topic]">
+	</div>
+	
+	<div class="help-form">
+	  <textarea class="help-message" name="help[message]" placeholder="What do you need help with?"></textarea>
+	</div>
+	
+	<div class="submit">
+	  <input type="submit" value="Submit">
+	</div>
+</form>
 	
 </div>

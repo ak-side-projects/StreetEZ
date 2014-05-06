@@ -4,4 +4,6 @@
 	<%= render "form", user: @user, provided_url: users_url %>
 	
 	<a class="facebook" href="/auth/facebook"><img class="facebook-login" src="<%= asset_path "facebook_login.png" %>" alt="facebook login"></a>
+	
+	<%= render "/sessions/demo_user" %>
 </div>

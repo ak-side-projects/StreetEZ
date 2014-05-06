@@ -46,7 +46,6 @@ ul {
 body {
 	padding: 5px 60px;
 	font-family: sans-serif;
-	width: 960px;
 }
 
 .group:after {
@@ -94,7 +93,7 @@ input[type="submit"] {
 	div.sign-up, div.sign-in {
 		background: #fff;
 		padding: 30px 40px;
-		margin: auto;
+		margin: 0 auto;
 		width: 275px;
 		border: 2px solid black;
 	}
@@ -157,12 +156,7 @@ input[type="submit"] {
 	
 	a.facebook {
 	  display: inline-block;
-/*	  background: #1466B2;*/
-/*	  color: #fff;*/
-/*	  padding: 10px 20px;*/
-/*		margin: 15px 10px;*/
 	  border-radius: 0;
-/*	  font-weight: bold*/
 	}
 	
 	.facebook-login {
@@ -175,6 +169,7 @@ input[type="submit"] {
 	}
 
 /* USERBAR & NAVBAR */
+	
 	.header {
 		border-bottom: 4px solid black;
 	}
@@ -249,10 +244,6 @@ input[type="submit"] {
 		width: 165px;;
 	}
 	
-/*	.userbar > ul > li:hover > ul > li {
-		
-	}*/
-	
 	.userbar-dropdown > li:hover > a,
 	.userbar-dropdown > li:hover > form {
 		text-decoration: underline;
@@ -273,9 +264,7 @@ input[type="submit"] {
 		font-size: 30px;
 		padding: 2px;
 		font-weight: bold;
-/*		background-color: #1466B2;*/
 		color: #fff;
-/*		border: 1px solid #1466B2;*/
 		border-radius: 0;
 	}
 	
@@ -365,12 +354,6 @@ input[type="submit"] {
 	.neighborhoods input {
 		margin-left: 0;
 	}
-	
-/*	.neighborhood label {
-		width: 190px;
-		padding-left: 5px;
-		text-indent: -10px;
-	}*/
 	
 	.neighborhood input {
 		width: 15px;
@@ -552,16 +535,13 @@ input[type="submit"] {
 		right: 0;
 		left: 560px;
 		height: 650px;
-		width: 400px;
 	}
 	
 	.map-scroll {
 		position: fixed;
 		top: 15px;
 		bottom: 15px;
-		right: 0;
-		height: 650px;
-		width: 400px;
+		right: 60px;
 		left: 620px;
 	}
 	
@@ -931,8 +911,6 @@ input[type="submit"] {
 	/* MESSAGE CONVERSATIONS */
 	
 	.message-conversation {
-/*		width: 900px;
-		margin: auto;*/
 		padding: 15px 0;
 	}
 	
@@ -972,7 +950,9 @@ input[type="submit"] {
 /* ABOUT */
 	
 	.about > article {
-		padding-top: 15px;
+		width: 800px;
+		padding-top: 25px;
+		font-size: 18px;
 	}
 	
 	.about > article > label {
@@ -992,6 +972,55 @@ input[type="submit"] {
 	
 	.about a {
 		color: #146AB9;
+	}
+	
+/* HELP */
+	
+	.help > article {
+		width: 800px;
+		padding-top: 25px;
+		font-size: 18px;
+	}
+	
+	.help > article > label {
+		display: block;
+		font-weight: bold;
+		padding-bottom: 5px;
+	}
+	
+
+	form.help-form {
+	  margin: 5px auto;
+		padding: 0px;
+		border-radius: 0;
+	}
+
+	.help-form {
+		margin: 20px 0;
+	}
+
+	.help-form > label {
+		display: block;
+		font-size: 16px;
+	}
+	
+	.help-form > input {
+	  border: 1px solid #000;
+	  padding: 5px;
+	  width: 240px;
+	}
+
+	.help-form > input:hover {
+		border-color: #257FC5;
+	}
+
+	.help-form > input:focus {
+		border-color: #257FC5;
+	}
+	
+	.help-message {
+		width: 600px;
+		height: 100px;
 	}
 	
 /* USER SHOW MY ACCOUNT PAGE*/
