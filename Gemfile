@@ -68,6 +68,9 @@ gem 'faker'
 #twilio text messaging
 gem 'twilio-ruby'
 
+#performance monitoring
+gem 'newrelic_rpm'
+
 
 group :development, :test do
   #gems to help with debugging
