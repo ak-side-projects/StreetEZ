@@ -45,7 +45,7 @@ Users can schedule open houses for the listings they own. They can manage these 
 Users can stay informed of their various interactions with each other and the app. Notifications will be flagged as 'new' until they are clicked on, allowing users to easily navigate between new and old notifications.
 
 
-## ToDo
+## Upcoming Improvements
 
 * Pagination using Kaminari
 * Emails using ActionMailer and Sendgrid
