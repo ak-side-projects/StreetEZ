@@ -1,9 +1,5 @@
 class PhotosController < ApplicationController
 
-  def create
-
-  end
-
   def destroy
     Photo.find(params[:id]).destroy
     back = request.env["HTTP_REFERER"]

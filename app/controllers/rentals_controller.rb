@@ -5,9 +5,11 @@ class RentalsController < ApplicationController
     @rentals = Rental.all.active
 
     @rental_ex1 = @rentals.sample
+    
     until !@rental_ex2.nil? && @rental_ex2 != @rental_ex1 do
       @rental_ex2 = @rentals.sample
     end
+    
     until !@rental_ex3.nil? && (@rental_ex3 != @rental_ex1 && @rental_ex3 != @rental_ex2) do
       @rental_ex3 = @rentals.sample
     end
@@ -18,32 +20,7 @@ class RentalsController < ApplicationController
   def index
     @rentals = Rental.all.active
     if params[:rental]
-      if rental_search_params[:num_bedrooms].present?
-        num_bedrooms = rental_search_params[:num_bedrooms].to_i
-        @rentals = @rentals.where(num_bedrooms: num_bedrooms)
-      end
-
-      if rental_search_params[:num_bathrooms].present?
-        num_bathrooms = rental_search_params[:num_bathrooms].to_i
-        @rentals = @rentals.where(num_bathrooms: num_bathrooms)
-      end
-
-      if rental_search_params[:neighborhoods].present?
-        @rentals = @rentals.where(neighborhood: rental_search_params[:neighborhoods])
-      end
-
-      if rental_search_params[:price_min].present?
-        price_min = rental_search_params[:price_min].to_i
-      else
-        price_min = 0
-      end
-
-      if rental_search_params[:price_max].present?
-        price_max = rental_search_params[:price_max].to_i
-      else
-        price_max = Rental.all.order(monthly_rent: :desc).first.monthly_rent
-      end
-      @rentals = @rentals.where(monthly_rent: price_min..price_max)
+      assemble_query
     end
     @rentals = @rentals.order(created_at: :desc)
     @rentals.includes(:address)
@@ -141,5 +118,35 @@ class RentalsController < ApplicationController
 
   def photo_params
     params.require(:photos)
+  end
+  
+  def assemble_query
+    if rental_search_params[:num_bedrooms].present?
+      num_bedrooms = rental_search_params[:num_bedrooms].to_i
+      @rentals = @rentals.where(num_bedrooms: num_bedrooms)
+    end
+
+    if rental_search_params[:num_bathrooms].present?
+      num_bathrooms = rental_search_params[:num_bathrooms].to_i
+      @rentals = @rentals.where(num_bathrooms: num_bathrooms)
+    end
+
+    if rental_search_params[:neighborhoods].present?
+      @rentals = @rentals.where(neighborhood: rental_search_params[:neighborhoods])
+    end
+
+    if rental_search_params[:price_min].present?
+      price_min = rental_search_params[:price_min].to_i
+    else
+      price_min = 0
+    end
+
+    if rental_search_params[:price_max].present?
+      price_max = rental_search_params[:price_max].to_i
+    else
+      price_max = Rental.all.order(monthly_rent: :desc).first.monthly_rent
+    end
+    
+    @rentals = @rentals.where(monthly_rent: price_min..price_max)
   end
 end
