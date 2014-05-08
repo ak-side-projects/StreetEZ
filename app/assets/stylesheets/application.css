@@ -110,8 +110,15 @@ input[type="submit"] {
 		line-height: 1.0;
 	}
 
-	.sign-up-form, .sign-in-form {
+	.sign-up-form, 
+	.sign-in-form {
 		margin: 20px 0;
+	}
+	
+	.sign-up-form.first,
+	.sign-in-form.first {
+		margin-top: 0;
+		margin-bottom: 20px;
 	}
 
 	.sign-up-form > label, 

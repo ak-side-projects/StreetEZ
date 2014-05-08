@@ -1,5 +1,9 @@
 class Address < ActiveRecord::Base
 
+  belongs_to :rental, inverse_of: :address
+  
+  geocoded_by :full_street_address
+  
   validates(
     :street,
     :unit,
@@ -10,10 +14,6 @@ class Address < ActiveRecord::Base
   )
 
   validates :rental, presence: true
-
-  belongs_to :rental, inverse_of: :address
-  
-  geocoded_by :full_street_address
   
   after_validation :geocode
   

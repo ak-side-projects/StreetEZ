@@ -72,7 +72,7 @@ class RentalsController < ApplicationController
     end
     
     if @rental.save
-      redirect_to user_url(current_user.id)
+      redirect_to rental_url(@rental.id)
     else
       flash.now[:errors] = @rental.errors.full_messages
       render :new

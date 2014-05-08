@@ -17,21 +17,6 @@ class Rental < ActiveRecord::Base
   NUM_BEDROOMS = [1, 2, 3, 4]
 
   NUM_BATHROOMS = [1, 2, 3, 4]
-  
-  scope :active, -> { where(active: true) }
-
-  validates(:neighborhood, inclusion: {in: NEIGHBORHOODS})
-
-  validates(
-    :num_bedrooms,
-    :num_bathrooms,
-    :sq_footage,
-    :monthly_rent,
-    :neighborhood,
-    presence: true
-  )
-
-  validates :owner, presence: true
     
   belongs_to(
     :owner,
@@ -56,5 +41,22 @@ class Rental < ActiveRecord::Base
   has_many :open_houses, inverse_of: :rental, dependent: :destroy
   
   has_many :notifications, as: :notifiable
+  
+  scope :active, -> { where(active: true) }
+
+  validates :neighborhood, inclusion: {in: NEIGHBORHOODS, message: "must be selected from the dropdown list"}
+
+  validates_presence_of :num_bedrooms, message: ": Please select a number of bedrooms from the dropdown list"
+  validates_presence_of :num_bathrooms, message: ": Please select a number of bathrooms from the dropdown list"
+  
+  validates(
+    :sq_footage,
+    :monthly_rent,
+    presence: true
+  )
+  
+  validates :address, associated: true
+
+  validates :owner, presence: true
   
 end

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       end
     else
       @user = User.new
-      flash.now[:errors] = ["Please enter a valid 10 digit number."]
+      flash.now[:errors] = ["Please enter a valid 10 digit phone number."]
       render :new
     end
   end

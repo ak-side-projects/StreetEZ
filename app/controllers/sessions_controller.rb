@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
          render "twilio/confirm_code"
        end
      else
-       flash.now[:errors] = ["Invalid email or password."]
+       flash.now[:errors] = ["Please enter a valid email address and password."]
        @user = User.new
        render :new
      end
