@@ -3,6 +3,7 @@ class Notification < ActiveRecord::Base
   include Rails.application.routes.url_helpers  
   
   EVENTS = {
+    0 => :user_created,
     1 => :received_message,
     2 => :sent_message,
     3 => :saved_rental,
@@ -30,6 +31,8 @@ class Notification < ActiveRecord::Base
   def url
     event = EVENTS[self.event_id]
     case event
+    when :user_created
+      rentals_path
     when :received_message
       message_path(self.notifiable)
     when :sent_message
@@ -52,6 +55,8 @@ class Notification < ActiveRecord::Base
   def text
     event = EVENTS[self.event_id]
     case event
+    when :user_created
+      return "Welcome to StreetEZ #{self.notifiable.name}. We are glad you chose StreetEZ to help you with your apartment search."
     when :received_message
       return "You received a message from #{self.notifiable.sender.name}."
     when :sent_message

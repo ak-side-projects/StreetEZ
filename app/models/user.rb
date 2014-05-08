@@ -1,11 +1,6 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :email, :name, presence: true, uniqueness: true
-  validates :password, length: { minimum: 6, allow_nil: true }
-  validates :password_digest, presence: true
-  validates :session_token, presence: true, uniqueness: true
-
   before_validation :ensure_session_token
 
   has_many(
@@ -47,7 +42,13 @@ class User < ActiveRecord::Base
   has_many :attend_open_houses, inverse_of: :user, dependent: :destroy
   
   has_many :open_houses, through: :attend_open_houses, source: :open_house
-    
+  
+  validates :email, :name, presence: true, uniqueness: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password_digest, presence: true
+  validates :session_token, presence: true, uniqueness: true
+  
+  after_commit :send_welcome_message, on: :create
     
   def self.find_by_auth_hash(auth_hash)
     User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
@@ -94,6 +95,14 @@ class User < ActiveRecord::Base
   
   def is_confirmed?
     self.is_confirmed
+  end
+  
+  def send_welcome_message
+    self.notifications.create(
+    notifiable_id: self.id, 
+    notifiable_type: self.class.name, 
+    user_id: self.id, 
+    event_id: 0)
   end
   
   private

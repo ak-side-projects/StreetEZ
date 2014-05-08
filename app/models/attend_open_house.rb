@@ -14,15 +14,19 @@ class AttendOpenHouse < ActiveRecord::Base
   
   def notify_attend_open_house
     Notification.create(
-      user_id: self.user_id, event_id: 7, 
-      notifiable_id: self.open_house.id, notifiable_type: self.open_house.class.name
+      user_id: self.user_id, 
+      event_id: 7, 
+      notifiable_id: self.open_house.id, 
+      notifiable_type: self.open_house.class.name
     )
   end
   
   def notify_unattend_open_house
     Notification.create(
-      user_id: self.user_id, event_id: 9, 
-      notifiable_id: self.open_house.id, notifiable_type: self.open_house.class.name
+      user_id: self.user_id, 
+      event_id: 9, 
+      notifiable_id: self.open_house.id, 
+      notifiable_type: self.open_house.class.name
     )
   end
    
