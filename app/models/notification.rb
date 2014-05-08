@@ -18,11 +18,13 @@ class Notification < ActiveRecord::Base
   
   EVENT_IDS = EVENTS.invert
   
-  validates :notifiable_id, :notifiable_type, :user_id, :event_id, presence: true
-  
   belongs_to :notifiable, polymorphic: true
   
   belongs_to :user, inverse_of: :notifications, counter_cache: true
+  
+  validates :notifiable_id, :notifiable_type, :user_id, :event_id, presence: true
+  
+  after_validation :send_email, on: :create
   
   scope :read, -> { where(is_read: true) }
   scope :unread, -> { where(is_read: false) }
@@ -88,6 +90,13 @@ class Notification < ActiveRecord::Base
     options = {}
     options[:host] = Rails.env.production? ? "streetez.herokuapp.com" : "localhost:3000"
     options
+  end
+  
+  def send_email
+    if self.event_id == 0
+      msg = UserMailer.welcome_email(self)
+      msg.deliver!
+    end
   end
   
 end

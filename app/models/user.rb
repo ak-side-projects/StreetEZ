@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
   
   has_many :open_houses, through: :attend_open_houses, source: :open_house
   
-  validates :email, :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
   validates :session_token, presence: true, uniqueness: true
