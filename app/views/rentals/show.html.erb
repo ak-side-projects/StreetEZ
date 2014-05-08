@@ -2,9 +2,9 @@
 	<section class="rental-info-and-photos group">
 	  <div class="rental-info" id="rental-info">
 			
-			<div class="action-buttons group">
+			<div class="group">
 				<% if @rental.owner == current_user %>
-					<ul>
+					<ul class="owner-action-buttons group">
 						<li>
 							<a class="edit-rental" href="<%= edit_rental_url(@rental.id) %>">Edit</a>
 						</li>

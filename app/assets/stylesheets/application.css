@@ -558,19 +558,13 @@ input[type="submit"] {
 		width: 1000px;
 	}
 	
-	.action-buttons {
-		float: right;
-		margin-right: 187px;
+	.owner-action-buttons {
+		float: left;
 	}
 	
-	.action-buttons li {
+	.owner-action-buttons > li {
 		float: left;
-		padding: 0 10px;
-	}
-	
-	.owner-actions > ul > li {
-		float: left;
-		padding: 0, 15px;
+		padding-right: 30px;
 	}
 	
 	.rental-show .rental-photos-and-description {
@@ -1062,7 +1056,7 @@ input[type="submit"] {
 	
 	.hosting-open-houses .no-open-houses,
 	.attending-open-houses .no-open-houses {
-		width: 450px;
+		width: 425px;
 		text-align: center;
 	}
 	
@@ -1138,7 +1132,7 @@ input[type="submit"] {
 	
 	.owned-rentals .no-rentals,
 	.saved-rentals .no-rentals {
-		width: 450px;
+		width: 425px;
 		padding: 15px 10px;
 		text-align: center;
 	}
@@ -1172,12 +1166,17 @@ input[type="submit"] {
 		width: 250px;
 	}
 	
-	.user-action-buttons > .owner-action-buttons {
-		float: right;	
+	.user-action-buttons > .owner-action-buttons,
+	.user-action-buttons > .saved-rental > input.remove,
+	.user-action-buttons > form.add-open-house > input.add-open-house {
+		float: right;
+		margin-right: 15px;
 	}
 	
-	.owner-action-buttons > .edit-rental,
-	.owner-action-buttons > .delete-rental {
-		float: left;
-		margin-right: 20px;
+	.owner-action-buttons > .edit-rental {
+		float: right;
+	}
+	
+	.owner-action-buttons > .delete-rental > input.delete {
+		margin-top: 0;
 	}
