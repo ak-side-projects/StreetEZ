@@ -6,7 +6,9 @@
 	<%= render "search", provided_url: rentals_url, is_request_xhr: true %>
 </section>
 
+<%= paginate @rentals %>
 <%= render "rentals_list" %>
+<%= paginate @rentals %>
 
 <script>
 $(document).ready(function() {

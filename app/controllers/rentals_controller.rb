@@ -24,6 +24,7 @@ class RentalsController < ApplicationController
     end
     @rentals = @rentals.order(created_at: :desc)
     @rentals.includes(:address)
+    @rentals = @rentals.page(params[:page]).per(15)
     
     if request.xhr?
       render partial: "rentals/rentals_list"
