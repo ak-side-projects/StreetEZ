@@ -47,11 +47,8 @@ Users can stay informed of their various interactions with each other and the ap
 
 ## Upcoming Improvements
 
-* Pagination using Kaminari
-* Emails using ActionMailer and Sendgrid
 * Allow drag and drop photo upload
-* Verify user phone number when logging in with facebook
 * Implement password reset
-* Make calendar interface more interactive for open houses
+* Make calendar interface for open houses more interactive
 * Add photo carrousel to rental listings
-* Allow user to see attendees of his / her open house
+* Allow user to see attendees of his / her open houses
