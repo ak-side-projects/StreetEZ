@@ -52,3 +52,4 @@ Users can stay informed of their various interactions with each other and the ap
 * Make calendar interface for open houses more interactive
 * Add photo carrousel to rental listings
 * Allow user to see attendees of his / her open houses
+* Notify users of missed open houses
