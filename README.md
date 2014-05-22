@@ -45,6 +45,11 @@ Users can schedule open houses for the listings they own. They can manage these 
 Users can stay informed of their various interactions with each other and the app. Notifications will be flagged as 'new' until they are clicked on, allowing users to easily navigate between new and old notifications.
 
 
+#### Messaging
+
+Users can message the owner of a listing to setup a time to meet or get more information. Users can neatly view their received and sent messages by clicking the 'Messages' link at the top of the page. That page will neatly display an inbox and sentbox. Clicking on any message in either box will bring up the entire conversation history between the two users.
+
+
 ## Upcoming Improvements
 
 * Allow drag and drop photo upload
