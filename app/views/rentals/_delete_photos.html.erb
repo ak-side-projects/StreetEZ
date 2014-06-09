@@ -1,5 +1,5 @@
 <div class="photos">
-	<% if rental.photos %>
+	<% if rental.photos && rental.photos.first.id %>
 	  <% rental.photos.each do |photo| %>
 	    <form class="delete-photo" action="<%= photo_url(photo.id) %>" method="post">
 	      <input type="hidden" name="_method" value="delete">
