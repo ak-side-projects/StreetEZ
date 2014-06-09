@@ -1,12 +1,14 @@
 <div class="photos">
-	<% if rental.photos && rental.photos.first.id %>
+	<% if rental.photos %>
 	  <% rental.photos.each do |photo| %>
-	    <form class="delete-photo" action="<%= photo_url(photo.id) %>" method="post">
-	      <input type="hidden" name="_method" value="delete">
-	      <%= auth_token %>
-	      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
-	      <input type="submit" value="Delete Photo">
-	    </form>
+			<% if photo.id %>
+		    <form class="delete-photo" action="<%= photo_url(photo.id) %>" method="post">
+		      <input type="hidden" name="_method" value="delete">
+		      <%= auth_token %>
+		      <img class="rental-photo" src="<%= photo.file.url(:thumb) %>" alt="apartment_rental_photo">
+		      <input type="submit" value="Delete Photo">
+		    </form>
+			<% end %>
 	  <% end %>
 	<% end %>
 </div>
